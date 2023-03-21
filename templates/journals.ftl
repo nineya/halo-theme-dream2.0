@@ -1,4 +1,4 @@
-<#include "template/layout.ftl">
+<#include "templates/layout_pjax.ftl">
 <@layout title="动态 - ${blog_title!}" canonical="${journals_url!}">
     <#if journals.content?? && journals.content?size gt 0>
         <#list journals.content as journal>
@@ -30,13 +30,13 @@
                 </div>
                 <#if settings.enable_journals_comment!true>
                 <div class="journal-comment">
-                    <#include "template/main/comment.ftl">
+                    <#include "templates/main/comment.ftl">
                     <@comment journal.id?c, "journal" />
                 </div>
                 </#if>
             </div>
         </#list>
-        <#include "template/main/pagination.ftl">
+        <#include "templates/main/pagination.ftl">
         <@pagination method="journals" datas=journals display="${settings.page_number!5}" />
     <#else>
         <div class="card card-empty">

@@ -1,4 +1,4 @@
-<#include "template/layout.ftl">
+<#include "templates/layout_pjax.ftl">
 <#macro categoriesTree categories>
     <#list categories as category>
         <li>

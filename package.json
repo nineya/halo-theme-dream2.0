@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nineya/halo-theme-dream.git"
+    "url": "git+https://github.com/nineya/halo-theme-dream2.0.git"
   },
   "keywords": [
     "halo",
@@ -24,9 +24,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nineya/halo-theme-dream/issues"
+    "url": "https://github.com/nineya/halo-theme-dream2.0/issues"
   },
-  "homepage": "https://github.com/nineya/halo-theme-dream#readme",
+  "homepage": "https://github.com/nineya/halo-theme-dream2.0#readme",
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/plugin-transform-runtime": "^7.15.0",

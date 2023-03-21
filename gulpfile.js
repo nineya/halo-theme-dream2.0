@@ -11,8 +11,8 @@ const path = require('path')
 const execSync = require('child_process').execSync
 const fs = require('fs')
 const resolve = (name) => path.resolve(__dirname, name)
-const cssPath = './source/css'
-const jsPath = './source/js'
+const cssPath = './templates/assets/css'
+const jsPath = './templates/assets/js'
 const distPath = './dist'
 const devModel = process.env.npm_config_devel
 const version = process.env.npm_config_tag
@@ -126,7 +126,7 @@ task('js', () => {
 })
 
 task('zip', () => {
-  const target = ['./source/**', './template/**', './mail_template/**', './*.ftl', './*.yaml', 'README.md', 'screenshot.png', 'LICENSE']
+  const target = ['./templates/**', './*.yaml', 'README.md', 'screenshot.png', 'LICENSE']
   return src(target, {base: '.'})
     .pipe(zip('halo-theme-dream.zip'))
     .pipe(dest(distPath))

@@ -1,4 +1,4 @@
-<#include "template/layout.ftl">
+<#include "templates/layout_pjax.ftl">
 <@layout title="标签 - ${blog_title!}" canonical="${tags_url!}">
     <@tagTag method="list">
         <#if tags?? && tags?size gt 0>

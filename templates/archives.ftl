@@ -1,4 +1,4 @@
-<#include "template/layout.ftl">
+<#include "templates/layout_pjax.ftl">
 <@layout title="归档 - ${blog_title!}" canonical="${archives_url!}">
     <#if (archives)?? && archives?size gt 0>
         <#list archives as archive>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </#list>
-        <#include "template/main/pagination.ftl">
+        <#include "templates/main/pagination.ftl">
         <@pagination method="archives" datas=posts display="${settings.page_number!5}" />
     <#else>
         <div class="card card-empty">

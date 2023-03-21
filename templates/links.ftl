@@ -1,4 +1,4 @@
-<#include "template/layout.ftl">
+<#include "templates/layout_pjax.ftl">
 <@layout title="友链 - ${blog_title!}" canonical="${links_url!}">
     <div class="card">
         <#if settings.links_thumbnail?? && settings.links_thumbnail!=''>
@@ -64,7 +64,7 @@
     <#if settings.link_comment_id?? && settings.link_comment_id!='' && settings.enable_comment!true>
         <div class="card card-content" id="comment-wrapper">
             <h3 class="comment-title">评论</h3>
-            <#include "template/main/comment.ftl">
+            <#include "templates/main/comment.ftl">
             <@comment settings.link_comment_id, "sheet" />
         </div>
     </#if>

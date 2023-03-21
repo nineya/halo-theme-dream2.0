@@ -1,4 +1,4 @@
-<#include "template/layout.ftl">
+<#include "templates/layout_pjax.ftl">
 <@layout title="相册 - ${blog_title!}" canonical="${photos_url!}">
     <#if (photos.content)?? && photos.content?size gt 0>
         <div class="card card-content photos">

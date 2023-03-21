@@ -1,4 +1,4 @@
-<#include "template/layout.ftl">
+<#include "templates/layout_pjax.ftl">
 <@layout title="分类：${category.name!} - ${blog_title!}" canonical="${category.fullPath!}">
     <#if (posts.content)?? && posts.content?size gt 0>
         <div class="card card-content main-title">
@@ -7,9 +7,9 @@
                 <li>${category.name}</li>
             </ul>
         </div>
-        <#include "template/main/article_list.ftl">
+        <#include "templates/main/article_list.ftl">
         <@article_list posts.content/>
-        <#include "template/main/pagination.ftl">
+        <#include "templates/main/pagination.ftl">
         <@pagination method="categoryPosts" datas=posts slug="${category.slug!}" display="${settings.page_number!5}" />
     <#else>
         <div class="card card-empty">
