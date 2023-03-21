@@ -1,4 +1,4 @@
-/**************** 光标渲染 *******************/
+﻿/**************** 光标渲染 *******************/
 
 class Circle {
   constructor({ origin, speed, color, angle, context }) {
