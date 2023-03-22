@@ -1,6 +1,6 @@
 <header class="navbar" xmlns:th="https://www.thymeleaf.org">
     <div class="navbar-above">
-        <div class="container<#if settings.sidebar_column?? && settings.sidebar_column!='all'> two-column</#if>">
+        <div th:class="${theme.config.basic_style.sidebar_column != 'all' ? 'container two-column' : 'container' }">
             <i class="fa fa-bars navbar-slideicon"></i>
             <a class="navbar-item logo-title"  th:href="${site.url}">
                 <th:block th:if="${#strings.isEmpty(site.logo)}" th:text="${site.title}"/>

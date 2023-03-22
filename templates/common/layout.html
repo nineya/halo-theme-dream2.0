@@ -17,7 +17,7 @@
     <th:block th:replace="~{common/banner :: banner}"/>
   </th:block>
   <section class="section">
-    <div class="container<#if settings.sidebar_column?? && settings.sidebar_column!='all'> two-column</#if>">
+    <div class="${theme.config.basic_style.sidebar_column != 'all' ? 'container two-column' : 'container' }">
       <div class="columns">
         <div class="column column-main">
           <th:block th:insert="${content}"/>

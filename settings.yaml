@@ -460,408 +460,87 @@ spec:
           name: donate_wechat
           label: 微信捐赠二维码
           placeholder: '请输入/选择图片路径'
-#sidebar_show:
-#  label: 侧边栏显示
-#  items:
-#        - $formkit: text
-#          name: sidebar_profile
-#              label:  侧边栏信息
-#      type: radio
-#          value: left
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_toc
-#              label:  侧边栏目录
-#      type: radio
-#          value: right
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_notice
-#              label:  侧边栏公告
-#      type: radio
-#          value: right
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_love
-#              label:  侧边栏恋爱墙
-#      type: radio
-#          value: right
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_music
-#              label:  侧边栏音乐
-#      type: radio
-#          value: none
-#          help: "三列布局时不能在右侧显示音乐模块。"
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_ad_piece
-#              label:  侧边栏广告
-#      type: radio
-#          value: none
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_recent_posts
-#              label:  侧边栏最近文章
-#      type: radio
-#          value: right
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_recent_comments
-#              label:  侧边栏最近评论
-#      type: radio
-#          value: right
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_categories
-#              label:  侧边栏分类
-#      type: radio
-#          value: left
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_tags
-#              label:  侧边栏标签
-#      type: radio
-#          value: left
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_tagcloud
-#              label:  侧边栏标签云
-#      type: radio
-#          value: none
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_links
-#              label:  侧边栏友链
-#      type: radio
-#          value: left
-#          options:
-#            - value: left
-#              label:  左侧
-#            - value: right
-#              label:  右侧
-#            - value: none
-#              label:  关闭
-#        - $formkit: text
-#          name: sidebar_priority_profile
-#              label:  侧边栏信息-优先级
-#          value: 9900
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_toc
-#              label:  侧边栏目录-优先级
-#          value: 9800
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_notice
-#              label:  侧边栏公告-优先级
-#          value: 9700
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_love
-#              label:  侧边栏恋爱墙-优先级
-#          value: 9600
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_music
-#              label:  侧边栏音乐-优先级
-#          value: 9500
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_ad_piece
-#              label:  侧边栏广告-优先级
-#          value: 9400
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_recent_posts
-#              label:  侧边栏最近文章-优先级
-#          value: 9300
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_recent_comments
-#              label:  侧边栏最近评论-优先级
-#          value: 9200
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_categories
-#              label:  侧边栏分类-优先级
-#          value: 9100
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_tags
-#              label:  侧边栏标签-优先级
-#          value: 9000
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_tagcloud
-#              label:  侧边栏标签云-优先级
-#          value: 8900
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: sidebar_priority_links
-#              label:  侧边栏友链-优先级
-#          value: 8800
-#          placeholder: '请输入优先级数值'
-#          help: '优先级越高，模块排序越靠前。'
-#        - $formkit: text
-#          name: hide_profile
-#              label:  侧边栏信息-隐藏方式
-#      type: select
-#          value: 'is-not-hidden'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_toc
-#              label:  侧边栏目录-隐藏方式
-#      type: select
-#          value: 'is-hidden-not-desktop'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_notice
-#              label:  侧边栏公告-隐藏方式
-#      type: select
-#          value: 'is-not-hidden'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_love
-#              label:  侧边栏恋爱墙-隐藏方式
-#      type: select
-#          value: 'is-not-hidden'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_music
-#              label:  侧边栏音乐-隐藏方式
-#      type: select
-#          value: 'is-hidden-mobile'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_ad_piece
-#              label:  侧边栏广告-隐藏方式
-#      type: select
-#          value: 'is-not-hidden'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_recent_posts
-#              label:  侧边栏最近文章-隐藏方式
-#      type: select
-#          value: 'is-not-hidden'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_recent_comments
-#              label:  侧边栏最近评论-隐藏方式
-#      type: select
-#          value: 'is-not-hidden'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_categories
-#              label:  侧边栏分类-隐藏方式
-#      type: select
-#          value: 'is-not-hidden'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_tags
-#              label:  侧边栏标签-隐藏方式
-#      type: select
-#          value: 'is-not-hidden'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_tagcloud
-#              label:  侧边栏标签云-隐藏方式
-#      type: select
-#          value: 'is-hidden-not-desktop'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-#        - $formkit: text
-#          name: hide_links
-#              label:  侧边栏友链-隐藏方式
-#      type: select
-#          value: 'is-hidden-not-desktop'
-#          options:
-#            - value: 'is-hidden-mobile'
-#              label:  移动设备隐藏
-#            - value: 'is-hidden-not-desktop'
-#              label:  移动、平板设备隐藏
-#            - value: 'is-hidden-desktop'
-#              label:  桌面设备隐藏
-#            - value: 'is-not-hidden'
-#              label:  不隐藏
-    - group: sidebar_config
+    - group: sidebar
       label: '侧边栏配置'
       formSchema:
-#        - $formkit: text
-#          name: enable_color_character
-#              label:  侧边栏信息-开启彩字切换
-#      type: switch
-#      data-type: bool
-#          value: false
-#          options:
-#            - value: true
-#              label:  开启
-#            - value: false
-#              label:  关闭
+        - $formkit: repeater
+          name: sidebar_show
+          label: 侧边栏展示
+          help: 配置侧边栏展示方式，三列布局时不能在右侧显示音乐模块。
+          value:
+            - name: QQ
+              icon: <i class="fa-brands fa-qq"></i>
+              url: https://api.sumt.cn/api/qq.talk.php?qq=自己的QQ号&format=card
+              delete: true
+            - name: Github
+              icon: <i class="fa-brands fa-github"></i>
+              url:
+            - name: Email
+              icon: <i class="fa-solid fa-envelope"></i>
+              url: mailto:邮箱地址
+          children:
+            - $formkit: select
+              name: type
+              label: 模块类型
+              value: ""
+              options:
+                - value: 'profile'
+                  label:  信息模块
+                - value: 'toc'
+                  label:  目录模块
+                - value: 'notice'
+                  label:  公告模块
+                - value: 'love'
+                  label:  恋爱墙模块
+                - value: 'music'
+                  label:  音乐模块
+                - value: 'ad_piece'
+                  label:  广告模块
+                - value: 'recent_posts'
+                  label:  最近文章模块
+                - value: 'recent_comments'
+                  label:  最近评论模块
+                - value: 'categories'
+                  label:  文章分类模块
+                - value: 'tags'
+                  label:  文章标签模块
+                - value: 'tagcloud'
+                  label:  文章标签云模块
+                - value: 'links'
+                  label:  友链模块
+            - $formkit: select
+              name: position
+              label: 模块位置
+              value: "none"
+              options:
+                - value: left
+                  label:  左侧
+                - value: right
+                  label:  右侧
+                - value: none
+                  label:  关闭
+            - $formkit: select
+              name: hide
+              label: 隐藏方式
+              value: "is-not-hidden"
+              options:
+                - value: 'is-hidden-mobile'
+                  label:  移动设备隐藏
+                - value: 'is-hidden-not-desktop'
+                  label:  移动、平板设备隐藏
+                - value: 'is-hidden-desktop'
+                  label:  桌面设备隐藏
+                - value: 'is-not-hidden'
+                  label:  不隐藏
+        - $formkit: radio
+          name: enable_color_character
+          label:  侧边栏信息-开启彩字切换
+          value: false
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
         - $formkit: textarea
           name: color_character
           label: 侧边栏信息-彩字内容
