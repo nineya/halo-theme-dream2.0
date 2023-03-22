@@ -1,4 +1,4 @@
-<#macro article post,commentType>
+<#macro articleLiterature post,commentType>
     <#if post.thumbnail?? && post.thumbnail!=''>
         <div class="card widget">
             <div class="cover-image" style="background-image: url(${post.thumbnail!})">
@@ -51,9 +51,9 @@
                 </div>
                 <hr/>
             </#if>
-            <div data-id="${post.id?c}" data-target="${commentType}s" class="main-content article">${post.formatContent!}</div>
+            <div data-id="${post.id?c}" data-target="${commentType}s" class="main-content literature-content article">${post.formatContent!}</div>
 
-            <#include "admire.ftl">
+            <#include "templates/main/admire.html">
 
             <#if tags?? && (tags?size gt 0)>
                 <div class="article-operation">
@@ -68,7 +68,7 @@
             <#if enable_copyright == 'true' || enable_share>
                 <hr/>
                 <#if enable_copyright == 'true'>
-                    <#include "copyright.ftl">
+                    <#include "templates/main/copyright.html">
                 </#if>
                 <#if enable_share>
                     <div class="dshare"></div>
@@ -98,7 +98,7 @@
     <#if (!post.disallowComment!false) && settings.enable_comment!true>
         <div class="card card-content" id="comment-wrapper">
             <h3 class="comment-title">评论</h3>
-            <#include "comment.ftl">
+            <#include "templates/main/comment.html">
             <@comment post.id?c, commentType />
         </div>
     </#if>
