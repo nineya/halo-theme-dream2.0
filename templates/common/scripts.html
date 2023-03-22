@@ -5,7 +5,7 @@
 <!--<#if is_carousel??>-->
 <!--    <script data-pjax th:src="@{/assets/lib/swiper@8.4.6/swiper-bundle.min.js}"></script>-->
 <!--</#if>-->
-<!--<script th:src="@{/assets/js/common.min.js(mew=${theme.spec.version})}"></script>-->
+<script th:src="@{/assets/js/common.min.js(mew=${theme.spec.version})}"></script>
 
 <!--<#if post?? || is_journals?? || is_error??>-->
 <!--    <script data-pjax th:src="@{/assets/lib/highlightjs@11.5.1/highlight.min.js}"></script>-->
@@ -33,9 +33,7 @@
 <!--</#if>-->
 
 <script th:src="@{/assets/lib/jquery-pjax@2.0.1/jquery.pjax.min.js}"></script>
-<!--<#if settings.load_progress?? && settings.load_progress != 'none'>-->
-<!--    <script th:src="@{/assets/js/dprogress.min.js(mew=${theme.spec.version})}"></script>-->
-<!--</#if>-->
+<script th:if="${theme.config.basic_style.load_progress != 'none'}" th:src="@{/assets/js/dprogress.min.js(mew=${theme.spec.version})}"></script>
 <script th:src="@{/assets/js/pjax.min.js(mew=${theme.spec.version})}"></script>
 <script async th:src="@{/assets/lib/qmsg/qmsg.min.js}"></script>
 

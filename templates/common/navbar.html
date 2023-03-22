@@ -2,7 +2,7 @@
     <div class="navbar-above">
         <div th:class="${theme.config.basic_style.sidebar_column != 'all' ? 'container two-column' : 'container' }">
             <i class="fa fa-bars navbar-slideicon"></i>
-            <a class="navbar-item logo-title"  th:href="${site.url}">
+            <a class="navbar-item logo-title" th:href="${site.url}">
                 <th:block th:if="${#strings.isEmpty(site.logo)}" th:text="${site.title}"/>
                 <th:block th:unless="${#strings.isEmpty(site.logo)}">
                     <img class="logo-img" th:src="${site.logo}" th:alt="${site.title}" height="28">
