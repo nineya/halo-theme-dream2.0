@@ -1,5 +1,5 @@
 <html lang="zh" xmlns:th="https://www.thymeleaf.org"
-      th:fragment="layout (title, canonical, content)">
+      th:fragment="layout (title, canonical, content, isPost)">
 <th:block th:if="${#strings.equals('',param._pjax) == false}">
   <th:block th:replace="~{common/head :: head}"/>
   <body>

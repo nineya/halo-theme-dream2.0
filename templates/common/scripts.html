@@ -8,12 +8,12 @@
 <script th:src="@{/assets/js/common.min.js(mew=${theme.spec.version})}"></script>
 
 <!--<#if post?? || is_journals?? || is_error??>-->
-<!--    <script data-pjax th:src="@{/assets/lib/highlightjs@11.5.1/highlight.min.js}"></script>-->
-<!--    <script data-pjax th:src="@{/assets/lib/clipboard@2.0.10/clipboard.min.js}"></script>-->
+<script th:if="${isPost}" data-pjax th:src="@{/assets/lib/highlightjs@11.5.1/highlight.min.js}"></script>
+<script th:if="${isPost}" data-pjax th:src="@{/assets/lib/clipboard@2.0.10/clipboard.min.js}"></script>
 <!--    <#if enable_share>-->
 <!--        <script data-pjax th:src="@{/assets/js/dshare.min.js(mew=${theme.spec.version})}"></script>-->
 <!--    </#if>-->
-<!--    <script data-pjax th:src="@{/assets/js/post.min.js(mew=${theme.spec.version})}"></script>-->
+<script th:if="${isPost}" data-pjax th:src="@{/assets/js/post.min.js(mew=${theme.spec.version})}"></script>
 <!--    <#if is_journals??>-->
 <!--        <script data-pjax th:src="@{/assets/js/journals.min.js(mew=${theme.spec.version})}"></script>-->
 <!--    </#if>-->
@@ -37,9 +37,7 @@
 <script th:src="@{/assets/js/pjax.min.js(mew=${theme.spec.version})}"></script>
 <script async th:src="@{/assets/lib/qmsg/qmsg.min.js}"></script>
 
-<!--<#if post?? || is_photos?? || is_journals?? >-->
-<!--    <script data-pjax async th:src="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.js}"></script>-->
-<!--</#if>-->
+<script th:if="${isPost}" data-pjax async th:src="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.js}"></script>
 
 <!--<#if settings.sidebar_music?? && settings.sidebar_music != 'none'>-->
 <!--    <link rel="stylesheet" th:href="@{/assets/lib/aplayer@1.10.1/APlayer.min.css}>-->
@@ -48,10 +46,5 @@
 <!--</#if>-->
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js}"></script>
 
-<!--${settings.external_js_body!}-->
-<!--<#if settings.inline_js_body?? && settings.inline_js_body!=''>-->
-<!--    <script type="text/javascript">-->
-<!--        ${settings.inline_js_body!}-->
-<!--    </script>-->
-<!--</#if>-->
-<!--<@global.statistics />-->
+<script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_body)}" type="text/javascript" th:text="${theme.config.custom.inline_js_body}">
+</script>

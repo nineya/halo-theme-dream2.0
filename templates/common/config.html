@@ -1,105 +1,101 @@
 <style>
-    <#assign fontSrc=(settings.web_font?? && settings.web_font!='default')?then((settings.web_font=='custom')?then((settings.custom_font?? && settings.custom_font!='')?then(settings.custom_font, ''), '${theme_base!}/source/font/${settings.web_font}'), '')>
-    <#if fontSrc!=''>
-      <#if fontSrc?ends_with(".woff")>
-      <#assign fontFormat="woff">
-      <#elseif fontSrc?ends_with(".woff2")>
-      <#assign fontFormat="woff2">
-      <#elseif fontSrc?ends_with(".ttf")>
-      <#assign fontFormat="truetype">
-      <#elseif fontSrc?ends_with(".eot")>
-      <#assign fontFormat="embedded-opentype">
-      <#elseif fontSrc?ends_with(".svg")>
-      <#assign fontFormat="svg">
-      </#if>
-    @font-face {
-        font-family: "Dream Font";
-        font-display: swap;
-        font-weight: 400;
-        src: url("${fontSrc!}")${(fontFormat??)?then(' format("${fontFormat}")', '')};
-    }
+    /*<#assign fontSrc=(settings.web_font?? && settings.web_font!='default')?then((settings.web_font=='custom')?then((settings.custom_font?? && settings.custom_font!='')?then(settings.custom_font, ''), '${theme_base!}/source/font/${settings.web_font}'), '')>*/
+    /*<#if fontSrc!=''>*/
+    /*  <#if fontSrc?ends_with(".woff")>*/
+    /*  <#assign fontFormat="woff">*/
+    /*  <#elseif fontSrc?ends_with(".woff2")>*/
+    /*  <#assign fontFormat="woff2">*/
+    /*  <#elseif fontSrc?ends_with(".ttf")>*/
+    /*  <#assign fontFormat="truetype">*/
+    /*  <#elseif fontSrc?ends_with(".eot")>*/
+    /*  <#assign fontFormat="embedded-opentype">*/
+    /*  <#elseif fontSrc?ends_with(".svg")>*/
+    /*  <#assign fontFormat="svg">*/
+    /*  </#if>*/
+    /*@font-face {*/
+    /*    font-family: "Dream Font";*/
+    /*    font-display: swap;*/
+    /*    font-weight: 400;*/
+    /*    src: url("${fontSrc!}")${(fontFormat??)?then(' format("${fontFormat}")', '')};*/
+    /*}*/
 
-    </#if>
-    <#if settings.enable_gray_mode!false>
-    html {
-        filter: grayscale(1) !important;
-    }
+    /*</#if>*/
+    /*<#if settings.enable_gray_mode!false>*/
+    /*html {*/
+    /*    filter: grayscale(1) !important;*/
+    /*}*/
 
-    </#if>
-    <#if settings.theme_color?? && settings.theme_color!=''>
-    html {
-        --theme: ${settings.theme_color};
-    }
+    /*</#if>*/
+    /*<#if settings.theme_color?? && settings.theme_color!=''>*/
+    /*html {*/
+    /*    --theme: ${settings.theme_color};*/
+    /*}*/
 
-    </#if>
-    <#if settings.night_theme_color?? && settings.night_theme_color!=''>
-    html.night {
-        --theme: ${settings.night_theme_color};
-    }
+    /*</#if>*/
+    /*<#if settings.night_theme_color?? && settings.night_theme_color!=''>*/
+    /*html.night {*/
+    /*    --theme: ${settings.night_theme_color};*/
+    /*}*/
 
-    </#if>
+    /*</#if>*/
 
-    <#if (settings.enable_image_bg!false)==true && (settings.theme_style!'default')!='clean'>
-    <#if settings.background_pc?? && settings.background_pc!=''>
-    body:before {
-        background: url("${settings.background_pc!}") center 0 no-repeat;
-    }
+    /*<#if (settings.enable_image_bg!false)==true && (settings.theme_style!'default')!='clean'>*/
+    /*<#if settings.background_pc?? && settings.background_pc!=''>*/
+    /*body:before {*/
+    /*    background: url("${settings.background_pc!}") center 0 no-repeat;*/
+    /*}*/
 
-    </#if>
-    html.night body:before {
-        background: ${(settings.night_background_pc?? && settings.night_background_pc!='')?then('url("${settings.night_background_pc!}") center 0 no-repeat','none')};
-    }
+    /*</#if>*/
+    /*html.night body:before {*/
+    /*    background: ${(settings.night_background_pc?? && settings.night_background_pc!='')?then('url("${settings.night_background_pc!}") center 0 no-repeat','none')};*/
+    /*}*/
 
-    @media screen and (max-width: 768px) {
-        body:before {
-            background: ${(settings.background_mobile?? && settings.background_mobile!='')?then('url("${settings.background_mobile!}") center 0 no-repeat','none')};
-        }
+    /*@media screen and (max-width: 768px) {*/
+    /*    body:before {*/
+    /*        background: ${(settings.background_mobile?? && settings.background_mobile!='')?then('url("${settings.background_mobile!}") center 0 no-repeat','none')};*/
+    /*    }*/
 
-        html.night body:before {
-            background: ${(settings.night_background_mobile?? && settings.night_background_mobile!='')?then('url("${settings.night_background_mobile!}") center 0 no-repeat','none')};
-        }
-    }
+    /*    html.night body:before {*/
+    /*        background: ${(settings.night_background_mobile?? && settings.night_background_mobile!='')?then('url("${settings.night_background_mobile!}") center 0 no-repeat','none')};*/
+    /*    }*/
+    /*}*/
 
-    </#if>
+    /*</#if>*/
 </style>
-<script type="text/javascript">
-    window.logger = console.log;
-    <#if !(settings.enable_debug!false)>
-    console.logStorage = [];
-    console.log = function (message, ...optionalParams) {
-      console.logStorage.push(()=>window.logger(message, optionalParams));
-      if (console.logStorage.length > 100) {
-        console.logStorage.shift()
-      }
-    };
-    console.logPrint = function () {
-      for (let logItem of console.logStorage) {
-        logItem();
-      }
-    };
-    </#if>
-    <#if settings.copy_explain?? && settings.copy_explain!=''>
-    document.addEventListener('copy', function (event) {
-      let clipboardData = event.clipboardData || window.clipboardData;
-      if (!clipboardData) { return; }
-      let text = window.getSelection().toString();
-      if (text) {
-        event.preventDefault();
-        clipboardData.setData('text/plain', text + '\n${settings.copy_explain?trim?js_string}');
-      }
-    });
-    </#if>
+<script th:inline="javascript">
+    // window.logger = console.log;
+    // <#if !(settings.enable_debug!false)>
+    // console.logStorage = [];
+    // console.log = function (message, ...optionalParams) {
+    //   console.logStorage.push(()=>window.logger(message, optionalParams));
+    //   if (console.logStorage.length > 100) {
+    //     console.logStorage.shift()
+    //   }
+    // };
+    // console.logPrint = function () {
+    //   for (let logItem of console.logStorage) {
+    //     logItem();
+    //   }
+    // };
+    // </#if>
+    // <#if settings.copy_explain?? && settings.copy_explain!=''>
+    // document.addEventListener('copy', function (event) {
+    //   let clipboardData = event.clipboardData || window.clipboardData;
+    //   if (!clipboardData) { return; }
+    //   let text = window.getSelection().toString();
+    //   if (text) {
+    //     event.preventDefault();
+    //     clipboardData.setData('text/plain', text + '\n${settings.copy_explain?trim?js_string}');
+    //   }
+    // });
+    // </#if>
     /** 主题配置 */
     const DreamConfig = {};
     DreamConfig["theme_version"] = '${theme_version!}';
     DreamConfig["theme_base"] = '${theme_base!}';
-    DreamConfig["access_key"] = '${settings.access_key!'dream'}';
-    <#if settings.code_fold_line?? && settings.code_fold_line?number gte 20>
-    DreamConfig["code_fold_line"] =${settings.code_fold_line};
-    </#if>
-    <#if settings.document_hidden_title?? && settings.document_hidden_title!=''>
-    DreamConfig["document_hidden_title"] = '${settings.document_hidden_title}';
-    </#if>
+    DreamConfig["access_key"] = '${settings.access_key!'dream'}'
+    DreamConfig["code_fold_line"] = [[${theme.config.post.code_fold_line}]]
+    DreamConfig["document_hidden_title"] = [[${theme.config.basic_info.document_hidden_title}]]
     <#if settings.document_visible_title?? && settings.document_visible_title!=''>
     DreamConfig["document_visible_title"] = '${settings.document_visible_title}';
     </#if>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{common/layout :: layout (title = ${site.title}, canonical = ${site.url}, content = ~{::content})}">
+  th:replace="~{common/layout :: layout (title = ${site.title}, canonical = ${site.url}, content = ~{::content}, isPost = false)}">
 <th:block th:fragment="content">
 首页
 </th:block>

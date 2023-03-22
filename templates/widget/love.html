@@ -1,4 +1,4 @@
-<div class="card widget love brightness ${settings.hide_love!}">
+<div class="card widget love brightness ${settings.hide_love!}" xmlns:th="https://www.thymeleaf.org">
   <div class="card-title">
     <i class="fa fa-heart card-title-label"></i><span>恋爱墙</span>
   </div>
@@ -7,8 +7,9 @@
       <div class="level">
         <div class="level-item">
           <a class="avatar"
-             target="_blank"${(settings.love_oneself_url?? && settings.love_oneself_url!='')?then(' href="${settings.love_oneself_url!}"','')}>
-            <img class="avatar-image" src="${settings.love_oneself_avatar!user.avatar!}" alt="自己的头像">
+             target="_blank"
+             th:href="${theme.config.sidebar.love_oneself_url}">
+            <img class="avatar-image" th:src="${theme.config.sidebar.love_oneself_avatar}" alt="自己的头像">
           </a>
         </div>
         <div class="level-item">
@@ -22,8 +23,9 @@
         </div>
         <div class="level-item">
           <a class="avatar"
-             target="_blank"${(settings.love_opposite_url?? && settings.love_opposite_url!='')?then(' href="${settings.love_opposite_url!}"','')}>
-            <img class="avatar-image" src="${settings.love_opposite_avatar!}" alt="对方的头像">
+             target="_blank"
+             th:href="${theme.config.sidebar.love_opposite_url}">
+            <img class="avatar-image" th:src="${theme.config.sidebar.love_opposite_avatar}" alt="对方的头像">
           </a>
         </div>
       </div>
