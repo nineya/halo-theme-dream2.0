@@ -1,0 +1,41 @@
+<html lang="zh" xmlns:th="https://www.thymeleaf.org"
+      th:fragment="layout (title, canonical, content)">
+<th:block th:if="${#strings.equals('',param._pjax) == false}">
+  <th:block th:replace="~{common/head :: head}"/>
+  <body>
+  <div class="column-main">
+    <th:block th:replace="${content}" />
+  </div>
+  <#include "templates/common/scripts.html">
+  </body>
+</th:block>
+<th:block th:if="${#strings.equals('',param._pjax)}">
+  <th:block th:replace="~{common/head :: head}"/>
+  <body>
+  <!--      <#include "templates/common/widget.ftl">-->
+  <!--      <#import "templates/common/navbar.ftl" as nav>-->
+  <!--      <@nav.navbar/>-->
+  <th:block th:if="${theme.config.basic_style.enable_banner}">
+    <th:block th:replace="~{common/banner :: banner}"/>
+  </th:block>
+      <section class="section">
+          <div class="container<#if settings.sidebar_column?? && settings.sidebar_column!='all'> two-column</#if>">
+              <div class="columns">
+                  <div class="column column-main">
+                    <th:block th:replace="${content}" />
+                  </div>
+<!--                  <#if !settings.sidebar_column?? || (settings.sidebar_column!='only-right' && settings.sidebar_column!='module-left')>-->
+<!--                      <@widget 'left' />-->
+<!--                  </#if>-->
+<!--                  <#if !settings.sidebar_column?? || (settings.sidebar_column!='only-left' && settings.sidebar_column!='module-right')>-->
+<!--                      <@widget 'right' />-->
+<!--                  </#if>-->
+              </div>
+          </div>
+      </section>
+<!--      <#include "templates/common/actions.ftl">-->
+<!--      <#include "templates/common/footer.ftl">-->
+<!--      <#include "templates/common/scripts.html">-->
+  </body>
+</th:block>
+</html>

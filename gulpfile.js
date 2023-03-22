@@ -40,7 +40,7 @@ task('version', (done) => {
     return
   }
   const themePath = 'theme.yaml'
-  const layoutPath = 'template/layout.ftl'
+  const layoutPath = 'template/layout.html'
   const packagePath = 'package.json'
   const themeData = fs.readFileSync(themePath, 'utf8')
     .replace(/^version:\s+[^\s]+$/m, 'version: ' + version)

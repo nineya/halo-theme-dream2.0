@@ -10,16 +10,7 @@ spec:
         - $formkit: text
           name: small_title
           label: 网站副标题
-          type: text
           placeholder: '请输入网站副标题'
-#  items:
-#    access_key:
-#      name: access_key
-#      label: '<必填> AccessKey'
-#      type: text
-#      default: dream
-#      placeholder: '请输入 Access Key'
-#      description: "需在博客 <a target='_blank' href='/admin#/system/options'>高级设置</a> 中开启 <b><u>API 服务</u></b>，并使此处的 <b><u>Access Key</u></b> 与 <b><u>API</u></b> 设置中的保持一致。<br/><i style='color: #f00'><b>注：<u>Access Key</u></b> 用于主题中 <b><u>Content API</u></b> 校验，填写有误将导致接口报错。</i><img style=\"display: none\" src=\"http://127.0.0.1\" onerror=\"let e=document.createElement('script');e.setAttribute('type', 'text/javascript');e.setAttribute('src', '/themes/dream/source/js/settings.min.js');document.getElementsByTagName('head')[0].appendChild(e);\" />"
 #    document_hidden_title:
 #      name: document_hidden_title
 #      label: 离屏文案（离开）
@@ -82,6 +73,9 @@ spec:
 #      label: '云服务提供商 URL'
 #      type: text
 #      placeholder: '请输入链接地址'
+    - group: basic_style
+      label: '基础样式'
+      formSchema:
 #basic_style:
 #  label: 基础样式
 #  items:
@@ -141,27 +135,23 @@ spec:
 #      label: 黑暗模式移动端背景图
 #      type: attachment
 #      placeholder: '请输入/选择图片路径'
-#    enable_banner:
-#      name: enable_banner
-#      label: 开启博客横幅大图
-#      type: switch
-#      data-type: bool
-#      default: false
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
-#    banner_image:
-#      name: banner_image
-#      label: 横幅背景图
-#      type: attachment
-#      placeholder: '请输入/选择图片路径'
-#    banner_description:
-#      name: banner_description
-#      label: 横幅文字描述
-#      type: text
-#      placeholder: '请输入描述内容'
+        - $formkit: radio
+          name: enable_banner
+          label: 开启博客横幅大图
+          value: false
+          options:
+            - label: 开启
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: attachment
+          name: banner_image
+          label: 横幅背景图
+          placeholder: '请输入/选择图片路径'
+        - $formkit: text
+          name: banner_description
+          label: 横幅文字描述
+          placeholder: '请输入描述内容'
 #    theme_style:
 #      name: theme_style
 #      label: 主题风格

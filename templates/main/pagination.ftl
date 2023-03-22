@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+th:fragment="pagination (method,datas,slug='',keyword="",display="5")">
+
+</html>
 <#macro pagination method,datas,slug="",keyword="",display="5">
     <#if datas.getTotalPages() gt 1>
         <div class="card card-transparent">
