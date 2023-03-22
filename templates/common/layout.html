@@ -22,7 +22,7 @@
           <div class="container<#if settings.sidebar_column?? && settings.sidebar_column!='all'> two-column</#if>">
               <div class="columns">
                   <div class="column column-main">
-                    <th:block th:replace="${content}" />
+                    <th:block th:insert="${content}" />
                   </div>
 <!--                  <#if !settings.sidebar_column?? || (settings.sidebar_column!='only-right' && settings.sidebar_column!='module-left')>-->
 <!--                      <@widget 'left' />-->
@@ -33,7 +33,7 @@
               </div>
           </div>
       </section>
-<!--      <#include "templates/common/actions.ftl">-->
+  <th:block th:replace="~{common/actions}"/>
 <!--      <#include "templates/common/footer.ftl">-->
 <!--      <#include "templates/common/scripts.html">-->
   </body>

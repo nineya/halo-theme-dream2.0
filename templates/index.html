@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"
   th:replace="~{common/layout :: layout (title = ${site.title}, canonical = ${site.url}, content = ~{::content})}">
+<th:block th:fragment="content">
 首页
+</th:block>
 </html>
 <!--<#include "templates/layout_pjax.html">-->
 <!--<#global is_first_index=(posts.number == 0) >-->
