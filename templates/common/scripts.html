@@ -32,12 +32,12 @@
 <!--            options.comment_internal_plugin_js!'//cdn.jsdelivr.net/gh/halo-dev/halo-comment@latest/dist/halo-comment.min.js')}"></script>-->
 <!--</#if>-->
 
-<!--<script th:src="@{/assets/lib/jquery-pjax@2.0.1/jquery.pjax.min.js}"></script>-->
+<script th:src="@{/assets/lib/jquery-pjax@2.0.1/jquery.pjax.min.js}"></script>
 <!--<#if settings.load_progress?? && settings.load_progress != 'none'>-->
 <!--    <script th:src="@{/assets/js/dprogress.min.js(mew=${theme.spec.version})}"></script>-->
 <!--</#if>-->
-<!--<script th:src="@{/assets/js/pjax.min.js(mew=${theme.spec.version})}"></script>-->
-<!--<script async th:src="@{/assets/lib/qmsg/qmsg.min.js}"></script>-->
+<script th:src="@{/assets/js/pjax.min.js(mew=${theme.spec.version})}"></script>
+<script async th:src="@{/assets/lib/qmsg/qmsg.min.js}"></script>
 
 <!--<#if post?? || is_photos?? || is_journals?? >-->
 <!--    <script data-pjax async th:src="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.js}"></script>-->
@@ -48,7 +48,7 @@
 <!--    <script defer th:src="@{/assets/lib/aplayer@1.10.1/APlayer.min.js}"></script>-->
 <!--    <script defer th:src="@{/assets/lib/meting@2.0.1/Meting.min.js}"></script>-->
 <!--</#if>-->
-<!--<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js}"></script>-->
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js}"></script>
 
 <!--${settings.external_js_body!}-->
 <!--<#if settings.inline_js_body?? && settings.inline_js_body!=''>-->

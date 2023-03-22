@@ -130,103 +130,97 @@ spec:
           name: banner_description
           label: 横幅文字描述
           placeholder: '请输入描述内容'
-#        - $formkit: text
-#          name: theme_style
-#          label: 主题风格
-#      type: select
-#          value: 'default'
-#          help: '主题风格效果，不改变主题整体框架。'
-#      options:
-#        - value: 'default'
-#          label: 默认
-#        - value: 'clean'
-#          label: 清爽
-#        - $formkit: text
-#          name: default_theme
-#          label: 默认主题模式
-#      type: select
-#          value: 'light'
-#          help: '未打开过博客的浏览器，首次打开博客时的默认主题模式。'
-#      options:
-#        - value: 'light'
-#          label: 明亮模式
-#        - value: 'night'
-#          label: 黑暗模式
-#        - value: 'system'
-#          label: 跟随系统
+        - $formkit: select
+          name: theme_style
+          label:  主题风格
+          value: 'default'
+          help: '主题风格效果，不改变主题整体框架。'
+          options:
+            - value: 'default'
+              label:  默认
+            - value: 'clean'
+              label:  清爽
+        - $formkit: select
+          name: default_theme
+          label:  默认主题模式
+          value: 'light'
+          help: '未打开过博客的浏览器，首次打开博客时的默认主题模式。'
+          options:
+            - value: 'light'
+              label:  明亮模式
+            - value: 'night'
+              label:  黑暗模式
+            - value: 'system'
+              label:  跟随系统
 #        - $formkit: text
 #          name: theme_color
-#          label: 明亮模式主题色
+#              label:  明亮模式主题色
 #      type: color
 #          value: '#50bfff'
 #        - $formkit: text
 #          name: night_theme_color
-#          label: 黑暗模式主题色
+#              label:  黑暗模式主题色
 #      type: color
 #          value: '#5d93db'
-#        - $formkit: text
-#          name: web_font
-#          label: 博客字体
-#      type: select
-#          value: 'default'
-#      options:
-#        - value: 'default'
-#          label: 默认字体
-#        - value: 'WenCang.woff2'
-#          label: 问藏书房体
-#        - value: 'custom'
-#          label: 自定义
+        - $formkit: select
+          name: web_font
+          label:  博客字体
+          value: 'default'
+          options:
+            - value: 'default'
+              label:  默认字体
+            - value: 'WenCang.woff2'
+              label:  问藏书房体
+            - value: 'custom'
+              label:  自定义
         - $formkit: attachment
           name: custom_font
           label: 自定义博客字体
           placeholder: '请输入/选择字体路径'
           help: '自定义博客字体，在博客字体选项为自定义时生效。支持woff2/woff/ttf/eot/svg格式的字体文件链接，建议使用woff2格式。'
-#        - $formkit: text
-#          name: sidebar_column
-#          label: 博客布局方式
-#      type: select
-#          value: 'all'
-#      options:
-#        - value: 'all'
-#          label: 三列布局
-#        - value: 'only-left'
-#          label: 仅显示左侧
-#        - value: 'only-right'
-#          label: 仅显示右侧
-#        - value: 'module-left'
-#          label: 模块化（左侧）
-#        - value: 'module-right'
-#          label: 模块化（右侧）
+        - $formkit: select
+          name: sidebar_column
+          label:  博客布局方式
+          value: 'all'
+          options:
+            - value: 'all'
+              label:  三列布局
+            - value: 'only-left'
+              label:  仅显示左侧
+            - value: 'only-right'
+              label:  仅显示右侧
+            - value: 'module-left'
+              label:  模块化（左侧）
+            - value: 'module-right'
+              label:  模块化（右侧）
 #        - $formkit: text
 #          name: module_links
-#          label: 模块化布局链接
+#              label:  模块化布局链接
 #      type: textarea
 #          placeholder: '标签|文字说明|是否新界面打开(true/false)|背景图链接|跳转链接地址'
 #          help: '以标签|文字说明|是否新界面打开(true/false)|背景图链接|跳转链接地址格式填写内容，一行表示一个模块链接，可填写 1~6 个链接。'
-#        - $formkit: text
-#          name: left_sidebar_sticky
-#          label: 左侧边栏悬浮
-#      type: radio
-#          value: bottom
-#      options:
-#        - value: top
-#          label: 固定顶部
-#        - value: bottom
-#          label: 固定底部
-#        - value: none
-#          label: 不悬浮
-#        - $formkit: text
-#          name: right_sidebar_sticky
-#          label: 右侧边栏悬浮
-#      type: radio
-#          value: top
-#      options:
-#        - value: top
-#          label: 固定顶部
-#        - value: bottom
-#          label: 固定底部
-#        - value: none
-#          label: 不悬浮
+        - $formkit: radio
+          name: left_sidebar_sticky
+          label:  左侧边栏悬浮
+          value: bottom
+          options:
+            - value: top
+              label:  固定顶部
+            - value: bottom
+              label:  固定底部
+            - value: none
+              label:  不悬浮
+        - $formkit: radio
+          name: right_sidebar_sticky
+          label:  右侧边栏悬浮
+          value: top
+          options:
+            - value: top
+              label:  固定顶部
+            - value: bottom
+              label:  固定底部
+            - value: none
+              label:  不悬浮
     - group: post
       label: '文章设置'
       formSchema:
@@ -235,186 +229,183 @@ spec:
           label: 默认文章缩略图
           placeholder: '请输入/选择图片路径'
           help: "如果文章没有指定缩略图，则默认显示当前缩略图。"
-#        - $formkit: text
-#          name: top_thumbnail_mode
-#          label: 置顶文章列表缩略图模式
-#      type: select
-#          value: back
-#          help: '置顶的文章在列表的缩略图模式，除网格布局外，如果文章元数据配置了thumbnail_mode项，则当前配置将被覆盖。注：设置网格布局后，非置顶文章也会变成网格布局。'
-#      options:
-#        - value: default
-#          label: 默认模式
-#        - value: back
-#          label: 背景图模式
-#        - value: small
-#          label: 小图模式（左侧）
-#        - value: small-right
-#          label: 小图模式（右侧）
-#        - value: small-alter
-#          label: 小图模式（交替）
-#        - value: fold
-#          label: 折叠模式
-#        - value: grid
-#          label: 网格模式（强优先）
-#        - $formkit: text
-#          name: thumbnail_mode
-#          label: 文章列表缩略图模式
-#      type: select
-#          value: default
-#          help: '文章列表缩略图模式，除网格布局外，如果文章元数据配置了thumbnail_mode项，则当前配置将被覆盖。'
-#      options:
-#        - value: default
-#          label: 默认模式
-#        - value: back
-#          label: 背景图模式
-#        - value: small
-#          label: 小图模式（左侧）
-#        - value: small-right
-#          label: 小图模式（右侧）
-#        - value: small-alter
-#          label: 小图模式（交替）
-#        - value: grid
-#          label: 网格模式（强优先）
-#        - $formkit: text
-#          name: code_pretty
-#          label: 代码块高亮主题
-#      type: select
-#          value: atom-one-light
-#      options:
-#        - value: a11y-dark
-#          label: A11y Dark
-#        - value: a11y-light
-#          label: A11y Light
-#        - value: agate
-#          label: Agate
-#        - value: an-old-hope
-#          label: An Old Hope
-#        - value: androidstudio
-#          label: Androidstudio
-#        - value: arduino-light
-#          label: Arduino Light
-#        - value: arta
-#          label: Arta
-#        - value: ascetic
-#          label: Ascetic
-#        - value: atom-one-dark
-#          label: Atom One Dark
-#        - value: atom-one-dark-reasonable
-#          label: Atom One Dark Reasonable
-#        - value: atom-one-light
-#          label: Atom One Light
-#        - value: brown-paper
-#          label: Brown Paper
-#        - value: brown-papersq
-#          label: Brown Papersq
-#        - value: codepen-embed
-#          label: Codepen Embed
-#        - value: color-brewer
-#          label: Color Brewer
-#        - value: dark
-#          label: Dark
-#        - value: default
-#          label: Default
-#        - value: devibeans
-#          label: Devibeans
-#        - value: docco
-#          label: Docco
-#        - value: far
-#          label: Far
-#        - value: foundation
-#          label: Foundation
-#        - value: github-dark-dimmed
-#          label: Github Dark Dimmed
-#        - value: github-dark
-#          label: Github Dark
-#        - value: github
-#          label: Github
-#        - value: gml
-#          label: Gml
-#        - value: googlecode
-#          label: Googlecode
-#        - value: gradient-dark
-#          label: Gradient Dark
-#        - value: gradient-light
-#          label: Gradient Light
-#        - value: grayscale
-#          label: Grayscale
-#        - value: hybrid
-#          label: Hybrid
-#        - value: idea
-#          label: Idea
-#        - value: ir-black
-#          label: Ir Black
-#        - value: isbl-editor-dark
-#          label: Isbl Editor Dark
-#        - value: isbl-editor-light
-#          label: Isbl Editor Light
-#        - value: kimbie-dark
-#          label: Kimbie Dark
-#        - value: kimbie-light
-#          label: Kimbie Light
-#        - value: lightfair
-#          label: Lightfair
-#        - value: lioshi
-#          label: Lioshi
-#        - value: magula
-#          label: Magula
-#        - value: mono-blue
-#          label: Mono Blue
-#        - value: monokai-sublime
-#          label: Monokai Sublime
-#        - value: monokai
-#          label: Monokai
-#        - value: night-owl
-#          label: Night Owl
-#        - value: nnfx-dark
-#          label: Nnfx dark
-#        - value: nnfx-light
-#          label: Nnfx Light
-#        - value: nord
-#          label: Nord
-#        - value: obsidian
-#          label: Obsidian
-#        - value: paraiso-dark
-#          label: Paraiso Dark
-#        - value: paraiso-light
-#          label: Paraiso Light
-#        - value: pojoaque
-#          label: Pojoaque
-#        - value: purebasic
-#          label: Purebasic
-#        - value: qtcreator-dark
-#          label: Qtcreator Dark
-#        - value: qtcreator-light
-#          label: Qtcreator Light
-#        - value: rainbow
-#          label: Rainbow
-#        - value: routeros
-#          label: Routeros
-#        - value: school-book
-#          label: School Book
-#        - value: shades-of-purple
-#          label: Shades Of Purple
-#        - value: srcery
-#          label: Srcery
-#        - value: stackoverflow-dark
-#          label: Stackoverflow Dark
-#        - value: stackoverflow-light
-#          label: Stackoverflow Light
-#        - value: sunburst
-#          label: Sunburst
-#        - value: tomorrow-night-blue
-#          label: Tomorrow Night Blue
-#        - value: tomorrow-night-bright
-#          label: Tomorrow Night Bright
-#        - value: vs
-#          label: Vs
-#        - value: vs2015
-#          label: Vs 2015
-#        - value: xcode
-#          label: Xcode
-#        - value: xt256
-#          label: Xt 256
+        - $formkit: select
+          name: top_thumbnail_mode
+          label:  置顶文章列表缩略图模式
+          value: back
+          help: '置顶的文章在列表的缩略图模式，除网格布局外，如果文章元数据配置了thumbnail_mode项，则当前配置将被覆盖。注：设置网格布局后，非置顶文章也会变成网格布局。'
+          options:
+            - value: default
+              label:  默认模式
+            - value: back
+              label:  背景图模式
+            - value: small
+              label:  小图模式（左侧）
+            - value: small-right
+              label:  小图模式（右侧）
+            - value: small-alter
+              label:  小图模式（交替）
+            - value: fold
+              label:  折叠模式
+            - value: grid
+              label:  网格模式（强优先）
+        - $formkit: select
+          name: thumbnail_mode
+          label:  文章列表缩略图模式
+          value: default
+          help: '文章列表缩略图模式，除网格布局外，如果文章元数据配置了thumbnail_mode项，则当前配置将被覆盖。'
+          options:
+            - value: default
+              label:  默认模式
+            - value: back
+              label:  背景图模式
+            - value: small
+              label:  小图模式（左侧）
+            - value: small-right
+              label:  小图模式（右侧）
+            - value: small-alter
+              label:  小图模式（交替）
+            - value: grid
+              label:  网格模式（强优先）
+        - $formkit: select
+          name: code_pretty
+          label:  代码块高亮主题
+          value: atom-one-light
+          options:
+            - value: a11y-dark
+              label:  A11y Dark
+            - value: a11y-light
+              label:  A11y Light
+            - value: agate
+              label:  Agate
+            - value: an-old-hope
+              label:  An Old Hope
+            - value: androidstudio
+              label:  Androidstudio
+            - value: arduino-light
+              label:  Arduino Light
+            - value: arta
+              label:  Arta
+            - value: ascetic
+              label:  Ascetic
+            - value: atom-one-dark
+              label:  Atom One Dark
+            - value: atom-one-dark-reasonable
+              label:  Atom One Dark Reasonable
+            - value: atom-one-light
+              label:  Atom One Light
+            - value: brown-paper
+              label:  Brown Paper
+            - value: brown-papersq
+              label:  Brown Papersq
+            - value: codepen-embed
+              label:  Codepen Embed
+            - value: color-brewer
+              label:  Color Brewer
+            - value: dark
+              label:  Dark
+            - value: default
+              label:  Default
+            - value: devibeans
+              label:  Devibeans
+            - value: docco
+              label:  Docco
+            - value: far
+              label:  Far
+            - value: foundation
+              label:  Foundation
+            - value: github-dark-dimmed
+              label:  Github Dark Dimmed
+            - value: github-dark
+              label:  Github Dark
+            - value: github
+              label:  Github
+            - value: gml
+              label:  Gml
+            - value: googlecode
+              label:  Googlecode
+            - value: gradient-dark
+              label:  Gradient Dark
+            - value: gradient-light
+              label:  Gradient Light
+            - value: grayscale
+              label:  Grayscale
+            - value: hybrid
+              label:  Hybrid
+            - value: idea
+              label:  Idea
+            - value: ir-black
+              label:  Ir Black
+            - value: isbl-editor-dark
+              label:  Isbl Editor Dark
+            - value: isbl-editor-light
+              label:  Isbl Editor Light
+            - value: kimbie-dark
+              label:  Kimbie Dark
+            - value: kimbie-light
+              label:  Kimbie Light
+            - value: lightfair
+              label:  Lightfair
+            - value: lioshi
+              label:  Lioshi
+            - value: magula
+              label:  Magula
+            - value: mono-blue
+              label:  Mono Blue
+            - value: monokai-sublime
+              label:  Monokai Sublime
+            - value: monokai
+              label:  Monokai
+            - value: night-owl
+              label:  Night Owl
+            - value: nnfx-dark
+              label:  Nnfx dark
+            - value: nnfx-light
+              label:  Nnfx Light
+            - value: nord
+              label:  Nord
+            - value: obsidian
+              label:  Obsidian
+            - value: paraiso-dark
+              label:  Paraiso Dark
+            - value: paraiso-light
+              label:  Paraiso Light
+            - value: pojoaque
+              label:  Pojoaque
+            - value: purebasic
+              label:  Purebasic
+            - value: qtcreator-dark
+              label:  Qtcreator Dark
+            - value: qtcreator-light
+              label:  Qtcreator Light
+            - value: rainbow
+              label:  Rainbow
+            - value: routeros
+              label:  Routeros
+            - value: school-book
+              label:  School Book
+            - value: shades-of-purple
+              label:  Shades Of Purple
+            - value: srcery
+              label:  Srcery
+            - value: stackoverflow-dark
+              label:  Stackoverflow Dark
+            - value: stackoverflow-light
+              label:  Stackoverflow Light
+            - value: sunburst
+              label:  Sunburst
+            - value: tomorrow-night-blue
+              label:  Tomorrow Night Blue
+            - value: tomorrow-night-bright
+              label:  Tomorrow Night Bright
+            - value: vs
+              label:  Vs
+            - value: vs2015
+              label:  Vs 2015
+            - value: xcode
+              label:  Xcode
+            - value: xt256
+              label:  Xt 256
         - $formkit: text
           name: code_fold_line
           label: 代码块折叠
@@ -425,48 +416,42 @@ spec:
           label: 正文长图折叠
           placeholder: '请输入高度数值（px）'
           help: '图片高度超出指定高度（px）后默认进行折叠，指定的高度需大于等于 400px。'
-#        - $formkit: text
-#          name: invalid_tips_day
-#          label: 文章失效提示
-#          value: 99999999
-#          placeholder: '请输入时间（天）'
-#          help: '文章超过指定天数未进行更新，展示文章或图片可能失效的温馨提示。'
-#        - $formkit: text
-#          name: enable_katex
-#          label: KaTeX 公式支持
-#      type: radio
-#      data-type: bool
-#          value: false
-#          help: '博客通过 KaTeX 做数学公式渲染，如果文章或页面元数据配置了enable_katex项，则当前配置将被覆盖。'
-#      options:
-#        - value: true
-#          label: 默认开启
-#        - value: false
-#          label: 默认关闭
-#        - $formkit: text
-#          name: enable_copyright
-#          label: 开启文章版权声明
-#      type: radio
-#      data-type: bool
-#          value: true
-#          help: '如果文章或页面元数据配置了enable_copyright项，则当前配置将被覆盖。'
-#      options:
-#        - value: true
-#          label: 默认开启
-#        - value: false
-#          label: 默认关闭
-#        - $formkit: text
-#          name: enable_post_share
-#          label: 开启文章分享
-#      type: radio
-#      data-type: bool
-#          value: true
-#          help: '如果文章或页面元数据配置了enable_share项，则当前配置将被覆盖。'
-#      options:
-#        - value: true
-#          label: 默认开启
-#        - value: false
-#          label: 默认关闭
+        - $formkit: text
+          name: invalid_tips_day
+          label:  文章失效提示
+          value: 99999999
+          placeholder: '请输入时间（天）'
+          help: '文章超过指定天数未进行更新，展示文章或图片可能失效的温馨提示。'
+        - $formkit: radio
+          name: enable_katex
+          label:  KaTeX 公式支持
+          value: false
+          help: '博客通过 KaTeX 做数学公式渲染，如果文章或页面元数据配置了enable_katex项，则当前配置将被覆盖。'
+          options:
+            - value: true
+              label:  默认开启
+            - value: false
+              label:  默认关闭
+        - $formkit: radio
+          name: enable_copyright
+          label:  开启文章版权声明
+          value: true
+          help: '如果文章或页面元数据配置了enable_copyright项，则当前配置将被覆盖。'
+          options:
+            - value: true
+              label:  默认开启
+            - value: false
+              label:  默认关闭
+        - $formkit: radio
+          name: enable_post_share
+          label:  开启文章分享
+          value: true
+          help: '如果文章或页面元数据配置了enable_share项，则当前配置将被覆盖。'
+          options:
+            - value: true
+              label:  默认开启
+            - value: false
+              label:  默认关闭
         - $formkit: attachment
           name: donate_alipay
           label: 支付宝捐赠二维码
@@ -480,403 +465,403 @@ spec:
 #  items:
 #        - $formkit: text
 #          name: sidebar_profile
-#          label: 侧边栏信息
+#              label:  侧边栏信息
 #      type: radio
 #          value: left
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_toc
-#          label: 侧边栏目录
+#              label:  侧边栏目录
 #      type: radio
 #          value: right
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_notice
-#          label: 侧边栏公告
+#              label:  侧边栏公告
 #      type: radio
 #          value: right
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_love
-#          label: 侧边栏恋爱墙
+#              label:  侧边栏恋爱墙
 #      type: radio
 #          value: right
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_music
-#          label: 侧边栏音乐
+#              label:  侧边栏音乐
 #      type: radio
 #          value: none
 #          help: "三列布局时不能在右侧显示音乐模块。"
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_ad_piece
-#          label: 侧边栏广告
+#              label:  侧边栏广告
 #      type: radio
 #          value: none
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_recent_posts
-#          label: 侧边栏最近文章
+#              label:  侧边栏最近文章
 #      type: radio
 #          value: right
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_recent_comments
-#          label: 侧边栏最近评论
+#              label:  侧边栏最近评论
 #      type: radio
 #          value: right
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_categories
-#          label: 侧边栏分类
+#              label:  侧边栏分类
 #      type: radio
 #          value: left
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_tags
-#          label: 侧边栏标签
+#              label:  侧边栏标签
 #      type: radio
 #          value: left
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_tagcloud
-#          label: 侧边栏标签云
+#              label:  侧边栏标签云
 #      type: radio
 #          value: none
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_links
-#          label: 侧边栏友链
+#              label:  侧边栏友链
 #      type: radio
 #          value: left
-#      options:
-#        - value: left
-#          label: 左侧
-#        - value: right
-#          label: 右侧
-#        - value: none
-#          label: 关闭
+#          options:
+#            - value: left
+#              label:  左侧
+#            - value: right
+#              label:  右侧
+#            - value: none
+#              label:  关闭
 #        - $formkit: text
 #          name: sidebar_priority_profile
-#          label: 侧边栏信息-优先级
+#              label:  侧边栏信息-优先级
 #          value: 9900
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_toc
-#          label: 侧边栏目录-优先级
+#              label:  侧边栏目录-优先级
 #          value: 9800
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_notice
-#          label: 侧边栏公告-优先级
+#              label:  侧边栏公告-优先级
 #          value: 9700
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_love
-#          label: 侧边栏恋爱墙-优先级
+#              label:  侧边栏恋爱墙-优先级
 #          value: 9600
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_music
-#          label: 侧边栏音乐-优先级
+#              label:  侧边栏音乐-优先级
 #          value: 9500
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_ad_piece
-#          label: 侧边栏广告-优先级
+#              label:  侧边栏广告-优先级
 #          value: 9400
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_recent_posts
-#          label: 侧边栏最近文章-优先级
+#              label:  侧边栏最近文章-优先级
 #          value: 9300
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_recent_comments
-#          label: 侧边栏最近评论-优先级
+#              label:  侧边栏最近评论-优先级
 #          value: 9200
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_categories
-#          label: 侧边栏分类-优先级
+#              label:  侧边栏分类-优先级
 #          value: 9100
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_tags
-#          label: 侧边栏标签-优先级
+#              label:  侧边栏标签-优先级
 #          value: 9000
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_tagcloud
-#          label: 侧边栏标签云-优先级
+#              label:  侧边栏标签云-优先级
 #          value: 8900
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: sidebar_priority_links
-#          label: 侧边栏友链-优先级
+#              label:  侧边栏友链-优先级
 #          value: 8800
 #          placeholder: '请输入优先级数值'
 #          help: '优先级越高，模块排序越靠前。'
 #        - $formkit: text
 #          name: hide_profile
-#          label: 侧边栏信息-隐藏方式
+#              label:  侧边栏信息-隐藏方式
 #      type: select
 #          value: 'is-not-hidden'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_toc
-#          label: 侧边栏目录-隐藏方式
+#              label:  侧边栏目录-隐藏方式
 #      type: select
 #          value: 'is-hidden-not-desktop'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_notice
-#          label: 侧边栏公告-隐藏方式
+#              label:  侧边栏公告-隐藏方式
 #      type: select
 #          value: 'is-not-hidden'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_love
-#          label: 侧边栏恋爱墙-隐藏方式
+#              label:  侧边栏恋爱墙-隐藏方式
 #      type: select
 #          value: 'is-not-hidden'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_music
-#          label: 侧边栏音乐-隐藏方式
+#              label:  侧边栏音乐-隐藏方式
 #      type: select
 #          value: 'is-hidden-mobile'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_ad_piece
-#          label: 侧边栏广告-隐藏方式
+#              label:  侧边栏广告-隐藏方式
 #      type: select
 #          value: 'is-not-hidden'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_recent_posts
-#          label: 侧边栏最近文章-隐藏方式
+#              label:  侧边栏最近文章-隐藏方式
 #      type: select
 #          value: 'is-not-hidden'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_recent_comments
-#          label: 侧边栏最近评论-隐藏方式
+#              label:  侧边栏最近评论-隐藏方式
 #      type: select
 #          value: 'is-not-hidden'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_categories
-#          label: 侧边栏分类-隐藏方式
+#              label:  侧边栏分类-隐藏方式
 #      type: select
 #          value: 'is-not-hidden'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_tags
-#          label: 侧边栏标签-隐藏方式
+#              label:  侧边栏标签-隐藏方式
 #      type: select
 #          value: 'is-not-hidden'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_tagcloud
-#          label: 侧边栏标签云-隐藏方式
+#              label:  侧边栏标签云-隐藏方式
 #      type: select
 #          value: 'is-hidden-not-desktop'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
 #        - $formkit: text
 #          name: hide_links
-#          label: 侧边栏友链-隐藏方式
+#              label:  侧边栏友链-隐藏方式
 #      type: select
 #          value: 'is-hidden-not-desktop'
-#      options:
-#        - value: 'is-hidden-mobile'
-#          label: 移动设备隐藏
-#        - value: 'is-hidden-not-desktop'
-#          label: 移动、平板设备隐藏
-#        - value: 'is-hidden-desktop'
-#          label: 桌面设备隐藏
-#        - value: 'is-not-hidden'
-#          label: 不隐藏
+#          options:
+#            - value: 'is-hidden-mobile'
+#              label:  移动设备隐藏
+#            - value: 'is-hidden-not-desktop'
+#              label:  移动、平板设备隐藏
+#            - value: 'is-hidden-desktop'
+#              label:  桌面设备隐藏
+#            - value: 'is-not-hidden'
+#              label:  不隐藏
     - group: sidebar_config
       label: '侧边栏配置'
       formSchema:
 #        - $formkit: text
 #          name: enable_color_character
-#          label: 侧边栏信息-开启彩字切换
+#              label:  侧边栏信息-开启彩字切换
 #      type: switch
 #      data-type: bool
 #          value: false
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  开启
+#            - value: false
+#              label:  关闭
         - $formkit: textarea
           name: color_character
           label: 侧边栏信息-彩字内容
@@ -921,15 +906,15 @@ spec:
           placeholder: '请输入 Telegram 用户名'
 #        - $formkit: text
 #          name: social_rss
-#          label: '侧边栏信息-RSS 订阅'
+#              label:  '侧边栏信息-RSS 订阅'
 #      type: select
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  开启
+#            - value: false
+#              label:  关闭
         - $formkit: textarea
           name: custom_social_options
           label: 侧边栏信息-自定义社交渠道选项
@@ -942,17 +927,17 @@ spec:
           help: 公告内容支持 HTML 标签。
 #        - $formkit: text
 #          name: notice_show_mode
-#          label: 侧边栏公告-显示模式
+#              label:  侧边栏公告-显示模式
 #      type: radio
 #          value: index
 #          help: 当满足指定的条件时公告模块才会显示。
-#      options:
-#        - value: none
-#          label: 无条件
-#        - value: toc
-#          label: 目录模块不显示时
-#        - value: index
-#          label: 仅首页
+#          options:
+#            - value: none
+#              label:  无条件
+#            - value: toc
+#              label:  目录模块不显示时
+#            - value: index
+#              label:  仅首页
         - $formkit: attachment
           name: love_oneself_avatar
           label: 侧边栏恋爱墙-自己的头像
@@ -981,14 +966,14 @@ spec:
           help: '自建 API 方法见文档：<a href="https://github.com/metowolf/Meting" target="_blank">Meting</a>。'
 #        - $formkit: text
 #          name: music_mode
-#          label: 侧边栏音乐-音乐播放器配置方式
+#              label:  侧边栏音乐-音乐播放器配置方式
 #      type: radio
 #          value: 'playlist'
-#      options:
-#        - value: 'playlist'
-#          label: '网易云歌单 ID'
-#        - value: 'config'
-#          label: 参数进阶配置
+#          options:
+#            - value: 'playlist'
+#              label:  '网易云歌单 ID'
+#            - value: 'config'
+#              label:  参数进阶配置
         - $formkit: text
           name: netease_playlist_id
           label: '侧边栏音乐-网易云歌单 ID'
@@ -996,7 +981,7 @@ spec:
           help: '填写网易云歌单的 ID。'
 #        - $formkit: text
 #          name: music_config
-#          label: 侧边栏音乐-参数进阶配置
+#              label:  侧边栏音乐-参数进阶配置
 #      type: textarea
 #          placeholder: '请输入音乐参数配置'
 #          value: 'list-folded="true"
@@ -1006,152 +991,152 @@ spec:
 #          help: '输入音乐参数配置(<u>id / server / type</u>必填)，详细配置方式见官方文档：<a href="https://github.com/metowolf/MetingJS/" target="_blank">MetingJS 2.0</a>。'
 #        - $formkit: text
 #          name: show_ad_tag
-#          label: 侧边栏广告-显示“广告”标签
+#              label:  侧边栏广告-显示“广告”标签
 #      type: radio
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 不显示
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  不显示
 #        - $formkit: text
 #          name: ad_tag_close
-#          label: 侧边栏广告-点击“广告”标签可关闭广告
+#              label:  侧边栏广告-点击“广告”标签可关闭广告
 #      type: radio
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 是
-#        - value: false
-#          label: 否
+#          options:
+#            - value: true
+#              label:  是
+#            - value: false
+#              label:  否
 #        - $formkit: text
 #          name: ad_mode
-#          label: 侧边栏广告-广告展示方法
+#              label:  侧边栏广告-广告展示方法
 #      type: radio
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 图片+链接
-#        - value: false
-#          label: 自定义广告代码
+#          options:
+#            - value: true
+#              label:  图片+链接
+#            - value: false
+#              label:  自定义广告代码
 #        - $formkit: text
 #          name: ad_target_url
-#          label: 侧边栏广告-广告目标地址
+#              label:  侧边栏广告-广告目标地址
 #          placeholder: '请输入链接地址'
 #          help: '填写广告跳转的目标路径。'
 #        - $formkit: text
 #          name: ad_image
-#          label: 侧边栏广告-广告图片链接
+#              label:  侧边栏广告-广告图片链接
 #      type: attachment
 #          placeholder: '请输入/选择图片路径'
 #          help: '<u>图片+链接模式时不能为空。'
 #        - $formkit: text
 #          name: ad_custom_code
-#          label: 侧边栏广告-自定义广告代码
+#              label:  侧边栏广告-自定义广告代码
 #      type: textarea
 #          placeholder: '请输入广告代码'
 #          help: '在这里黏贴广告联盟提供的广告代码，<u>自定义广告代码模式时不能为空。'
 #        - $formkit: text
 #          name: recent_posts_num
-#          label: 侧边栏最近文章-展示文章数量
+#              label:  侧边栏最近文章-展示文章数量
 #          placeholder: 请输入数量数值
 #          value: 5
 #        - $formkit: text
 #          name: recent_comments_num
-#          label: 侧边栏最近评论-展示评论数量
+#              label:  侧边栏最近评论-展示评论数量
 #          placeholder: 请输入数量数值
 #          value: 5
 #        - $formkit: text
 #          name: categories_more
-#          label: 侧边栏分类-显示”更多”按钮
+#              label:  侧边栏分类-显示”更多”按钮
 #      type: radio
 #      data-type: bool
 #          value: true
 #          help: '超出展示的分类数量后是否显示更多按钮。'
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 不显示
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  不显示
 #        - $formkit: text
 #          name: categories_num
-#          label: 侧边栏分类-展示分类数量
+#              label:  侧边栏分类-展示分类数量
 #          placeholder: 请输入数量数值
 #          value: 10
 #        - $formkit: text
 #          name: tags_more
-#          label: 侧边栏标签-显示”更多”按钮
+#              label:  侧边栏标签-显示”更多”按钮
 #      type: radio
 #      data-type: bool
 #          value: true
 #          help: '超出展示的标签数量后是否显示更多按钮。'
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 不显示
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  不显示
 #        - $formkit: text
 #          name: tags_num
-#          label: 侧边栏标签-展示标签数量
+#              label:  侧边栏标签-展示标签数量
 #          placeholder: 请输入数量数值
 #          value: 18
 #        - $formkit: text
 #          name: enable_tag_color
-#          label: 侧边栏标签-开启标签颜色
+#              label:  侧边栏标签-开启标签颜色
 #      type: switch
 #      data-type: bool
 #          value: false
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  开启
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: tagcloud_more
-#          label: 侧边栏标签云-显示”更多”按钮
+#              label:  侧边栏标签云-显示”更多”按钮
 #      type: radio
 #      data-type: bool
 #          value: true
 #          help: '超出展示的标签数量后是否显示更多按钮。'
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 不显示
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  不显示
 #        - $formkit: text
 #          name: tagcloud_num
-#          label: 侧边栏标签云-展示标签数量
+#              label:  侧边栏标签云-展示标签数量
 #          placeholder: 请输入数量数值
 #          value: 32
 #        - $formkit: text
 #          name: enable_tagcloud_color
-#          label: 侧边栏标签云-开启标签颜色
+#              label:  侧边栏标签云-开启标签颜色
 #      type: switch
 #      data-type: bool
 #          value: false
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  开启
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: links_more
-#          label: 侧边栏友链-显示”更多”按钮
+#              label:  侧边栏友链-显示”更多”按钮
 #      type: radio
 #      data-type: bool
 #          value: true
 #          help: '超出展示的友链数量后是否显示更多按钮。'
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 不显示
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  不显示
 #        - $formkit: text
 #          name: links_num
-#          label: 侧边栏友链-展示友链数量
+#              label:  侧边栏友链-展示友链数量
 #          placeholder: 请输入数量数值
 #          value: 10
     - group: page_config
@@ -1168,426 +1153,394 @@ spec:
           help: "在加载用户 Logo 时、友链未设置 Logo 时、友链 Logo 加载失败时显示。"
 #        - $formkit: text
 #          name: show_exchange_info
-#          label: 友链页面-显示友链交换信息
+#              label:  友链页面-显示友链交换信息
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: links_blogger_avatar
-#          label: '友链页面-交换信息自定义 Logo 链接'
+#              label:  '友链页面-交换信息自定义 Logo 链接'
 #      type: attachment
 #          placeholder: '请输入/选择 Logo 路径'
 #          help: '用于交换友链的 Logo 链接。'
 #        - $formkit: text
 #          name: links_info
-#          label: 友链页面-补充信息
+#              label:  友链页面-补充信息
 #      type: textarea
 #          placeholder: '请输入补充信息'
 #          help: '友链页面最低部的补充说明信息，支持 HTML 格式。'
 #        - $formkit: text
 #          name: link_comment_id
-#          label: 友链页面-评论区ID
+#              label:  友链页面-评论区ID
 #          placeholder: '请输入 ID'
 #          help: '友链页面没有 ID，需要指定一个自定义页面的 ID 用于评论，被指定的文章评论区将作为友链的评论区， 放空则不显示评论区。 '
 #        - $formkit: text
 #          name: journals_fold_height
-#          label: 日志页面-动态内容折叠
+#              label:  日志页面-动态内容折叠
 #          placeholder: '请输入高度数值（px）'
 #          help: '动态内容高度超出指定高度后默认进行折叠，指定的高度需大于等于 260px。'
 #        - $formkit: text
 #          name: enable_journals_comment
-#          label: 日志页面-开启评论区
+#              label:  日志页面-开启评论区
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  开启
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: enable_journals_share
-#          label: 日志页面-开启日志分享
+#              label:  日志页面-开启日志分享
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
-#        - $formkit: text
-#          name: journals_share_image
-#          label: 日志页面-日志分享背景图
-#      type: attachment
-#          placeholder: '请输入/选择图片路径'
+#          options:
+#            - value: true
+#              label:  开启
+#            - value: false
+#              label:  关闭
+        - $formkit: attachment
+          name: journals_share_image
+          label:  日志页面-日志分享背景图
+          placeholder: '请输入/选择图片路径'
 #        - $formkit: text
 #          name: enable_tags_tag_color
-#          label: 标签页面-开启标签颜色
+#              label:  标签页面-开启标签颜色
 #      type: switch
 #      data-type: bool
 #          value: false
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  开启
+#            - value: false
+#              label:  关闭
 #live2d:
 #  label: 看板娘
 #  items:
 #        - $formkit: text
 #          name: enable_live2d
-#          label: 启用看板娘
+#              label:  启用看板娘
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  开启
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: live2d_model_url
-#          label: 模型地址
+#              label:  模型地址
 #          value: 'https://unpkg.com/live2d-widget-model@1.0.1/'
 #          placeholder: '请输入 API 地址'
 #          help: "Live2D 模型 API 地址，可直接克隆 <a href='https://github.com/nineya/live2d-widget-model/' target='_blank'>live2d-widget-model</a> 模型仓库实现自建地址。"
 #        - $formkit: text
 #          name: live2d_tips_url
-#          label: 自定义提示语文件地址
+#              label:  自定义提示语文件地址
 #      type: attachment
 #          placeholder: '请输入/选择文件地址'
 #          help: '提示语 JSON 文件。'
 #        - $formkit: text
 #          name: live2d_about_page
-#          label: “关于”按钮的 URL 地址
+#              label:  “关于”按钮的 URL 地址
 #          placeholder: '请输入链接地址'
 #          help: '放空则不显示关于按钮。'
 #        - $formkit: text
 #          name: live2d_model_id
-#          label: '默认模型 ID'
+#              label:  '默认模型 ID'
 #          value: '0'
 #          placeholder: '请输入模型 ID'
 #          help: '默认模型 ID，参见 <a href="https://github.com/nineya/live2d-widget-model/blob/master/%E5%8F%AF%E7%94%A8model%E5%88%97%E8%A1%A8.md" target="_blank">可用model列表</a>。'
 #        - $formkit: text
 #          name: live2d_model_textures_id
-#          label: '默认材质 ID'
+#              label:  '默认材质 ID'
 #          value: '0'
 #          placeholder: '请输入材质 ID'
 #          help: '默认材质 ID，参见 <a href="https://github.com/nineya/live2d-widget-model/blob/master/%E5%8F%AF%E7%94%A8model%E5%88%97%E8%A1%A8.md" target="_blank">可用model列表</a>。'
 #        - $formkit: text
 #          name: live2d_waifu_size
-#          label: 看板娘大小
+#              label:  看板娘大小
 #          value: '280x260'
 #          placeholder: '请输入宽度(px)x高度(px)'
 #          help: '看板娘的（宽度x高度），单位为px。'
 #        - $formkit: text
 #          name: live2d_edge_side
-#          label: 看板娘贴边方向与距离
+#              label:  看板娘贴边方向与距离
 #          value: 'right:50'
 #          placeholder: '请输入位置:距离(px)'
 #        - $formkit: text
 #          name: live2d_model_rand_mode
-#          label: 模型切换方式
+#              label:  模型切换方式
 #      type: radio
 #          value: switch
-#      options:
-#        - value: switch
-#          label: 顺序
-#        - value: rand
-#          label: 随机
+#          options:
+#            - value: switch
+#              label:  顺序
+#            - value: rand
+#              label:  随机
 #        - $formkit: text
 #          name: live2d_model_textures_rand_mode
-#          label: 材质切换方式
+#              label:  材质切换方式
 #      type: radio
 #          value: rand
-#      options:
-#        - value: switch
-#          label: 顺序
-#        - value: rand
-#          label: 随机
+#          options:
+#            - value: switch
+#              label:  顺序
+#            - value: rand
+#              label:  随机
 #        - $formkit: text
 #          name: live2d_show_tool_menu
-#          label: 显示工具栏
+#              label:  显示工具栏
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: live2d_can_turn_to_home_page
-#          label: 显示「返回首页」按钮
+#              label:  显示「返回首页」按钮
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: live2d_can_switch_hitokoto
-#          label: 显示「一言」按钮
+#              label:  显示「一言」按钮
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: live2d_can_switch_model
-#          label: 显示「切换模型」按钮
+#              label:  显示「切换模型」按钮
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: live2d_can_switch_textures
-#          label: 显示「切换材质」按钮
+#              label:  显示「切换材质」按钮
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: live2d_can_take_screenshot
-#          label: 显示「截图」按钮
+#              label:  显示「截图」按钮
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: live2d_can_turn_to_about_page
-#          label: 显示「关于」按钮
+#              label:  显示「关于」按钮
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  关闭
 #        - $formkit: text
 #          name: live2d_can_close_live2d
-#          label: 显示「关闭看板娘」按钮
+#              label:  显示「关闭看板娘」按钮
 #      type: switch
 #      data-type: bool
 #          value: true
-#      options:
-#        - value: true
-#          label: 显示
-#        - value: false
-#          label: 关闭
-#enhance:
-#  label: 增强功能
-#  items:
-#        - $formkit: text
-#          name: cursor_style
-#          label: 鼠标风格
-#      type: select
-#          value: none
-#      options:
-#        - value: none
-#          label: 关闭
-#        - value: breeze
-#          label: 清风（深色）
-#        - $formkit: text
-#          name: cursor_move
-#          label: 鼠标移动特效
-#      type: select
-#          value: none
-#      options:
-#        - value: none
-#          label: 关闭
-#        - value: bubbleCursor
-#          label: 气泡跟随
-#        - value: emojiCursor
-#          label: 表情包跟随
-#        - value: springyEmojiCursor
-#          label: 弹性表情包跟随
-#        - value: fairyDustCursor
-#          label: 仙女棒效果
-#        - value: snowflakeCursor
-#          label: 雪花跟随
-#        - value: followingDotCursor
-#          label: 圆点跟随
-#        - value: ghostCursor
-#          label: 移动残影（疏）
-#        - value: trailingCursor
-#          label: 移动残影（密）
-#        - $formkit: text
-#          name: cursor_click
-#          label: 鼠标点击特效
-#      type: select
-#          value: none
-#      options:
-#        - value: none
-#          label: 关闭
-#        - value: firework
-#          label: 烟花特效
-#        - value: granule
-#          label: 粒子爆炸
+#          options:
+#            - value: true
+#              label:  显示
+#            - value: false
+#              label:  关闭
+    - group: enhance
+      label: '增强功能'
+      formSchema:
+        - $formkit: select
+          name: cursor_style
+          label:  鼠标风格
+          value: none
+          options:
+            - value: none
+              label:  关闭
+            - value: breeze
+              label:  清风（深色）
+        - $formkit: select
+          name: cursor_move
+          label:  鼠标移动特效
+          value: none
+          options:
+            - value: none
+              label:  关闭
+            - value: bubbleCursor
+              label:  气泡跟随
+            - value: emojiCursor
+              label:  表情包跟随
+            - value: springyEmojiCursor
+              label:  弹性表情包跟随
+            - value: fairyDustCursor
+              label:  仙女棒效果
+            - value: snowflakeCursor
+              label:  雪花跟随
+            - value: followingDotCursor
+              label:  圆点跟随
+            - value: ghostCursor
+              label:  移动残影（疏）
+            - value: trailingCursor
+              label:  移动残影（密）
+        - $formkit: select
+          name: cursor_click
+          label:  鼠标点击特效
+          value: none
+          options:
+            - value: none
+              label:  关闭
+            - value: firework
+              label:  烟花特效
+            - value: granule
+              label:  粒子爆炸
 #        - $formkit: text
 #          name: enable_sw
-#          label: "启用 Service Worker 优化"
+#              label:  "启用 Service Worker 优化"
 #      type: radio
 #      data-type: text
 #          value: "false"
 #          help: "需要在 Nginx 中添加代理配置方可启用，配置方法见 <a href='https://blog.nineya.com/archives/104.html' target='_blank'>Dream 2.0.5起移除FreeCDN，以及SW配置方法</a>。"
-#      options:
-#        - value: "false"
-#          label: 关闭
-#        - value: "&install=true"
-#          label: 开启CDN并发请求
-#        - value: "&install=true&offLine=true"
-#          label: 开启全站离线
-#        - value: "uninstall"
-#          label: 卸载
-#        - $formkit: text
-#          name: enable_compress
-#          label: "启用 HTML 压缩"
-#      type: radio
-#      data-type: text
-#          value: format
-#      options:
-#        - value: none
-#          label: 关闭
-#        - value: format
-#          label: 压缩空格
-#        - value: single
-#          label: 完全格式压缩
-#        - $formkit: text
-#          name: effects_sakura_mode
-#          label: 樱花飘落特效显示模式
-#      type: radio
-#          value: day
-#      options:
-#        - value: none
-#          label: 不显示
-#        - value: day
-#          label: 明亮模式
-#        - value: night
-#          label: 黑暗模式
-#        - value: all
-#          label: 全模式
-#        - $formkit: text
-#          name: effects_universe_mode
-#          label: 宇宙星空特效显示模式
-#      type: radio
-#          value: night
-#      options:
-#        - value: none
-#          label: 不显示
-#        - value: day
-#          label: 明亮模式
-#        - value: night
-#          label: 黑暗模式
-#        - value: all
-#          label: 全模式
-#        - $formkit: text
-#          name: effects_circle_magic_mode
-#          label: 上升圆点特效显示模式
-#      type: radio
-#          value: night
-#      options:
-#        - value: none
-#          label: 不显示
-#        - value: day
-#          label: 明亮模式
-#        - value: night
-#          label: 黑暗模式
-#        - value: all
-#          label: 全模式
-#        - $formkit: text
-#          name: enable_gray_mode
-#          label: 灰色模式
-#      type: switch
-#      data-type: bool
-#          value: false
-#          help: '向英雄致敬，愿精神长存！'
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
-#        - $formkit: text
-#          name: enable_patch
-#          label: 补丁模式
-#      type: switch
-#      data-type: bool
-#          value: true
-#          help: '引入补丁脚本，实现对部分异常不更新主题进行 bug 修复！'
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
-#        - $formkit: text
-#          name: enable_busuanzi
-#          label: 开启 busuanzi 访客统计
-#      type: switch
-#      data-type: bool
-#          value: true
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
-#        - $formkit: text
-#          name: enable_baidu_push
-#          label: 启用百度 URL 自动推送
-#      type: switch
-#      data-type: bool
-#          value: false
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
-#        - $formkit: text
-#          name: enable_toutiao_push
-#          label: 启用头条搜索自动推送
-#      type: switch
-#      data-type: bool
-#          value: false
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
-#        - $formkit: text
-#          name: enable_debug
-#          label: 开启 DEBUG 日志
-#      type: switch
-#      data-type: bool
-#          value: false
-#          help: '开发和问题排查时开启日志。'
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
+#          options:
+#            - value: "false"
+#              label:  关闭
+#            - value: "&install=true"
+#              label:  开启CDN并发请求
+#            - value: "&install=true&offLine=true"
+#              label:  开启全站离线
+#            - value: "uninstall"
+#              label:  卸载
+        - $formkit: radio
+          name: effects_sakura_mode
+          label:  樱花飘落特效显示模式
+          value: day
+          options:
+            - value: none
+              label:  不显示
+            - value: day
+              label:  明亮模式
+            - value: night
+              label:  黑暗模式
+            - value: all
+              label:  全模式
+        - $formkit: radio
+          name: effects_universe_mode
+          label:  宇宙星空特效显示模式
+          value: night
+          options:
+            - value: none
+              label:  不显示
+            - value: day
+              label:  明亮模式
+            - value: night
+              label:  黑暗模式
+            - value: all
+              label:  全模式
+        - $formkit: radio
+          name: effects_circle_magic_mode
+          label:  上升圆点特效显示模式
+          value: night
+          options:
+            - value: none
+              label:  不显示
+            - value: day
+              label:  明亮模式
+            - value: night
+              label:  黑暗模式
+            - value: all
+              label:  全模式
+        - $formkit: radio
+          name: enable_gray_mode
+          label:  灰色模式
+          value: false
+          help: '向英雄致敬，愿精神长存！'
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+        - $formkit: radio
+          name: enable_patch
+          label: 补丁模式
+          value: true
+          help: '引入补丁脚本，实现对部分异常不更新主题进行 bug 修复！'
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+        - $formkit: radio
+          name: enable_busuanzi
+          label:  开启 busuanzi 访客统计
+          value: true
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+        - $formkit: radio
+          name: enable_baidu_push
+          label:  启用百度 URL 自动推送
+          value: false
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+        - $formkit: radio
+          name: enable_toutiao_push
+          label:  启用头条搜索自动推送
+          value: false
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+        - $formkit: radio
+          name: enable_debug
+          label:  开启 DEBUG 日志
+          value: false
+          help: '开发和问题排查时开启日志。'
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
     - group: custom
       label: '定制主题'
       formSchema:

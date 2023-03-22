@@ -45,23 +45,21 @@
   <!--    </#if>-->
   <!--</#if>-->
 
-  <!--<link rel="stylesheet" th:href="@{/assets/css/mew-custom.min.css(mew=${theme.spec.version})}">-->
+  <link rel="stylesheet" th:href="@{/assets/css/mew-custom.min.css(mew=${theme.spec.version})}">
   <!--<#if is_post?? || is_sheet?? || is_photos?? || is_journals??>-->
   <!--    <link data-pjax rel="stylesheet" th:href="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.css}>-->
   <!--</#if>-->
-  <!--<link rel="stylesheet" th:href="@{/assets/lib/qmsg/qmsg.min.css">-->
+  <link rel="stylesheet" th:href="@{/assets/lib/qmsg/qmsg.min.css}">
 
   <!--<#if settings.cursor_style?? && settings.cursor_style!='none'>-->
   <!--    <link rel="stylesheet" th:href="@{/assets/css/cursor/${settings.cursor_style}.min.css(mew=${theme.spec.version})}">-->
   <!--</#if>-->
 
-  <!--<#include "config.ftl">-->
+  <!--<#include "config.html">-->
 
-  <!--<script src="@{/assets/lib/jquery@3.5.1/jquery.min.js}"></script>-->
+  <script src="@{/assets/lib/jquery@3.5.1/jquery.min.js}"></script>
 
-  <!--<#if settings.enable_patch!true>-->
-  <!--    <script src="//cdn.jsdelivr.net/gh/nineya/halo-theme-dream@master/src/patch.js"></script>-->
-  <!--</#if>-->
+  <script th:if="${theme.config.enhance.enable_patch}" src="//cdn.jsdelivr.net/gh/nineya/halo-theme-dream@master/src/patch.js"></script>
   <!--<#if settings.external_css?? && settings.external_css!=''>-->
   <!--    <link rel="stylesheet" th:href="${settings.external_css!}">-->
   <!--</#if>-->

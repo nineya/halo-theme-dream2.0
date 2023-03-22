@@ -4,38 +4,37 @@
   <th:block th:replace="~{common/head :: head}"/>
   <body>
   <div class="column-main">
-    <th:block th:replace="${content}" />
+    <th:block th:replace="${content}"/>
   </div>
-  <#include "templates/common/scripts.html">
+  <th:block th:replace="~{common/scripts}"/>
   </body>
 </th:block>
 <th:block th:if="${#strings.equals('',param._pjax)}">
   <th:block th:replace="~{common/head :: head}"/>
   <body>
-  <!--      <#include "templates/common/widget.ftl">-->
-  <!--      <#import "templates/common/navbar.ftl" as nav>-->
-  <!--      <@nav.navbar/>-->
+  <th:block th:replace="~{common/navbar}"/>
   <th:block th:if="${theme.config.basic_style.enable_banner}">
     <th:block th:replace="~{common/banner :: banner}"/>
   </th:block>
-      <section class="section">
-          <div class="container<#if settings.sidebar_column?? && settings.sidebar_column!='all'> two-column</#if>">
-              <div class="columns">
-                  <div class="column column-main">
-                    <th:block th:insert="${content}" />
-                  </div>
-<!--                  <#if !settings.sidebar_column?? || (settings.sidebar_column!='only-right' && settings.sidebar_column!='module-left')>-->
-<!--                      <@widget 'left' />-->
-<!--                  </#if>-->
-<!--                  <#if !settings.sidebar_column?? || (settings.sidebar_column!='only-left' && settings.sidebar_column!='module-right')>-->
-<!--                      <@widget 'right' />-->
-<!--                  </#if>-->
-              </div>
-          </div>
-      </section>
+  <section class="section">
+    <div class="container<#if settings.sidebar_column?? && settings.sidebar_column!='all'> two-column</#if>">
+      <div class="columns">
+        <div class="column column-main">
+          <th:block th:insert="${content}"/>
+        </div>
+        <th:block th:insert="${content}"/>
+        <th:block th:if="${theme.config.basic_style.sidebar_column!='only-right' && theme.config.basic_style.sidebar_column!='module-left'}">
+          <th:block th:replace="~{common/widget :: widget('left')}"/>
+        </th:block>
+        <th:block th:if="${theme.config.basic_style.sidebar_column!='only-left' && theme.config.basic_style.sidebar_column!='module-right'}">
+          <th:block th:replace="~{common/widget :: widget('right')}"/>
+        </th:block>
+      </div>
+    </div>
+  </section>
   <th:block th:replace="~{common/actions}"/>
-<!--      <#include "templates/common/footer.ftl">-->
-<!--      <#include "templates/common/scripts.html">-->
+  <th:block th:replace="~{common/footer}"/>
+  <th:block th:replace="~{common/scripts}"/>
   </body>
 </th:block>
 </html>
