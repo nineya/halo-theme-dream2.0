@@ -1,6 +1,7 @@
 <html lang="zh" xmlns:th="https://www.thymeleaf.org"
-      th:fragment="layout (title, canonical, content, isPost)">
-<th:block th:if="${#strings.equals('',param._pjax) == false}">
+      th:fragment="layout (title, canonical, content, isPost)"
+      th:with="isPjax = ${#strings.equals('',param._pjax)}">
+<th:block th:if="${isPjax}">
   <th:block th:replace="~{common/head :: head}"/>
   <body>
   <div class="column-main">
@@ -9,7 +10,7 @@
   <th:block th:replace="~{common/scripts}"/>
   </body>
 </th:block>
-<th:block th:if="${#strings.equals('',param._pjax)}">
+<th:block th:unless="${isPjax}">
   <th:block th:replace="~{common/head :: head}"/>
   <body>
   <th:block th:replace="~{common/navbar}"/>
@@ -17,12 +18,11 @@
     <th:block th:replace="~{common/banner :: banner}"/>
   </th:block>
   <section class="section">
-    <div class="${theme.config.basic_style.sidebar_column != 'all' ? 'container two-column' : 'container' }">
+    <div th:class="${theme.config.basic_style.sidebar_column != 'all' ? 'container two-column' : 'container' }">
       <div class="columns">
         <div class="column column-main">
           <th:block th:insert="${content}"/>
         </div>
-        <th:block th:insert="${content}"/>
         <th:block th:if="${theme.config.basic_style.sidebar_column!='only-right' && theme.config.basic_style.sidebar_column!='module-left'}">
           <th:block th:replace="~{common/widget :: widget('left')}"/>
         </th:block>

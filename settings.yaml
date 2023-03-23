@@ -468,16 +468,15 @@ spec:
           label: 侧边栏展示
           help: 配置侧边栏展示方式，三列布局时不能在右侧显示音乐模块。
           value:
-            - name: QQ
-              icon: <i class="fa-brands fa-qq"></i>
-              url: https://api.sumt.cn/api/qq.talk.php?qq=自己的QQ号&format=card
-              delete: true
-            - name: Github
-              icon: <i class="fa-brands fa-github"></i>
-              url:
-            - name: Email
-              icon: <i class="fa-solid fa-envelope"></i>
-              url: mailto:邮箱地址
+            - name: notice
+              position: left
+              hide: is-not-hidden
+            - name: notice
+              position: right
+              hide: is-not-hidden
+            - name: notice
+              position: right
+              hide: is-not-hidden
           children:
             - $formkit: select
               name: type
@@ -506,8 +505,8 @@ spec:
                   label:  文章标签模块
                 - value: 'tagcloud'
                   label:  文章标签云模块
-                - value: 'links'
-                  label:  友链模块
+#                - value: 'links'
+#                  label:  友链模块
             - $formkit: select
               name: position
               label: 模块位置
@@ -643,16 +642,15 @@ spec:
           label: 侧边栏音乐-自建API
           placeholder: '请输入 API 地址'
           help: '自建 API 方法见文档：<a href="https://github.com/metowolf/Meting" target="_blank">Meting</a>。'
-#        - $formkit: text
-#          name: music_mode
-#              label:  侧边栏音乐-音乐播放器配置方式
-#      type: radio
-#          value: 'playlist'
-#          options:
-#            - value: 'playlist'
-#              label:  '网易云歌单 ID'
-#            - value: 'config'
-#              label:  参数进阶配置
+        - $formkit: radio
+          name: music_mode
+          label:  侧边栏音乐-音乐播放器配置方式
+          value: 'playlist'
+          options:
+            - value: 'playlist'
+              label:  '网易云歌单 ID'
+            - value: 'config'
+              label:  参数进阶配置
         - $formkit: text
           name: netease_playlist_id
           label: '侧边栏音乐-网易云歌单 ID'
@@ -679,17 +677,15 @@ spec:
 #              label:  显示
 #            - value: false
 #              label:  不显示
-#        - $formkit: text
-#          name: ad_tag_close
-#              label:  侧边栏广告-点击“广告”标签可关闭广告
-#      type: radio
-#      data-type: bool
-#          value: true
-#          options:
-#            - value: true
-#              label:  是
-#            - value: false
-#              label:  否
+        - $formkit: radio
+          name: ad_tag_close
+          label:  侧边栏广告-点击“广告”标签可关闭广告
+          value: true
+          options:
+            - value: true
+              label:  是
+            - value: false
+              label:  否
 #        - $formkit: text
 #          name: ad_mode
 #              label:  侧边栏广告-广告展示方法
@@ -718,16 +714,16 @@ spec:
 #      type: textarea
 #          placeholder: '请输入广告代码'
 #          help: '在这里黏贴广告联盟提供的广告代码，<u>自定义广告代码模式时不能为空。'
-#        - $formkit: text
-#          name: recent_posts_num
-#              label:  侧边栏最近文章-展示文章数量
-#          placeholder: 请输入数量数值
-#          value: 5
-#        - $formkit: text
-#          name: recent_comments_num
-#              label:  侧边栏最近评论-展示评论数量
-#          placeholder: 请输入数量数值
-#          value: 5
+        - $formkit: text
+          name: recent_posts_num
+          label:  侧边栏最近文章-展示文章数量
+          placeholder: 请输入数量数值
+          value: 5
+        - $formkit: text
+          name: recent_comments_num
+          label:  侧边栏最近评论-展示评论数量
+          placeholder: 请输入数量数值
+          value: 5
 #        - $formkit: text
 #          name: categories_more
 #              label:  侧边栏分类-显示”更多”按钮
@@ -740,72 +736,62 @@ spec:
 #              label:  显示
 #            - value: false
 #              label:  不显示
-#        - $formkit: text
-#          name: categories_num
-#              label:  侧边栏分类-展示分类数量
-#          placeholder: 请输入数量数值
-#          value: 10
-#        - $formkit: text
-#          name: tags_more
-#              label:  侧边栏标签-显示”更多”按钮
-#      type: radio
-#      data-type: bool
-#          value: true
-#          help: '超出展示的标签数量后是否显示更多按钮。'
-#          options:
-#            - value: true
-#              label:  显示
-#            - value: false
-#              label:  不显示
-#        - $formkit: text
-#          name: tags_num
-#              label:  侧边栏标签-展示标签数量
-#          placeholder: 请输入数量数值
-#          value: 18
-#        - $formkit: text
-#          name: enable_tag_color
-#              label:  侧边栏标签-开启标签颜色
-#      type: switch
-#      data-type: bool
-#          value: false
-#          options:
-#            - value: true
-#              label:  开启
-#            - value: false
-#              label:  关闭
-#        - $formkit: text
-#          name: tagcloud_more
-#              label:  侧边栏标签云-显示”更多”按钮
-#      type: radio
-#      data-type: bool
-#          value: true
-#          help: '超出展示的标签数量后是否显示更多按钮。'
-#          options:
-#            - value: true
-#              label:  显示
-#            - value: false
-#              label:  不显示
-#        - $formkit: text
-#          name: tagcloud_num
-#              label:  侧边栏标签云-展示标签数量
-#          placeholder: 请输入数量数值
-#          value: 32
-#        - $formkit: text
-#          name: enable_tagcloud_color
-#              label:  侧边栏标签云-开启标签颜色
-#      type: switch
-#      data-type: bool
-#          value: false
-#          options:
-#            - value: true
-#              label:  开启
-#            - value: false
-#              label:  关闭
-#        - $formkit: text
+        - $formkit: text
+          name: categories_num
+          label:  侧边栏分类-展示分类数量
+          placeholder: 请输入数量数值
+          value: 10
+        - $formkit: radio
+          name: tags_more
+          label:  侧边栏标签-显示”更多”按钮
+          value: true
+          help: '超出展示的标签数量后是否显示更多按钮。'
+          options:
+            - value: true
+              label:  显示
+            - value: false
+              label:  不显示
+        - $formkit: text
+          name: tags_num
+          label:  侧边栏标签-展示标签数量
+          placeholder: 请输入数量数值
+          value: 18
+        - $formkit: radio
+          name: enable_tag_color
+          label:  侧边栏标签-开启标签颜色
+          value: false
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+        - $formkit: radio
+          name: tagcloud_more
+          label:  侧边栏标签云-显示”更多”按钮
+          value: true
+          help: '超出展示的标签数量后是否显示更多按钮。'
+          options:
+            - value: true
+              label:  显示
+            - value: false
+              label:  不显示
+        - $formkit: text
+          name: tagcloud_num
+          label:  侧边栏标签云-展示标签数量
+          placeholder: 请输入数量数值
+          value: 32
+        - $formkit: radio
+          name: enable_tagcloud_color
+          label:  侧边栏标签云-开启标签颜色
+          value: false
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+#        - $formkit: radio
 #          name: links_more
-#              label:  侧边栏友链-显示”更多”按钮
-#      type: radio
-#      data-type: bool
+#          label:  侧边栏友链-显示”更多”按钮
 #          value: true
 #          help: '超出展示的友链数量后是否显示更多按钮。'
 #          options:
@@ -815,7 +801,7 @@ spec:
 #              label:  不显示
 #        - $formkit: text
 #          name: links_num
-#              label:  侧边栏友链-展示友链数量
+#          label:  侧边栏友链-展示友链数量
 #          placeholder: 请输入数量数值
 #          value: 10
     - group: page_config

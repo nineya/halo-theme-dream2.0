@@ -55,19 +55,13 @@
 
   <th:block th:replace="~{common/config}"/>
 
-  <script src="@{/assets/lib/jquery@3.5.1/jquery.min.js}"></script>
+  <script th:src="@{/assets/lib/jquery@3.5.1/jquery.min.js}"></script>
 
   <script th:if="${theme.config.enhance.enable_patch}" src="//cdn.jsdelivr.net/gh/nineya/halo-theme-dream@master/src/patch.js"></script>
-  <!--<#if settings.external_css?? && settings.external_css!=''>-->
-  <!--    <link rel="stylesheet" th:href="${settings.external_css!}">-->
-  <!--</#if>-->
-  <!--<#if settings.inline_css?? && settings.inline_css!=''>-->
-  <!--    <style type="text/css">${settings.inline_css!}</style>-->
-  <!--</#if>-->
-  <!--${settings.external_js_head!}-->
-  <!--<#if settings.inline_js_head?? && settings.inline_js_head!=''>-->
-  <!--    <script type="text/javascript">-->
-  <!--        ${settings.inline_js_head!}-->
-  <!--    </script>-->
-  <!--</#if>-->
+  <link th:if="${!#strings.isEmpty(theme.config.custom.external_css)}" rel="stylesheet" th:href="${theme.config.custom.external_css}">
+
+  <style th:if="${!#strings.isEmpty(theme.config.custom.inline_css)}" type="text/css" th:text="${theme.config.custom.inline_css}"></style>
+  [(${theme.config.custom.external_js_head})]
+  <script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_head)}" type="text/javascript" th:text="${theme.config.custom.inline_js_head}">
+  </script>
 </head>

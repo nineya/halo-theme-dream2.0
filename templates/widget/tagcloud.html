@@ -1,24 +1,26 @@
 <#assign num= settings.tagcloud_num!32 />
-<div class="card widget tagcloud ${settings.hide_tagcloud!}">
-    <@tagTag method="list">
-        <div class="card-title">
-            <i class="fa fa-cloud card-title-label"></i><span>标签云</span>
-            <#if settings.tagcloud_more?? && settings.tagcloud_more== true && tags?size gt num?number>
-                <a class="card-more" href="${tags_url!}">更多<i class="fa fa-angle-double-right"></i></a>
-            </#if>
-        </div>
-        <#if tags?? && tags?size gt 0>
-            <div class="card-content">
-                <#assign size= (tags?size > num?number)?string(num, tags?size)?number - 1 />
-                <#list 0..size as i>
-                    <#assign tag= tags[i] />
-                    <#assign size= tag.name?length + tag.slug?length + tag.postCount />
-                    <a href="${tag.fullPath!}"
-                       style="font-size:${(size < 14)?string('14',(size > 32)?string('32',size?string))}px;<#if settings.enable_tagcloud_color!false >color: ${tag.color}</#if>">${tag.name!}</a>
-                </#list>
-            </div>
-        <#else>
-            <div class="card-empty">暂无标签</div>
-        </#if>
-    </@tagTag>
+<div xmlns:th="https://www.thymeleaf.org"
+     th:fragment="widget (hide)"
+     th:class="'card widget tagcloud ' + ${hide}"
+     th:with="num = ${#strings.isEmpty(theme.config.sidebar.tags_num)? 32 : #numbers.sequence(theme.config.sidebar.tags_num,theme.config.sidebar.tags_num)[0]}, tags = ${tagFinder.list(1,num)}, isEmpty = ${#lists.isEmpty(tags)}">
+
+    <div class="card-title">
+        <i class="fa fa-cloud card-title-label"></i><span>标签云</span>
+        <a th:if="${tags.hasNext}" class="card-more" th:href="@{/tags}">更多<i class="fa fa-angle-double-right"></i></a>
+    </div>
+    <div th:if="${isEmpty}" class="card-empty">暂无标签</div>
+    <div th:unless="${isEmpty}" class="card-content">
+        <a
+          th:each="tag : ${tags}"
+          th:href="@{${tag.status.permalink}}"
+          th:text="${tag.spec.displayName}"></a>
+        <!--        <#if settings.enable_tags_color!false > style="color: ${tag.color}; border-color: ${tag.color}; background: ${tag.color!}20" </#if>-->
+    </div>
+<!--    <#assign size= (tags?size > num?number)?string(num, tags?size)?number - 1 />-->
+<!--    <#list 0..size as i>-->
+<!--    <#assign tag= tags[i] />-->
+<!--    <#assign size= tag.name?length + tag.slug?length + tag.postCount />-->
+<!--    <a href="${tag.fullPath!}"-->
+<!--       style="font-size:${(size < 14)?string('14',(size > 32)?string('32',size?string))}px;<#if settings.enable_tagcloud_color!false >color: ${tag.color}</#if>">${tag.name!}</a>-->
+<!--    </#list>-->
 </div>

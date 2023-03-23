@@ -1,4 +1,6 @@
-<div class="card widget profile ${settings.hide_profile!}">
+<div xmlns:th="https://www.thymeleaf.org"
+     th:fragment="widget (hide)"
+     th:class="'card widget profile ' + ${hide}">
     <div class="card-content">
         <nav class="level">
             <div class="level-item" style="flex-direction: column;">

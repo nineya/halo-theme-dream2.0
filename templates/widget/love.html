@@ -1,4 +1,6 @@
-<div class="card widget love brightness ${settings.hide_love!}" xmlns:th="https://www.thymeleaf.org">
+<div xmlns:th="https://www.thymeleaf.org"
+     th:fragment="widget (hide)"
+     th:class="'card widget love brightness ' + ${hide}">
   <div class="card-title">
     <i class="fa fa-heart card-title-label"></i><span>恋爱墙</span>
   </div>
@@ -13,8 +15,7 @@
           </a>
         </div>
         <div class="level-item">
-          <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
-               xmlns:xlink="http://www.w3.org/1999/xlink">
+          <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
             <path fill="#ffd1da"
                   d="m629.4,576.5l117.6,-196.5l0.2,-0.3c64.7,-108.5 29.4,-248.9 -79,-313.8s-248.9,-29.7 -313.9,78.6l-4.9,-2.9c-108.5,-65 -249.1,-29.6 -314.1,78.9c-65,108.5 -29.6,249.1 78.9,314.1l4.9,2.9l191.6,114.7l201.4,120.5l117.3,-196.2z"/>
             <path fill="#ffa2b2"

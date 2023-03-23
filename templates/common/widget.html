@@ -1,9 +1,9 @@
 <aside xmlns:th="https://www.thymeleaf.org"
        th:fragment="widget (position)"
-       class="column column-side column-${position} ${settings[position+'_sidebar_sticky']!'none'}-sticky">
+       th:class="'column column-side column-' + ${position} + ' ' + ${position == 'left'?theme.config.basic_style.left_sidebar_sticky:theme.config.basic_style.right_sidebar_sticky} + '-sticky'">
   <th:block th:each="sidebar :${theme.config.sidebar.sidebar_show}">
     <th:block th:if="${sidebar.position == position}">
-      <th:block th:replace="~{${'/widget/' + sidebar.type}}" />
+      <th:block th:replace="~{${'/widget/' + sidebar.type} :: widget ( hide = ${sidebar.hide})}" />
     </th:block>
   </th:block>
   <div th:if="${position == 'left'}" class="column-right-shadow is-hidden-desktop">
