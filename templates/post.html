@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="https://www.thymeleaf.org"
-      th:include="~{common/layout :: layout (title = ${post.spec.title + ' - ' + site.title}, canonical = ${post.status.permalink}, content = ~{::content}, isPost = true)}"
+      th:include="~{common/layout :: layout (title = ${post.spec.title + ' - ' + site.title}, canonical = ${post.status.permalink}, content = ~{main/article :: article (${post}, 'Post')}, isPost = true)}"
       th:with="enableKatex = ${!#strings.isEmpty(post.metadata.annotations.get('enable_katex'))? post.metadata.annotations.get('enable_katex') : theme.config.post.enable_katex},
       enableShare = ${!#strings.isEmpty(post.metadata.annotations.get('enable_share'))? post.metadata.annotations.get('enable_share') : theme.config.post.enable_share},
       enableCopyright = ${!#strings.isEmpty(post.metadata.annotations.get('enable_copyright'))? post.metadata.annotations.get('enable_copyright') : theme.config.post.enable_copyright}">
-<th:block th:fragment="content" th:with="isEmpty = ${#lists.isEmpty(posts)}">
-  <th:block th:include="~{main/article :: article (${post}, 'Post')}"/>
-</th:block>
 </html>

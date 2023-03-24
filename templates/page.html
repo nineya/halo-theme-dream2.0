@@ -1,5 +1,7 @@
-<#include "templates/layout_pjax.ftl">
-<#include "templates/main/article.ftl">
-<@layout title="${sheet.title} - ${blog_title!}" canonical="${sheet.fullPath!}">
-    <@article sheet,"sheet" />
-</@layout>
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="https://www.thymeleaf.org"
+      th:include="~{common/layout :: layout (title = ${singlePage.spec.title + ' - ' + site.title}, canonical = ${singlePage.status.permalink}, content = ~{main/article :: article (${singlePage}, 'SinglePage')}, isPost = true)}"
+      th:with="enableKatex = ${!#strings.isEmpty(singlePage.metadata.annotations.get('enable_katex'))? singlePage.metadata.annotations.get('enable_katex') : theme.config.post.enable_katex},
+      enableShare = ${!#strings.isEmpty(singlePage.metadata.annotations.get('enable_share'))? singlePage.metadata.annotations.get('enable_share') : theme.config.post.enable_share},
+      enableCopyright = ${!#strings.isEmpty(singlePage.metadata.annotations.get('enable_copyright'))? singlePage.metadata.annotations.get('enable_copyright') : theme.config.post.enable_copyright}">
+</html>

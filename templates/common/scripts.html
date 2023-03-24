@@ -1,27 +1,29 @@
-<script th:src="@{/assets/js/utils.min.js(mew=${theme.spec.version})}"></script>
-<!--<#if is_carousel??>-->
-<!--    <script data-pjax th:src="@{/assets/lib/swiper@8.4.6/swiper-bundle.min.js}"></script>-->
-<!--</#if>-->
-<script th:src="@{/assets/js/common.min.js(mew=${theme.spec.version})}"></script>
+<div xmlns:th="https://www.thymeleaf.org">
+    <script th:src="@{/assets/js/utils.min.js(mew=${theme.spec.version})}"></script>
+    <!--<#if is_carousel??>-->
+    <!--    <script data-pjax th:src="@{/assets/lib/swiper@8.4.6/swiper-bundle.min.js}"></script>-->
+    <!--</#if>-->
+    <script th:src="@{/assets/js/common.min.js(mew=${theme.spec.version})}"></script>
 
-<th:block th:if="${isPost}">
+    <th:block th:if="${isPost}">
 
-<script th:if="${isPost}" data-pjax th:src="@{/assets/lib/highlightjs@11.5.1/highlight.min.js}"></script>
-<script th:if="${isPost}" data-pjax th:src="@{/assets/lib/clipboard@2.0.10/clipboard.min.js}"></script>
-<script th:if="${enableShare}" data-pjax th:src="@{/assets/js/dshare.min.js(mew=${theme.spec.version})}"></script>
-<script th:if="${isPost}" data-pjax th:src="@{/assets/js/post.min.js(mew=${theme.spec.version})}"></script>
-</th:block>
+        <script th:if="${isPost}" data-pjax th:src="@{/assets/lib/highlightjs@11.5.1/highlight.min.js}"></script>
+        <script th:if="${isPost}" data-pjax th:src="@{/assets/lib/clipboard@2.0.10/clipboard.min.js}"></script>
+        <script th:if="${enableShare}" data-pjax th:src="@{/assets/js/dshare.min.js(mew=${theme.spec.version})}"></script>
+        <script th:if="${isPost}" data-pjax th:src="@{/assets/js/post.min.js(mew=${theme.spec.version})}"></script>
+    </th:block>
 
-<script th:src="@{/assets/js/mew-custom.min.js(mew=${theme.spec.version})}"></script>
+    <script th:src="@{/assets/js/mew-custom.min.js(mew=${theme.spec.version})}"></script>
 
-<script th:src="@{/assets/lib/jquery-pjax@2.0.1/jquery.pjax.min.js}"></script>
-<script th:if="${theme.config.basic_style.load_progress != 'none'}" th:src="@{/assets/js/dprogress.min.js(mew=${theme.spec.version})}"></script>
-<script th:src="@{/assets/js/pjax.min.js(mew=${theme.spec.version})}"></script>
-<script async th:src="@{/assets/lib/qmsg/qmsg.min.js}"></script>
+    <script th:src="@{/assets/lib/jquery-pjax@2.0.1/jquery.pjax.min.js}"></script>
+    <script th:if="${theme.config.basic_style.load_progress != 'none'}" th:src="@{/assets/js/dprogress.min.js(mew=${theme.spec.version})}"></script>
+    <script th:src="@{/assets/js/pjax.min.js(mew=${theme.spec.version})}"></script>
+    <script async th:src="@{/assets/lib/qmsg/qmsg.min.js}"></script>
 
-<script th:if="${isPost}" data-pjax async th:src="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.js}"></script>
+    <script th:if="${isPost}" data-pjax async th:src="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.js}"></script>
 
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_body)}" type="text/javascript" th:text="${theme.config.custom.inline_js_body}">
-</script>
+    <script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_body)}" type="text/javascript" th:text="${theme.config.custom.inline_js_body}">
+    </script>
+</div>

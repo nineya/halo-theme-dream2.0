@@ -1,26 +1,15 @@
 <head xmlns:th="https://www.thymeleaf.org">
-  <style th:inline="css">
-    /*<#assign fontSrc=(settings.web_font?? && settings.web_font!='default')?then((settings.web_font=='custom')?then((settings.custom_font?? && settings.custom_font!='')?then(settings.custom_font, ''), '${theme_base!}/source/font/${settings.web_font}'), '')>*/
-    /*<#if fontSrc!=''>*/
-    /*  <#if fontSrc?ends_with(".woff")>*/
-    /*  <#assign fontFormat="woff">*/
-    /*  <#elseif fontSrc?ends_with(".woff2")>*/
-    /*  <#assign fontFormat="woff2">*/
-    /*  <#elseif fontSrc?ends_with(".ttf")>*/
-    /*  <#assign fontFormat="truetype">*/
-    /*  <#elseif fontSrc?ends_with(".eot")>*/
-    /*  <#assign fontFormat="embedded-opentype">*/
-    /*  <#elseif fontSrc?ends_with(".svg")>*/
-    /*  <#assign fontFormat="svg">*/
-    /*  </#if>*/
-    /*@font-face {*/
-    /*    font-family: "Dream Font";*/
-    /*    font-display: swap;*/
-    /*    font-weight: 400;*/
-    /*    src: url("${fontSrc!}")${(fontFormat??)?then(' format("${fontFormat}")', '')};*/
-    /*}*/
+  <style th:inline="css"
+    th:with="fontSrc = ${theme.config.basic_style.web_font != 'default' ? theme.config.basic_style.web_font == 'custom' ? theme.config.basic_style.custom_font : #theme.assets('/font/' + theme.config.basic_style.web_font) : ''},
+    fontFormat = ${fontSrc.endsWith('.ttf') ? 'truetype' : fontSrc.endsWith('.eot') ? 'embedded-opentype' : fontSrc.replaceAll('^.*\.([\w]+)$', '$1')}">
+    [(${#strings.isEmpty(fontSrc) ? '' : '
+    @font-face {
+        font-family: "Dream Font";
+        font-display: swap;
+        font-weight: 400;
+        src: url("' + fontSrc + '")' + (#strings.isEmpty(fontFormat)? '' : ' format("' + fontFormat + '")') + ';
+    }'})]
 
-    /*</#if>*/
     html {
       --theme: [(${theme.config.basic_style.theme_color})];
       filter: [(${theme.config.enhance.enable_gray_mode ? 'grayscale(1) !important' : 'none'})];
@@ -80,9 +69,7 @@
       [(${!#strings.isEmpty(theme.config.basic_info.document_hidden_title)?'DreamConfig["document_hidden_title"] = "' + theme.config.basic_info.document_hidden_title + '";': ''})]
       [(${!#strings.isEmpty(theme.config.basic_info.document_visible_title)?'DreamConfig["document_visible_title"] = "' + theme.config.basic_info.document_visible_title + '";' : ''})]
       [(${!#strings.isEmpty(theme.config.basic_info.website_time)?'DreamConfig["website_time"] = "' + theme.config.basic_info.website_time + '";' : ''})]
-      // <#if settings.enable_color_character!false>
-      // DreamConfig["spark_input_content"] = ['${user.description?trim?replace('\n', '')?js_string}'<#if settings.color_character?? && settings.color_character?trim!=''>, '${settings.color_character?trim?js_string?replace('\\n', "','")}'</#if>];
-      // </#if>
+      [(${(theme.config.sidebar.enable_color_character && !#strings.isEmpty(theme.config.sidebar.color_character))? 'DreamConfig["spark_input_content"] = ["' + #strings.escapeJavaScript(theme.config.sidebar.color_character).replace('\\n', '","') + '"]' : ''})]
       DreamConfig["notice_show_mode"] = '[(${theme.config.basic_info.notice_show_mode})]';
       [(${(!#strings.isEmpty(theme.config.post.img_fold_height) && #numbers.sequence(theme.config.post.img_fold_height,theme.config.post.img_fold_height)[0] >= 400)?'DreamConfig["img_fold_height"] = ' + theme.config.post.img_fold_height + ';': ''})]
       [(${theme.config.enhance.cursor_move != 'none'?'DreamConfig["cursor_move"] = "' + theme.config.enhance.cursor_move + '";': ''})]
