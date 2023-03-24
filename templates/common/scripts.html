@@ -1,36 +1,18 @@
 <script th:src="@{/assets/js/utils.min.js(mew=${theme.spec.version})}"></script>
-<!--<#if (settings.sidebar_toc?? && settings.sidebar_toc != 'none') || settings.drawer_toc!true>-->
-<!--    <script th:src="@{/assets/js/btoc.min.js(mew=${theme.spec.version})}"></script>-->
-<!--</#if>-->
 <!--<#if is_carousel??>-->
 <!--    <script data-pjax th:src="@{/assets/lib/swiper@8.4.6/swiper-bundle.min.js}"></script>-->
 <!--</#if>-->
 <script th:src="@{/assets/js/common.min.js(mew=${theme.spec.version})}"></script>
 
-<!--<#if post?? || is_journals?? || is_error??>-->
+<th:block th:if="${isPost}">
+
 <script th:if="${isPost}" data-pjax th:src="@{/assets/lib/highlightjs@11.5.1/highlight.min.js}"></script>
 <script th:if="${isPost}" data-pjax th:src="@{/assets/lib/clipboard@2.0.10/clipboard.min.js}"></script>
-<!--    <#if enable_share>-->
-<!--        <script data-pjax th:src="@{/assets/js/dshare.min.js(mew=${theme.spec.version})}"></script>-->
-<!--    </#if>-->
+<script th:if="${enableShare}" data-pjax th:src="@{/assets/js/dshare.min.js(mew=${theme.spec.version})}"></script>
 <script th:if="${isPost}" data-pjax th:src="@{/assets/js/post.min.js(mew=${theme.spec.version})}"></script>
-<!--    <#if is_journals??>-->
-<!--        <script data-pjax th:src="@{/assets/js/journals.min.js(mew=${theme.spec.version})}"></script>-->
-<!--    </#if>-->
-<!--</#if>-->
+</th:block>
 
-<!--<#if is_photos??>-->
-<!--    <script data-pjax th:src="@{/assets/lib/justifiedGallery@3.8.1/jquery.justifiedGallery.min.js}"></script>-->
-<!--    <script data-pjax th:src="@{/assets/js/photos.min.js(mew=${theme.spec.version})}"></script>-->
-<!--</#if>-->
-
-<!--<script th:src="@{/assets/js/mew-custom.min.js(mew=${theme.spec.version})}"></script>-->
-<!--<#if (post?? && (!post.disallowComment!false) && settings.enable_comment!true) || (is_journals?? && settings.enable_journals_comment!true) || (is_links?? && (settings.enable_comment!true) && settings.link_comment_id?? && settings.link_comment_id!='')>-->
-<!--    <script data-pjax defer th:src="@{/assets/lib/vue@2.6.10/vue.min.js}"></script>-->
-<!--    <script data-pjax defer-->
-<!--            src="${(settings.enable_theme_comment!true)?then(theme_base + '/source/lib/halo-comment@1.1.2/halo-comment.min.js',-->
-<!--            options.comment_internal_plugin_js!'//cdn.jsdelivr.net/gh/halo-dev/halo-comment@latest/dist/halo-comment.min.js')}"></script>-->
-<!--</#if>-->
+<script th:src="@{/assets/js/mew-custom.min.js(mew=${theme.spec.version})}"></script>
 
 <script th:src="@{/assets/lib/jquery-pjax@2.0.1/jquery.pjax.min.js}"></script>
 <script th:if="${theme.config.basic_style.load_progress != 'none'}" th:src="@{/assets/js/dprogress.min.js(mew=${theme.spec.version})}"></script>
@@ -39,12 +21,7 @@
 
 <script th:if="${isPost}" data-pjax async th:src="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.js}"></script>
 
-<!--<#if settings.sidebar_music?? && settings.sidebar_music != 'none'>-->
-<!--    <link rel="stylesheet" th:href="@{/assets/lib/aplayer@1.10.1/APlayer.min.css}>-->
-<!--    <script defer th:src="@{/assets/lib/aplayer@1.10.1/APlayer.min.js}"></script>-->
-<!--    <script defer th:src="@{/assets/lib/meting@2.0.1/Meting.min.js}"></script>-->
-<!--</#if>-->
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js}"></script>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_body)}" type="text/javascript" th:text="${theme.config.custom.inline_js_body}">
 </script>

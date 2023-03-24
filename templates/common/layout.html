@@ -1,7 +1,6 @@
-<html lang="zh" xmlns:th="https://www.thymeleaf.org"
-      th:fragment="layout (title, canonical, content, isPost)"
-      th:with="isPjax = ${#strings.equals('',param._pjax)}">
-<th:block th:if="${isPjax}">
+<html xmlns:th="https://www.thymeleaf.org"
+      th:fragment="layout (title, canonical, content, isPost)">
+<th:block th:if="${!#strings.equals('',param._pjax)}">
   <th:block th:replace="~{common/head :: head}"/>
   <body>
   <div class="column-main">
@@ -10,7 +9,7 @@
   <th:block th:replace="~{common/scripts}"/>
   </body>
 </th:block>
-<th:block th:unless="${isPjax}">
+<th:block th:unless="${!#strings.equals('',param._pjax)}">
   <th:block th:replace="~{common/head :: head}"/>
   <body>
   <th:block th:replace="~{common/navbar}"/>

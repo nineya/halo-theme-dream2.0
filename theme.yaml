@@ -25,20 +25,3 @@ spec:
   version: 0.0.1
   # 最低支持的 Halo 版本
   require: ">=2.0.0"
-#  customTemplates:
-#    # 文章页 meta 变量
-#    post:
-#      - enable_copyright
-#      - thumbnail_mode
-#      - tips
-#      - enable_katex
-#      - enable_share
-#      - enable_bullet_screen
-#      - index_carousel
-#    # 自定义页 meta 变量
-#    page:
-#      - enable_copyright
-#      - tips
-#      - enable_katex
-#      - enable_share
-#      - enable_bullet_screen

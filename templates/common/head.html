@@ -1,59 +1,46 @@
-<head xmlns:th="https://www.thymeleaf.org" th:fragment="head">
+<head xmlns:th="https://www.thymeleaf.org" th:fragment="head"
+th:with="description=${isPost ? post.spec.excerpt.raw : site.seo.description}">
   <title th:text="${title}"></title>
-  <!--<#if settings.enable_sw?? && settings.enable_sw != "false">-->
-  <!--    <script src="${(settings.enable_sw == "uninstall")?then('${theme_base!}/source/js/sw.min.js?mew=2.1.2','/sw.min.js?mew=2.1.2${settings.enable_sw!}')}"></script>-->
-  <!--</#if>-->
+  <script th:if="${(theme.config.enhance.enable_sw != 'false')}" th:src="${(theme.config.enhance.enable_sw == 'uninstall')? #theme.assets('/assets/js/sw.min.js') + '?mew=0.0.1' : '/sw.min.js?mew=0.0.1' + theme.config.enhance.enable_sw}"></script>
   <meta charset="utf-8"/>
-  <!--<#assign description=(post??)?then(post.summary!, meta_description!)!user.description!>-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
   <meta http-equiv="x-dns-prefetch-control" content="on">
-  <meta name="keywords" content="${meta_keywords!}"/>
-  <meta name="description" content="${description!}">
-  <meta name="author" content="${user.nickname!}">
-  <meta name="site" content="${blog_url!}">
+  <meta name="keywords" th:content="${site.seo.keywords}"/>
+  <meta name="description" th:content="${description}">
+  <meta name="author" th:content="${site.title}">
+  <meta name="site" th:content="${site.url}">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="${title!}">
-  <meta property="og:url" content="${canonical}">
-  <meta property="og:site_name" content="${title!}">
-  <meta property="og:description" content="${description!}">
+  <meta property="og:title" th:content="${site.title}">
+  <meta property="og:url" th:content="${canonical}">
+  <meta property="og:site_name" th:content="${title}">
+  <meta property="og:description" th:content="${description}">
   <meta property="og:locale" content="zh">
-  <meta property="og:image" content="${user.avatar!}">
+  <meta property="og:image" th:content="${site.logo}">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="${title!}">
-  <meta name="twitter:description" content="${description!}">
-  <meta name="twitter:image" content="${user.avatar!}">
-  <link rel="canonical" href="${canonical!}"/>
-  <link rel="alternative" href="${atom_url!}" title="${blog_title!}" type="application/atom+xml">
+  <meta name="twitter:title" th:content="${title}">
+  <meta name="twitter:description" th:content="${description}">
+  <meta name="twitter:image" th:content="${site.logo}">
+  <link rel="canonical" th:href="${canonical}"/>
 
   <link rel="preload stylesheet" as="style" th:href="@{/assets/css/theme.min.css(mew=${theme.spec.version})}">
   <link rel="preload stylesheet" as="style" th:href="@{/assets/lib/font-awesome@4.7.0/css/font-awesome.min.css}">
   <link rel="preload stylesheet" as="style" th:href="@{/assets/css/style.min.css(mew=${theme.spec.version})}">
 
-  <!--<#if post?? || is_journals?? || is_error??>-->
-  <!--    <link data-pjax rel="preload stylesheet" as="style"-->
-  <!--          th:href="@{/assets/lib/highlightjs@11.5.1/styles/${settings.code_pretty!'atom-one-light'}.min.css}"/>-->
-  <!--    <link data-pjax rel="preload stylesheet" as="style" th:href="@{/assets/css/post.min.css(mew=${theme.spec.version})}"/>-->
-  <!--    <#assign enable_katex = (metas?? && metas.enable_katex?? && metas.enable_katex?trim!='')?then(metas.enable_katex?trim, (settings.enable_katex!false)?c)>-->
-  <!--    <#if enable_katex=='true'>-->
-  <!--        <link data-pjax rel="preload stylesheet" as="style" th:href="@{/assets/lib/katex@0.12.0/katex.min.css(mew=${theme.spec.version})}"/>-->
-  <!--    </#if>-->
-  <!--    <#assign enable_share = (post?? && (metas?? && metas.enable_share?? && metas.enable_share?trim!='')?then(metas.enable_share?trim, (settings.enable_post_share!true)?c) == 'true') || (is_journals?? && settings.enable_journals_share!true)>-->
-  <!--    <#if enable_share>-->
-  <!--        <link data-pjax rel="preload stylesheet" as="style" th:href="@{/assets/css/dshare.min.css(mew=${theme.spec.version})}">-->
-  <!--    </#if>-->
-  <!--</#if>-->
+  <th:block th:if="${isPost}">
+    <link data-pjax rel="preload stylesheet" as="style"
+          th:href="@{'/assets/lib/highlightjs@11.5.1/styles/' + ${theme.config.post.code_pretty} + '.min.css'}"/>
+    <link data-pjax rel="preload stylesheet" as="style" th:href="@{/assets/css/post.min.css(mew=${theme.spec.version})}"/>
+    <link th:if="${enableKatex}" data-pjax rel="preload stylesheet" as="style" th:href="@{/assets/lib/katex@0.12.0/katex.min.css(mew=${theme.spec.version})}"/>
+    <link th:if="${enableShare}" data-pjax rel="preload stylesheet" as="style" th:href="@{/assets/css/dshare.min.css(mew=${theme.spec.version})}">
+  </th:block>
 
   <link rel="stylesheet" th:href="@{/assets/css/mew-custom.min.css(mew=${theme.spec.version})}">
-  <!--<#if is_post?? || is_sheet?? || is_photos?? || is_journals??>-->
-  <!--    <link data-pjax rel="stylesheet" th:href="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.css}>-->
-  <!--</#if>-->
+  <link th:if="${isPost}" data-pjax rel="stylesheet" th:href="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.css}">
   <link rel="stylesheet" th:href="@{/assets/lib/qmsg/qmsg.min.css}">
 
-  <!--<#if settings.cursor_style?? && settings.cursor_style!='none'>-->
-  <!--    <link rel="stylesheet" th:href="@{/assets/css/cursor/${settings.cursor_style}.min.css(mew=${theme.spec.version})}">-->
-  <!--</#if>-->
+  <link th:if="${theme.config.enhance.cursor_style != 'none'}" rel="stylesheet" th:href="@{'/assets/css/cursor/' + ${theme.config.enhance.cursor_style} + '.min.css'(mew=${theme.spec.version})}">
 
-  <th:block th:replace="~{common/config}"/>
+  <th:block th:include="~{common/config}"/>
 
   <script th:src="@{/assets/lib/jquery@3.5.1/jquery.min.js}"></script>
 

@@ -12,13 +12,15 @@ spec:
       label:  开启文章版权声明
       help: '当前配置将覆盖主题中的默认配置。'
       options:
-        - value: true
+        - value: "true"
           label:  开启
-        - value: false
+        - value: "false"
           label:  关闭
+        - value: ""
+          label:  跟随默认配置
     - $formkit: select
-      name: top_thumbnail_mode
-      label:  置顶文章列表缩略图模式
+      name: thumbnail_mode
+      label: 文章列表缩略图模式
       help: '文章在列表的缩略图模式，除网格布局外，当前配置将覆盖主题中的默认配置。'
       options:
         - value: default
@@ -33,6 +35,8 @@ spec:
           label:  小图模式（交替）
         - value: fold
           label:  折叠模式
+        - value: ""
+          label:  跟随默认配置
     - $formkit: text
       name: tips
       label:  文章提示
@@ -41,33 +45,38 @@ spec:
     - $formkit: radio
       name: enable_katex
       label:  KaTeX 公式支持
-      value: false
       help: '博客通过 KaTeX 做数学公式渲染，当前配置将覆盖主题中的默认配置。'
       options:
-        - value: true
+        - value: "true"
           label:  开启
-        - value: false
+        - value: "false"
           label:  关闭
+        - value: ""
+          label:  跟随默认配置
     - $formkit: radio
       name: enable_share
       label:  开启文章分享
       value: true
       help: '当前配置将覆盖主题中的默认配置。'
       options:
-        - value: true
+        - value: "true"
           label:  开启
-        - value: false
+        - value: "false"
           label:  关闭
+        - value: ""
+          label:  跟随默认配置
     - $formkit: radio
       name: index_carousel
       label:  开启置顶轮播
       value: true
       help: '如果该文章被置顶，在此处可开启文章置顶轮播。'
       options:
-        - value: true
+        - value: "true"
           label:  开启
-        - value: false
+        - value: "false"
           label:  关闭
+        - value: ""
+          label:  跟随默认配置
 
 ---
 
@@ -86,10 +95,12 @@ spec:
       value: true
       help: '当前配置将覆盖主题中的默认配置。'
       options:
-        - value: true
+        - value: "true"
           label:  开启
-        - value: false
+        - value: "false"
           label:  关闭
+        - value: ""
+          label:  跟随默认配置
     - $formkit: text
       name: tips
       label:  文章提示
@@ -101,17 +112,21 @@ spec:
       value: false
       help: '博客通过 KaTeX 做数学公式渲染，当前配置将覆盖主题中的默认配置。'
       options:
-        - value: true
+        - value: "true"
           label:  开启
-        - value: false
+        - value: "false"
           label:  关闭
+        - value: ""
+          label:  跟随默认配置
     - $formkit: radio
       name: enable_share
       label:  开启文章分享
       value: true
       help: '当前配置将覆盖主题中的默认配置。'
       options:
-        - value: true
+        - value: "true"
           label:  开启
-        - value: false
+        - value: "false"
           label:  关闭
+        - value: ""
+          label:  跟随默认配置

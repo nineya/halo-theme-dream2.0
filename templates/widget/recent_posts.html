@@ -9,7 +9,7 @@
     <div th:unless="${isEmpty}" class="card-content">
         <ul class="list">
             <li class="item" th:each="post : ${posts}">
-                <a class="link" th:href="@{${ps.status.permalink}}" th:title="${ps.spec.title}" th:text="${ps.spec.title}"></a>
+                <a class="link" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}" th:text="${post.spec.title}"></a>
                 <i class="fa fa-link"></i>
             </li>
         </ul>

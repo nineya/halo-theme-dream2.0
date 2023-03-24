@@ -1,7 +1,10 @@
 <div xmlns:th="https://www.thymeleaf.org"
      th:fragment="widget (hide)"
      th:class="'card widget tags ' + ${hide}"
-     th:with="num = ${#strings.isEmpty(theme.config.sidebar.tags_num)? 18 : #numbers.sequence(theme.config.sidebar.tags_num,theme.config.sidebar.tags_num)[0]}, tags = ${tagFinder.list(1,num)}, isEmpty = ${#lists.isEmpty(tags)}">
+     th:with="num = ${#strings.isEmpty(theme.config.sidebar.tags_num)? 18 : #numbers.sequence(theme.config.sidebar.tags_num,theme.config.sidebar.tags_num)[0]},
+     tags = ${tagFinder.list(1,num)},
+     isEmpty = ${#lists.isEmpty(tags)},
+     enableTagsColor = ${theme.config.sidebar.enable_tag_color}">
     <div class="card-title">
         <i class="fa fa-tags card-title-label"></i><span>标签</span>
         <a th:if="${tags.hasNext}" class="card-more" th:href="@{/tags}">更多<i class="fa fa-angle-double-right"></i></a>
@@ -11,7 +14,7 @@
         <a
           th:each="tag : ${tags}"
           th:href="@{${tag.status.permalink}}"
-          th:text="${tag.spec.displayName}"></a>
-<!--        <#if settings.enable_tags_color!false > style="color: ${tag.color}; border-color: ${tag.color}; background: ${tag.color!}20" </#if>-->
+          th:text="${tag.spec.displayName}"
+          th:style="${enableTagsColor? 'color: ' + tag.spec.color +'; border-color: ' + tag.spec.color +'20;' : ''}"></a>
     </div>
 </div>

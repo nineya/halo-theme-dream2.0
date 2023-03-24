@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{common/layout :: layout (title = ${site.title}, canonical = ${site.url}, content = ~{::content}, isPost = false)}">
+<html lang="zh" xmlns:th="https://www.thymeleaf.org"
+      th:include="~{common/layout :: layout (title = ${site.title}, canonical = ${site.url}, content = ~{::content}, isPost = false)}">
 <th:block th:fragment="content" th:with="isEmpty = ${#lists.isEmpty(posts)}">
   <div th:if="${isEmpty}" class="card card-empty">
     <i class="fa fa-inbox"></i>
     还没有发表过文章
   </div>
   <th:block th:unless="${isEmpty}">
-    <th:block th:replace="~{main/article_list :: articleList (${posts.items}, ${posts.first})}"/>
-<!--    <#include "templates/main/article_list.html">-->
-<!--    <@article_list posts.content/>-->
-<!--    <#include "templates/main/pagination.html">-->
-<!--    <@pagination method="index" datas=posts display="${settings.page_number!5}" />-->
+    <th:block th:include="~{main/article_list :: articleList (${posts.items}, ${posts.first})}"/>
+    <th:block th:replace="~{main/pagination :: pagination (${posts}, '/index')}"/>
   </th:block>
 </th:block>
 </html>
