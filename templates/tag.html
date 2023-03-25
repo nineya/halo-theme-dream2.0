@@ -14,7 +14,7 @@
                 <li th:text="${tag.spec.displayName}"></li>
             </ul>
         </div>
-        <th:block th:include="~{main/article_list :: articleList (${posts.items}, false)}"/>
+        <th:block th:replace="~{main/article_list :: articleList (${posts.items}, false)}"/>
         <th:block th:replace="~{main/pagination :: pagination (${posts}, ${tag.status.permalink})}"/>
     </th:block>
 </th:block>

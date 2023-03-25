@@ -6,7 +6,7 @@
   <div class="column-main">
     <th:block th:replace="${content}"/>
   </div>
-  <th:block th:include="~{common/scripts}"/>
+  <th:block th:replace="~{common/scripts}"/>
   </body>
 </th:block>
 <th:block th:unless="${!#strings.equals('',param._pjax)}">
@@ -33,7 +33,7 @@
   </section>
   <th:block th:replace="~{common/actions}"/>
   <th:block th:replace="~{common/footer}"/>
-  <th:block th:include="~{common/scripts}"/>
+  <th:block th:replace="~{common/scripts}"/>
   </body>
 </th:block>
 </html>

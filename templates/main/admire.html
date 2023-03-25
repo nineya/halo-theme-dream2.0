@@ -1,4 +1,4 @@
-<div xmlns:th="https://www.thymeleaf.org"
+<th:block xmlns:th="https://www.thymeleaf.org"
      th:with="donate=${!#strings.isEmpty(theme.config.post.donate_alipay) || !#strings.isEmpty(theme.config.post.donate_wechat)}">
     <div th:if="${donate || type == 'Post'}" class="admire">
         <div class="admire-content">
@@ -22,4 +22,4 @@
         </div>
         <span>如果觉得文章对你有用，请随意赞赏</span>
     </div>
-</div>
+</th:block>

@@ -1,4 +1,4 @@
-<head xmlns:th="https://www.thymeleaf.org">
+<th:block xmlns:th="https://www.thymeleaf.org">
   <style th:inline="css"
     th:with="fontSrc = ${theme.config.basic_style.web_font != 'default' ? theme.config.basic_style.web_font == 'custom' ? theme.config.basic_style.custom_font : #theme.assets('/font/' + theme.config.basic_style.web_font) : ''},
     fontFormat = ${fontSrc.endsWith('.ttf') ? 'truetype' : fontSrc.endsWith('.eot') ? 'embedded-opentype' : fontSrc.replaceAll('^.*\.([\w]+)$', '$1')}">
@@ -94,4 +94,4 @@
       }
     })();
   </script>
-</head>
+</th:block>

@@ -1,4 +1,4 @@
-<div xmlns:th="https://www.thymeleaf.org"
+<th:block xmlns:th="https://www.thymeleaf.org"
      th:fragment="articleList (posts, isFirstIndex)">
   <th:block th:each="post : ${posts}"
             th:with="thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail + '?id=' + postStat.index : post.spec.cover},
@@ -127,7 +127,7 @@
       </div>
     </div>
   </th:block>
-</div>
+<th:block/>
 <!--</div>-->
 <!--</div>-->
 <!--<#elseif thumbnail_mode == "grid">-->

@@ -57,7 +57,7 @@
                  th:utext="${post.content.content}">
             </div>
 
-            <th:block th:include="~{main/admire}"/>
+            <th:block th:replace="~{main/admire}"/>
 
             <div th:if="${type == 'Post' && !#lists.isEmpty(post.tags)}" class="article-operation">
                 <div class="level-item">

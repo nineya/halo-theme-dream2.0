@@ -40,7 +40,7 @@ th:with="description=${isPost ? post != null ? post.spec.excerpt.raw : singlePag
 
   <link th:if="${theme.config.enhance.cursor_style != 'none'}" rel="stylesheet" th:href="@{'/assets/css/cursor/' + ${theme.config.enhance.cursor_style} + '.min.css'(mew=${theme.spec.version})}">
 
-  <th:block th:include="~{common/config}"/>
+  <th:block th:replace="~{common/config}"/>
 
   <script th:src="@{/assets/lib/jquery@3.5.1/jquery.min.js}"></script>
 

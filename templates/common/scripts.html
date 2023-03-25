@@ -1,4 +1,4 @@
-<div xmlns:th="https://www.thymeleaf.org">
+<th:block xmlns:th="https://www.thymeleaf.org">
     <script th:src="@{/assets/js/utils.min.js(mew=${theme.spec.version})}"></script>
     <!--<#if is_carousel??>-->
     <!--    <script data-pjax th:src="@{/assets/lib/swiper@8.4.6/swiper-bundle.min.js}"></script>-->
@@ -26,4 +26,4 @@
 
     <script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_body)}" type="text/javascript" th:text="${theme.config.custom.inline_js_body}">
     </script>
-</div>
+</th:block>

@@ -7,7 +7,7 @@
     还没有发表过文章
   </div>
   <th:block th:unless="${isEmpty}">
-    <th:block th:include="~{main/article_list :: articleList (${posts.items}, ${posts.first})}"/>
+    <th:block th:replace="~{main/article_list :: articleList (${posts.items}, ${posts.first})}"/>
     <th:block th:replace="~{main/pagination :: pagination (${posts}, '/index')}"/>
   </th:block>
 </th:block>
