@@ -8,6 +8,12 @@ spec:
       label: '基础信息'
       formSchema:
         - $formkit: text
+          name: metadata_name
+          label: 作者用户名
+          placeholder: 请输入用户名
+          value: admin
+          help: 后台用户管理中作者的用户名，填写错误将导致个人资料显示异常（示例：admin）
+        - $formkit: text
           name: small_title
           label: 网站副标题
           placeholder: '请输入网站副标题'
@@ -495,8 +501,6 @@ spec:
                   label:  广告模块
                 - value: 'recent_posts'
                   label:  最近文章模块
-                - value: 'recent_comments'
-                  label:  最近评论模块
                 - value: 'categories'
                   label:  文章分类模块
                 - value: 'tags'
@@ -527,12 +531,6 @@ spec:
                   label:  桌面设备隐藏
                 - value: 'is-not-hidden'
                   label:  不隐藏
-        - $formkit: text
-          name: metadata_name
-          label: 作者用户名
-          placeholder: 请输入用户名
-          value: admin
-          help: 后台用户管理中作者的用户名，填写错误将导致个人资料显示异常（示例：admin）
         - $formkit: radio
           name: enable_color_character
           label:  侧边栏信息-开启彩字切换
@@ -700,11 +698,6 @@ spec:
         - $formkit: text
           name: recent_posts_num
           label:  侧边栏最近文章-展示文章数量
-          placeholder: 请输入数量数值
-          value: 5
-        - $formkit: text
-          name: recent_comments_num
-          label:  侧边栏最近评论-展示评论数量
           placeholder: 请输入数量数值
           value: 5
         - $formkit: radio

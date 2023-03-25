@@ -8,16 +8,8 @@ const createSerialNumber = () => {
   console.log(`sn = ${serialNumber}`)
   return serialNumber
 }
-
-const $bulletScreen = $('.actions>.bullet-screen')
 // pjax请求时进行界面预处理
 const initPjax = () => {
-  /* 重新加载悬浮导航按钮 */
-  if ($('halo-comment[bullet-screen]').length === 0) {
-    $bulletScreen.addClass('is-hidden-all')
-  } else {
-    $bulletScreen.removeClass('is-hidden-all')
-  }
 }
 
 const computeScrollTop = (target) => {
@@ -173,12 +165,8 @@ $(document).on('pjax:success', async function (event, data, status, xhr, options
   }
   console.log('全部处理完成')
   if (window.pjaxSerialNumber !== serialNumber) return
-  /* 初始化日志界面 */
-  window.journalPjax && window.journalPjax(serialNumber)
   /* 初始化文章界面 */
   window.postPjax && window.postPjax(serialNumber)
-  /* 初始化相册界面 */
-  window.photoPjax && window.photoPjax(serialNumber)
   /* 初始化轮播 */
   commonContext.initCarousel()
   /* 加载主动推送或统计脚本 */

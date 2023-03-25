@@ -1098,11 +1098,15 @@ table td, table th {
   }
 
   &-searchicon {
-    display: none;
     cursor: pointer;
-    font-size: 23px !important;
+    font-size: 18px !important;
     color: var(--main);
     margin-left: auto;
+
+    span {
+      margin-left: 4px;
+      font-size: 15px;
+    }
   }
 
   &-mask {
@@ -3910,7 +3914,11 @@ button.swiper-pagination-bullet {
     padding: 0 0.75rem;
 
     .navbar-searchicon {
-      display: block;
+      font-size: 23px!important;
+
+      span {
+        display: none;
+      }
     }
 
     .navbar-search {

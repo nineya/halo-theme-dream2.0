@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="https://www.thymeleaf.org"
-      th:include="~{common/layout :: layout (title = '标签 - ' + ${site.title}, canonical = @{/tags}, content = ~{::content}, isPost = false)}">
-<th:block th:fragment="content" th:with="isEmpty = ${#lists.isEmpty(tags)}, enableTagsColor = ${theme.config.page_config.enable_tags_tag_color}">
-  <div th:if="${isEmpty}" class="card card-empty">
-    <i class="fa fa-inbox"></i>
-    还没有创建过标签，回<a th:href="${site.url}">主页</a>看看吧
-  </div>
-  <th:block th:unless="${isEmpty}">
-    <div class="card card-content">
-      <div class="card-tab">
-        <div>文章标签</div>
-      </div>
-      <div class="tags-field">
-        <a th:each="tag : ${tags}" class="tags" th:href="${tag.status.permalink}">
+<th:block xmlns:th="https://www.thymeleaf.org"
+          th:insert="~{common/layout :: layout (title = '标签 - ' + ${site.title}, canonical = @{/tags}, content = ~{::content}, isPost = false)}">
+  <th:block th:fragment="content"
+            th:with="isEmpty = ${#lists.isEmpty(tags)}, enableTagsColor = ${theme.config.page_config.enable_tags_tag_color}">
+    <div th:if="${isEmpty}" class="card card-empty">
+      <i class="fa fa-inbox"></i>
+      还没有创建过标签，回<a th:href="${site.url}">主页</a>看看吧
+    </div>
+    <th:block th:unless="${isEmpty}">
+      <div class="card card-content">
+        <div class="card-tab">
+          <div>文章标签</div>
+        </div>
+        <div class="tags-field">
+          <a th:each="tag : ${tags}" class="tags" th:href="${tag.status.permalink}">
           <span class="tag" th:text="${tag.spec.displayName}"
                 th:style="${enableTagsColor? 'color: ' + tag.spec.color +'; background: ' + tag.spec.color +'20' : ''}"></span>
-          <span class="tag is-grey" th:text="${tag.postCount}"
-                th:style="${enableTagsColor? 'background: ' + tag.spec.color +'CC' : ''}"></span>
-        </a>
+            <span class="tag is-grey" th:text="${tag.postCount}"
+                  th:style="${enableTagsColor? 'background: ' + tag.spec.color +'CC' : ''}"></span>
+          </a>
+        </div>
       </div>
-    </div>
+    </th:block>
   </th:block>
 </th:block>
-</html>

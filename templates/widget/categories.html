@@ -1,47 +1,23 @@
-<#macro categoriesTree categories>
-    <#list categories as category>
-        <li>
-            <a class="level is-marginless" href="${category.fullPath!}">
-                <span class="level-item">${category.name}</span>
-                <span class="level-item tag">${postCounts[category.id?c]!}</span>
-            </a>
-            <#assign num=num?number-1/>
-            <#if num?number gt 0 && category.children?? && category.children?size gt 0>
-                <ul>
-                    <@categoriesTree category.children/>
-                </ul>
-            </#if>
-        </li>
-        <#if num?number = 0>
-            <#break>
-        </#if>
-    </#list>
-</#macro>
-<#assign num= settings.categories_num!10 />
 <div xmlns:th="https://www.thymeleaf.org"
      th:fragment="widget (hide)"
-     th:class="'card widget ' + ${hide}">
-    <#assign postCounts = {}>
-    <@categoryTag method="list">
-        <div class="card-title">
-            <i class="fa fa-th-large card-title-label"></i><span>分类</span>
-            <#if settings.categories_more?? && settings.categories_more== true && categories?size gt num?number>
-                <a class="card-more" href="${categories_url!}">更多<i class="fa fa-angle-double-right"></i></a>
-            </#if>
-        </div>
-        <#list categories as category>
-            <#assign postCounts += {category.id: category.postCount}>
-        </#list>
-    </@categoryTag>
-    <@categoryTag method="tree">
-        <#if categories?? && categories?size gt 0>
-            <div class="card-content">
-                <ul class="menu-list">
-                    <@categoriesTree categories/>
-                </ul>
-            </div>
-        <#else>
-            <div class="card-empty">暂无分类</div>
-        </#if>
-    </@categoryTag>
+     th:class="'card widget ' + ${hide}"
+     th:with="num = ${#strings.isEmpty(theme.config.sidebar.categories_num)? 10 : T(java.lang.Integer).parseInt(theme.config.sidebar.categories_num)},
+     categories = ${categoryFinder.list(1,num)},
+     isEmpty = ${#lists.isEmpty(categories)}">
+    <div class="card-title">
+        <i class="fa fa-th-large card-title-label"></i><span>分类</span>
+        <a th:if="${categories.hasNext}" class="card-more" th:href="@{/categories}">更多<i
+                class="fa fa-angle-double-right"></i></a>
+    </div>
+    <div th:if="${isEmpty}" class="card-empty">暂无分类</div>
+    <div th:unless="${isEmpty}" class="card-content">
+        <ul class="menu-list">
+            <li th:each="category : ${categories}">
+                <a class="level is-marginless" th:href="${category.status.permalink}">
+                    <span class="level-item" th:text="${category.spec.displayName}"></span>
+                    <span class="level-item tag" th:text="${category.status.postCount}"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>

@@ -7,9 +7,9 @@
                 <span>打赏</span>
                 <div class="donate-list">
                     <ol>
-                        <li th:if="!#strings.isEmpty(theme.config.post.donate_alipay)"><img
+                        <li th:if="${!#strings.isEmpty(theme.config.post.donate_alipay)}"><img
                                 th:src="${theme.config.post.donate_alipay}" alt="支付宝捐赠"></li>
-                        <li th:if="!#strings.isEmpty(theme.config.post.donate_wechat)"><img
+                        <li th:if="${!#strings.isEmpty(theme.config.post.donate_wechat)}"><img
                                 th:src="${theme.config.post.donate_wechat}" alt="微信捐赠"></li>
                     </ol>
                 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="https://www.thymeleaf.org"
-      th:include="~{common/layout :: layout (title = ${post.spec.title + ' - ' + site.title}, canonical = ${post.status.permalink}, content = ~{main/article :: article (${post}, 'Post')}, isPost = true)}"
-      th:with="enableKatex = ${!#strings.isEmpty(post.metadata.annotations.get('enable_katex'))? post.metadata.annotations.get('enable_katex') : theme.config.post.enable_katex},
+<th:block xmlns:th="https://www.thymeleaf.org"
+          th:insert="~{common/layout :: layout (title = ${post.spec.title + ' - ' + site.title}, canonical = ${post.status.permalink}, content = ~{main/article :: article (${post}, 'Post')}, isPost = true)}"
+          th:with="enableKatex = ${!#strings.isEmpty(post.metadata.annotations.get('enable_katex'))? post.metadata.annotations.get('enable_katex') : theme.config.post.enable_katex},
       enableShare = ${!#strings.isEmpty(post.metadata.annotations.get('enable_share'))? post.metadata.annotations.get('enable_share') : theme.config.post.enable_share},
       enableCopyright = ${!#strings.isEmpty(post.metadata.annotations.get('enable_copyright'))? post.metadata.annotations.get('enable_copyright') : theme.config.post.enable_copyright}">
-</html>
+</th:block>

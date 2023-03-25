@@ -65,18 +65,6 @@ spec:
           label:  关闭
         - value: ""
           label:  跟随默认配置
-    - $formkit: radio
-      name: index_carousel
-      label:  开启置顶轮播
-      value: true
-      help: '如果该文章被置顶，在此处可开启文章置顶轮播。'
-      options:
-        - value: "true"
-          label:  开启
-        - value: "false"
-          label:  关闭
-        - value: ""
-          label:  跟随默认配置
 
 ---
 

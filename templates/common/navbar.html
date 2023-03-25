@@ -59,120 +59,91 @@
                     </div>
                 </th:block>
             </nav>
-
-<!--            <form data-pjax class="navbar-search" method="get" action="/search">-->
-<!--                <input maxlength="16" autocomplete="off" placeholder="搜索内容..." name="keyword" value class="input" type="text">-->
-<!--                <button type="submit" class="submit" aria-label="搜索按钮"><i class="fa fa-search"></i></button>-->
-<!--                <span class="icon"></span>-->
-<!--                <@postTag method="latest" top="5">-->
-<!--                    <nav class="result">-->
-<!--                        <#list posts as post>-->
-<!--                            <a href="${post.fullPath!}" title="${post.title!}" class="item">-->
-<!--                                <span class="sort">${post_index+1}</span>-->
-<!--                                <span class="text">${post.title!}</span>-->
-<!--                            </a>-->
-<!--                        </#list>-->
-<!--                    </nav>-->
-<!--                </@postTag>-->
-<!--            </form>-->
-            <i th:if="${pluginFinder.available('PluginSearchWidget')}" class="fa fa-search navbar-searchicon" href="javascript:SearchWidget.open();"></i>
+            <i th:if="${pluginFinder.available('PluginSearchWidget')}" class="fa fa-search navbar-searchicon" onclick="javascript:SearchWidget.open();"><span>搜索</span></i>
         </div>
     </div>
 
-<!--    <#&#45;&#45;  mobile菜单  &ndash;&gt;-->
-<!--    <div class="navbar-slideout">-->
-<!--        <div class="navbar-slideout-wrap">-->
-<!--            <div class="navbar-slideout-author">-->
-<!--                <img width="50" height="50" src="${user.avatar!}" class="avatar" alt="${user.nickname!}"/>-->
-<!--                <div class="info">-->
-<!--                    <a class="link" target="_blank" rel="noopener noreferrer nofollow">${user.nickname!}</a>-->
-<!--                    <p class="motto">${user.description!'一句话介绍自己吧！'}</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <ul class="navbar-slideout-menu">-->
-<!--                <li class="item">-->
-<!--                    <i class="fa fa-pencil-square-o"></i>-->
-<!--                    <@postTag method="count"><span>累计撰写 <strong>${count!"0"}</strong> 篇文章</span></@postTag>-->
-<!--                </li>-->
-<!--                <li class="item">-->
-<!--                    <i class="fa fa-tags"></i>-->
-<!--                    <@tagTag method="count"><span>累计创建 <strong>${count!"0"}</strong> 个标签</span></@tagTag>-->
-<!--                </li>-->
-<!--                <li class="item">-->
-<!--                    <i class="fa fa-commenting-o"></i>-->
-<!--                    <@commentTag method="count"><span>累计收到 <strong>${count!"0"}</strong> 条评论</span></@commentTag>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--            <ul class="navbar-slideout-menu not-toc">-->
-<!--                <li>-->
-<!--                    <a class="link panel" href="#" rel="nofollow">-->
-<!--                        <span>导航</span>-->
-<!--                        <i class="fa fa-angle-right"></i>-->
-<!--                    </a>-->
-<!--                    <ul class="slides panel-body panel-side-menu">-->
-<!--                        <@menuTag method="tree">-->
-<!--                            <#list menus?sort_by('priority') as menu>-->
-<!--                                <#if menu.children?? && menu.children?size gt 0>-->
-<!--                                    <#if menu.name?default('')?starts_with('#hide') != true>-->
-<!--                                        <li>-->
-<!--                                            <div class="link panel">-->
-<!--                                                <a href="${menu.url!}" title="${menu.name!}">${menu.name!}</a>-->
-<!--                                                <i class="fa fa-angle-right"></i>-->
-<!--                                            </div>-->
-<!--                                            <ul class="slides panel-body">-->
-<!--                                                <#if menu.children?? && menu.children?size gt 0>-->
-<!--                                                    <#list menu.children?sort_by('priority') as child>-->
-<!--                                                        <#if child.children?? && child.children?size gt 0>-->
-<!--                                                            <#if child.name?default('')?starts_with('#hide') != true>-->
-<!--                                                                <li>-->
-<!--                                                                    <div class="link panel">-->
-<!--                                                                        <a href="${child.url!}" title="${child.name!}">${child.name!}</a>-->
-<!--                                                                        <i class="fa fa-angle-right"></i>-->
-<!--                                                                    </div>-->
-<!--                                                                    <ul class="slides panel-body">-->
-<!--                                                                        <#list child.children?sort_by('priority') as child1>-->
-<!--                                                                            <#if child1.name?default('')?starts_with('#hide') != true>-->
-<!--                                                                                <li>-->
-<!--                                                                                    <a class="link" href="${child1.url!}" title="${child1.name!}">${child1.name!}</a>-->
-<!--                                                                                </li>-->
-<!--                                                                            </#if>-->
-<!--                                                                        </#list>-->
-<!--                                                                    </ul>-->
-<!--                                                                </li>-->
-<!--                                                            </#if>-->
-<!--                                                        <#else>-->
-<!--                                                            <#if child.name?default('')?starts_with('#hide') != true>-->
-<!--                                                                <li>-->
-<!--                                                                    <a class="link" href="${child.url!}" title="${child.name!}">${child.name!}</a>-->
-<!--                                                                </li>-->
-<!--                                                            </#if>-->
-<!--                                                        </#if>-->
-<!--                                                    </#list>-->
-<!--                                                </#if>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
-<!--                                    </#if>-->
-<!--                                <#else>-->
-<!--                                    <#if menu.name?default('')?starts_with('#hide') != true>-->
-<!--                                        <li>-->
-<!--                                            <a class="link" href="${menu.url!}" title="${menu.name!}">${menu.name!}</a>-->
-<!--                                        </li>-->
-<!--                                    </#if>-->
-<!--                                </#if>-->
-<!--                            </#list>-->
-<!--                        </@menuTag>-->
-<!--                    </ul>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--            <#if settings.drawer_toc!true>-->
-<!--                <ul class="navbar-slideout-menu is-toc">-->
-<!--                    <a class="link in" href="#" rel="nofollow"><span>目录</span></a>-->
-<!--                    <div class="toc-content">-->
-<!--                    </div>-->
-<!--                </ul>-->
-<!--            </#if>-->
-<!--        </div>-->
-<!--    </div>-->
+    <#--  mobile菜单  -->
+    <div class="navbar-slideout">
+        <div class="navbar-slideout-wrap">
+            <div class="navbar-slideout-author">
+                <img width="50" height="50" th:src="${contributor.avatar}" th:alt="${contributor.displayName}" class="avatar"/>
+                <div class="info">
+                    <a class="link" target="_blank" rel="noopener noreferrer nofollow" th:text="${contributor.displayName}"></a>
+                    <p class="motto" th:text="${contributor.bio}"></p>
+                </div>
+            </div>
+            <ul class="navbar-slideout-menu">
+                <li class="item">
+                    <i class="fa fa-pencil-square-o"></i>
+                    <span>累计撰写 <strong th:text="${stats.post}"></strong> 篇文章</span>
+                </li>
+                <li class="item">
+                    <i class="fa fa-tags"></i>
+                    <span>累计创建 <strong th:text="${stats.category}"></strong> 个分类</span>
+                </li>
+                <li class="item">
+                    <i class="fa fa-commenting-o"></i>
+                    <span>累计收到 <strong th:text="${stats.comment}"></strong> 条评论</span>
+                </li>
+            </ul>
+            <ul class="navbar-slideout-menu not-toc">
+                <li>
+                    <a class="link panel" href="#" rel="nofollow">
+                        <span>导航</span>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <ul class="slides panel-body panel-side-menu">
+                        <li th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
+                            <a class="link"
+                               th:if="${#lists.isEmpty(menuItem.children)}"
+                               th:href="${menuItem.status.href}"
+                               th:title="${menuItem.status.displayName}"
+                               th:text="${menuItem.status.displayName}"></a>
+                            <th:block th:unless="${#lists.isEmpty(menuItem.children)}">
+                                <div class="link panel">
+                                    <a th:href="${menuItem.status.href}"
+                                       th:title="${menuItem.status.displayName}"
+                                       th:text="${menuItem.status.displayName}"></a>
+                                    <i class="fa fa-angle-right"></i>
+                                </div>
+                                <ul class="slides panel-body">
+                                    <li th:each="dropdown : ${menuItem.children}">
+                                        <a class="link"
+                                           th:if="${#lists.isEmpty(dropdown.children)}"
+                                           th:href="${dropdown.status.href}"
+                                           th:title="${dropdown.status.displayName}"
+                                           th:text="${dropdown.status.displayName}"></a>
+                                        <th:block th:unless="${#lists.isEmpty(dropdown.children)}">
+                                            <div class="link panel">
+                                                <a th:href="${dropdown.status.href}"
+                                                   th:title="${dropdown.status.displayName}"
+                                                   th:text="${dropdown.status.displayName}"></a>
+                                                <i class="fa fa-angle-right"></i>
+                                            </div>
+                                            <ul class="slides panel-body">
+                                                <li th:each="dropdownChild : ${dropdown.children}">
+                                                    <a class="link"
+                                                       th:href="${dropdownChild.status.href}"
+                                                       th:title="${dropdownChild.status.displayName}"
+                                                       th:text="${dropdownChild.status.displayName}"></a>
+                                                </li>
+                                            </ul>
+                                        </th:block>
+                                    </li>
+                                </ul>
+                            </th:block>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul th:if="${theme.config.basic_style.drawer_toc}" class="navbar-slideout-menu is-toc">
+                <a class="link in" href="#" rel="nofollow"><span>目录</span></a>
+                <div class="toc-content">
+                </div>
+            </ul>
+        </div>
+    </div>
 
     <div class="navbar-mask"></div>
 </header>

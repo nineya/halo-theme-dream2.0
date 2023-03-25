@@ -1,7 +1,6 @@
 <div xmlns:th="https://www.thymeleaf.org"
      th:fragment="widget (hide)"
-     th:class="'card widget profile ' + ${hide}"
-     th:with="stats = ${siteStatsFinder.getStats()}, contributor = ${contributorFinder.getContributor(theme.config.sidebar.metadata_name)}">
+     th:class="'card widget profile ' + ${hide}">
     <div class="card-content">
         <nav class="level">
             <div class="level-item" style="flex-direction: column;">

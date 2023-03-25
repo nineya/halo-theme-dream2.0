@@ -6,43 +6,12 @@ const commonContext = {
   initWidget() {
     const $columnRight = $('.columns .column-right')
     const $columnRightShadow = $('.columns .column-right-shadow')
-    $('.widget.recent-comments .reply .link').html((i, html) => Utils.renderedEmojiHtml(html))
     // 实现将右边widget拷贝的左边
     if ($columnRight.length && $columnRightShadow.length && !$columnRightShadow[0].children.length) {
       for (const child of $columnRight[0].children) {
         $columnRightShadow[0].append(child.cloneNode(true))
       }
     }
-  },
-  /* 初始化悬浮操作按钮 */
-  initActions() {
-    const $bulletScreen = $('.actions>.bullet-screen')
-    if (localStorage.getItem('stop-bullet-screen') === 'true') {
-      $bulletScreen.addClass('stop-bullet-screen')
-    }
-    if ($('halo-comment[bullet-screen]').length !== 0) {
-      $bulletScreen.removeClass('is-hidden-all')
-    }
-    const applyStopBulletScreen = (stopBulletScreenValue) => {
-      $('halo-comment[bullet-screen]').each(function () {
-        const shadowDom = this.shadowRoot.getElementById('halo-comment')
-        if (stopBulletScreenValue) {
-          $(shadowDom).attr('stop-bullet-screen', 'true')
-        } else {
-          $(shadowDom).removeAttr('stop-bullet-screen')
-        }
-      })
-      if (stopBulletScreenValue) {
-        $bulletScreen.addClass('stop-bullet-screen')
-      } else {
-        $bulletScreen.removeClass('stop-bullet-screen')
-      }
-      localStorage.setItem('stop-bullet-screen', stopBulletScreenValue)
-    }
-    $bulletScreen.on('click', () => {
-      let stopBulletScreen = localStorage.getItem('stop-bullet-screen') || false
-      applyStopBulletScreen(stopBulletScreen.toString() !== 'true')
-    })
   },
   /* 初始化目录和公告模块 */
   initTocAndNotice() {
@@ -106,10 +75,6 @@ const commonContext = {
       } else {
         document.documentElement.classList.remove('night')
       }
-      $('halo-comment').each(function () {
-        const shadowDom = this.shadowRoot.getElementById('halo-comment')
-        $(shadowDom)[`${isNightValue ? 'add' : 'remove'}Class`]('night')
-      })
       localStorage.setItem('night', isNightValue)
       isNight = isNightValue
     }
@@ -201,17 +166,6 @@ const commonContext = {
     }
     document.addEventListener('scroll', handleScroll)
   },
-  /* 搜索框弹窗 */
-  searchDialog() {
-    const $result = $('.navbar-search .result')
-    $('.navbar-search .input').on('click', function (e) {
-      e.stopPropagation()
-      $result.addClass('active')
-    })
-    $(document).on('click', function () {
-      $result.removeClass('active')
-    })
-  },
   /* 小屏幕伸缩侧边栏，包含导航或者目录 */
   drawerMobile() {
     $('.navbar-slideicon').on('click', function (e) {
@@ -255,30 +209,6 @@ const commonContext = {
   back2Top() {
     $('#back-to-top').on('click', function () {
       $('body, html').animate({scrollTop: 0}, 400)
-    })
-  },
-  /* 小屏幕搜索框 */
-  searchMobile() {
-    $('.navbar-searchicon').on('click', function (e) {
-      e.stopPropagation()
-      /* 关闭侧边栏 */
-      $('.navbar-slideout').removeClass('active')
-      /* 处理开启关闭状态 */
-      const $html = $('html')
-      const $mask = $('.navbar-mask')
-      const $above = $('.navbar-above')
-      const $search_out = $('.navbar-searchout')
-      if ($search_out.hasClass('active')) {
-        $html.removeClass('disable-scroll')
-        $mask.removeClass('active slideout')
-        $search_out.removeClass('active')
-        $above.removeClass('solid')
-      } else {
-        $html.addClass('disable-scroll')
-        $mask.addClass('active')
-        $above.addClass('solid')
-        $search_out.addClass('active')
-      }
     })
   },
   /* 点击遮罩层关闭 */

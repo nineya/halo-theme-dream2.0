@@ -1,4 +1,4 @@
-<html xmlns:th="https://www.thymeleaf.org"
+<html lang="zh" xmlns:th="https://www.thymeleaf.org"
       th:fragment="layout (title, canonical, content, isPost)">
 <th:block th:if="${!#strings.equals('',param._pjax)}">
   <th:block th:replace="~{common/head :: head}"/>
@@ -9,7 +9,9 @@
   <th:block th:replace="~{common/scripts}"/>
   </body>
 </th:block>
-<th:block th:unless="${!#strings.equals('',param._pjax)}">
+<th:block th:unless="${!#strings.equals('',param._pjax)}"
+          th:with="stats = ${siteStatsFinder.getStats()},
+          contributor = ${contributorFinder.getContributor(theme.config.sidebar.metadata_name)}">
   <th:block th:replace="~{common/head :: head}"/>
   <body>
   <th:block th:replace="~{common/navbar}"/>
@@ -20,12 +22,14 @@
     <div th:class="${theme.config.basic_style.sidebar_column != 'all' ? 'container two-column' : 'container' }">
       <div class="columns">
         <div class="column column-main">
-          <th:block th:insert="${content}"/>
+          <th:block th:replace="${content}"/>
         </div>
-        <th:block th:if="${theme.config.basic_style.sidebar_column!='only-right' && theme.config.basic_style.sidebar_column!='module-left'}">
+        <th:block
+            th:if="${theme.config.basic_style.sidebar_column!='only-right' && theme.config.basic_style.sidebar_column!='module-left'}">
           <th:block th:replace="~{common/widget :: widget('left')}"/>
         </th:block>
-        <th:block th:if="${theme.config.basic_style.sidebar_column!='only-left' && theme.config.basic_style.sidebar_column!='module-right'}">
+        <th:block
+            th:if="${theme.config.basic_style.sidebar_column!='only-left' && theme.config.basic_style.sidebar_column!='module-right'}">
           <th:block th:replace="~{common/widget :: widget('right')}"/>
         </th:block>
       </div>

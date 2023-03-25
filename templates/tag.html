@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="https://www.thymeleaf.org"
-      th:include="~{common/layout :: layout (title = ${'标签：' + tag.spec.displayName + ' - ' +site.title},
+<th:block xmlns:th="https://www.thymeleaf.org"
+          th:insert="~{common/layout :: layout (title = ${'标签：' + tag.spec.displayName + ' - ' +site.title},
        canonical = ${tag.status.permalink}, content = ~{::content}, isPost = false)}">
-<th:block th:fragment="content" th:with="isEmpty = ${#lists.isEmpty(posts)}">
+  <th:block th:fragment="content" th:with="isEmpty = ${#lists.isEmpty(posts)}">
     <div th:if="${isEmpty}" class="card card-empty">
-        <i class="fa fa-inbox"></i>
-        该标签下没有文章，回<a th:href="${site.url}">主页</a>看看吧
+      <i class="fa fa-inbox"></i>
+      该标签下没有文章，回<a th:href="${site.url}">主页</a>看看吧
     </div>
     <th:block th:unless="${isEmpty}">
-        <div class="card card-content main-title">
-            <ul class="breadcrumb">
-                <li><a th:href="@{/tags}"><i class="fa fa-tags"></i>标签</a></li>
-                <li th:text="${tag.spec.displayName}"></li>
-            </ul>
-        </div>
-        <th:block th:replace="~{main/article_list :: articleList (${posts.items}, false)}"/>
-        <th:block th:replace="~{main/pagination :: pagination (${posts}, ${tag.status.permalink})}"/>
+      <div class="card card-content main-title">
+        <ul class="breadcrumb">
+          <li><a th:href="@{/tags}"><i class="fa fa-tags"></i>标签</a></li>
+          <li th:text="${tag.spec.displayName}"></li>
+        </ul>
+      </div>
+      <th:block th:replace="~{main/article_list :: articleList (${posts.items}, false)}"/>
+      <th:block th:replace="~{main/pagination :: pagination (${posts}, ${tag.status.permalink})}"/>
     </th:block>
+  </th:block>
 </th:block>
-</html>
