@@ -197,12 +197,54 @@ spec:
               label:  模块化（左侧）
             - value: 'module-right'
               label:  模块化（右侧）
-#        - $formkit: text
-#          name: module_links
-#              label:  模块化布局链接
-#      type: textarea
-#          placeholder: '标签|文字说明|是否新界面打开(true/false)|背景图链接|跳转链接地址'
-#          help: '以标签|文字说明|是否新界面打开(true/false)|背景图链接|跳转链接地址格式填写内容，一行表示一个模块链接，可填写 1~6 个链接。'
+        - $formkit: repeater
+          name: carousel_options
+          label: 首页大图轮播选项
+          children:
+            - $formkit: text
+              name: title
+              label: 标题
+            - $formkit: text
+              name: url
+              label: 地址
+            - $formkit: attachment
+              name: image
+              label: 背景图
+            - $formkit: radio
+              name: target
+              label:  打开方式
+              value: '_blank'
+              options:
+                - value: '_blank'
+                  label:  新窗口
+                - value: '_self'
+                  label:  原窗口
+        - $formkit: repeater
+          name: module_options
+          label: 模块化布局选项
+          help: 可填写 1~6 个链接。
+          children:
+            - $formkit: text
+              name: tag
+              label: 标签
+            - $formkit: text
+              name: title
+              label: 标题
+            - $formkit: text
+              name: url
+              label: 地址
+            - $formkit: attachment
+              name: image
+              label: 背景图
+            - $formkit: radio
+              name: target
+              label:  打开方式
+              value: '_blank'
+              options:
+                - value: '_blank'
+                  label:  新窗口
+                - value: '_self'
+                  label:  原窗口
         - $formkit: radio
           name: left_sidebar_sticky
           label:  左侧边栏悬浮
@@ -472,14 +514,8 @@ spec:
           label: 侧边栏展示
           help: 配置侧边栏展示方式，三列布局时不能在右侧显示音乐模块。
           value:
-            - name: notice
+            - type: notice
               position: left
-              hide: is-not-hidden
-            - name: notice
-              position: right
-              hide: is-not-hidden
-            - name: notice
-              position: right
               hide: is-not-hidden
           children:
             - $formkit: select
@@ -544,6 +580,7 @@ spec:
           name: color_character
           label: 侧边栏信息-彩字内容
           placeholder: 请输入彩字内容
+          rows: 4
           help: "按行输入彩字消息内容，一行一条。"
         - $formkit: text
           name: profile_location
@@ -554,39 +591,31 @@ spec:
           label: 侧边栏信息-主题按钮
           placeholder: '按钮名称|按钮地址'
           help: '需要按钮名称和按钮地址两个参数，参数间用 “|” 分隔，放空则不显示主题按钮。'
-        - $formkit: text
-          name: social_github
-          label: 侧边栏信息-Github
-          placeholder: '请输入 Github 用户名'
-        - $formkit: text
-          name: social_qq
-          label: 侧边栏信息-QQ
-          placeholder: '请输入 QQ 号'
-        - $formkit: text
-          name: social_weibo
-          label: 侧边栏信息-微博
-          placeholder: '请输入微博用户名'
-        - $formkit: text
-          name: social_twitter
-          label: 侧边栏信息-Twitter
-          placeholder: '请输入 Twitter 用户名'
-        - $formkit: text
-          name: social_facebook
-          label: 侧边栏信息-Facebook
-          placeholder: '请输入 Facebook 用户名'
-        - $formkit: text
-          name: social_email
-          label: '侧边栏信息-邮箱'
-          placeholder: '请输入邮箱地址'
-        - $formkit: text
-          name: social_telegram
-          label: 侧边栏信息-Telegram
-          placeholder: '请输入 Telegram 用户名'
-        - $formkit: textarea
-          name: custom_social_options
-          label: 侧边栏信息-自定义社交渠道选项
-          placeholder: "名称|图标|链接地址"
-          help: 一行表示一个社交渠道，每个社交渠道需要名称、图标和链接地址三个参数，参数之间使用 “|” 分隔，主题内置图标采用 <a href="https://fontawesome.uihtm.com/icons.html" target="_blank">FontAwesome 4.7</a>'。
+        - $formkit: repeater
+          name: custom_options
+          label: 社交渠道
+          help: 图标目前仅支持 FontAwesome 4.7。
+          value:
+            - name: QQ聊天
+              icon: 'fa-qq'
+              url: tencent://message/?uin=${qq}&Site=&Menu=yes
+            - name: 给我发邮件
+              icon: 'fa-envelope'
+              url: mailto:邮箱地址
+          children:
+            - $formkit: text
+              name: name
+              label: 名称
+              value: ""
+            - $formkit: text
+              name: icon
+              label: 图标
+              value: ""
+            - $formkit: textarea
+              rows: 2
+              name: url
+              label: 地址
+              value: ""
         - $formkit: textarea
           name: notice_content
           label: 侧边栏公告-博客公告

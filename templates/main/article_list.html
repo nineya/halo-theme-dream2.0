@@ -1,5 +1,5 @@
 <th:block xmlns:th="https://www.thymeleaf.org"
-     th:fragment="articleList (posts, isFirstIndex)">
+          th:fragment="articleList (posts)">
   <th:block th:each="post : ${posts}"
             th:with="thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail + '?id=' + postStat.index : post.spec.cover},
             thumbnail_mode = ${(theme.config.post.top_thumbnail_mode == 'grid' || (!post.spec.pinned && theme.config.post.thumbnail_mode == 'grid'))? 'grid' : !#strings.isEmpty(post.metadata.annotations.get('thumbnail_mode'))? post.metadata.annotations.get('thumbnail_mode') : post.spec.pinned ? theme.config.post.top_thumbnail_mode : theme.config.post.thumbnail_mode}">
@@ -90,13 +90,16 @@
       </a>
     </div>
 
-    <a th:if="${post.spec.pinned && thumbnail_mode == 'fold'}" class="card widget card-fold" href="${post.fullPath!}">
+    <a th:if="${post.spec.pinned && thumbnail_mode == 'fold'}" class="card widget card-fold"
+       th:href="${post.status.permalink}">
       <h2 class="title"><span class="top">置顶</span>
         <p th:text="${post.spec.title}"></p></h2>
       <p th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"></p>
     </a>
 
-    <div th:if="${(#strings.isEmpty(thumbnail) && !(post.spec.pinned && thumbnail_mode == 'fold')) || #strings.isEmpty(thumbnail_mode) ||  thumbnail_mode == 'default'}" class="card widget">
+    <div
+      th:if="${(#strings.isEmpty(thumbnail) && !(post.spec.pinned && thumbnail_mode == 'fold')) || #strings.isEmpty(thumbnail_mode) ||  thumbnail_mode == 'default'}"
+      class="card widget">
       <a th:if="${!#strings.isEmpty(thumbnail)}" class="thumbnail" th:href="${post.status.permalink}">
         <div class="thumbnail-image" th:style="'background-image: url(' + ${thumbnail} + ')'">
         </div>
@@ -127,60 +130,33 @@
       </div>
     </div>
   </th:block>
-<th:block/>
-
-<!--<#elseif thumbnail_mode == "grid">-->
-<!--<div class="column-main-grid">-->
-<!--  <#list post_index..(posts?size-1) as i>-->
-<!--  <#local gradPost=posts[i]>-->
-<!--  <#local thumbnail = (gradPost.thumbnail?? && gradPost.thumbnail!='')?then(gradPost.thumbnail!,-->
-<!--  (settings.default_thumbnail?? && settings.default_thumbnail!='')?then(settings.default_thumbnail +-->
-<!--  settings.default_thumbnail?contains('?')?then("&","?") + "postId=" + gradPost.id?c, ''))>-->
-<!--  <#if is_first_index?? && thumbnail != '' && !(gradPost.topPriority!=1 || !gradPost.metas?? ||-->
-<!--  (gradPost.metas.index_carousel!'false')=='false')>-->
-<!--  <#continue>-->
-<!--</#if>-->
-<!--<div class="card widget">-->
-<!--  <a class="thumbnail" href="${gradPost.fullPath!}">-->
-<!--    <div class="thumbnail-image" style="background-image: url(${thumbnail!})">-->
-<!--    </div>-->
-<!--  </a>-->
-<!--  <ul class="breadcrumb">-->
-<!--    <li><@global.timeline datetime=gradPost.createTime/></li>-->
-<!--    <li><i class="fa fa-eye"></i>${gradPost.visits?c}</li>-->
-<!--    <#if !gradPost.disallowComment!false>-->
-<!--    <li class="is-hidden-mobile"><i class="fa fa-comments-o"></i>${gradPost.commentCount?c}</li>-->
-<!--  </-->
-<!--  #if>-->
-<!--  <li class="is-hidden-mobile"><i class="fa fa-thumbs-o-up"></i>${gradPost.likes?c}</li>-->
-<!--  <#local heat= (24+gradPost.visits*0.1+gradPost.likes*2+gradPost.commentCount*3) />-->
-<!--  <#local heatColor= '#'+(heat < 37)?string('ffa87e',(heat < 120)?string('fb734a','e0081c')) />-->
-<!--  <li style="color: ${heatColor}">${heat}℃</li>-->
-<!--  </ul>-->
-<!--  <h2 class="title">-->
-<!--    <#if gradPost.topPriority==1><span class="top">置顶</span></#if><a-->
-<!--  href="${gradPost.fullPath!}">${gradPost.title!}</a>-->
-<!--  </h2>-->
-<!--</div>-->
-<!--</#list>-->
-<!--</div>-->
-<!--<#break/>-->
-<!--<#else>-->
-<!--</#if>-->
-<!--</#list>-->
-<!--</div>-->
-<!--<#macro model_build content>-->
-<!--    <#if content == ''>-->
-<!--      <#return>-->
-<!--    </#if>-->
-<!--    <#local content_option=content?split('|')>-->
-<!--    <#local tag=(content_option[0]!'')?trim>-->
-<!--    <#local content=((content_option[1]!'')?trim != '')?then('<div class="title">${content_option[1]?trim}</div>', '')>-->
-<!--    <#local target=((content_option[2]!'false')?trim == 'true')?then('target="_blank"', '')>-->
-<!--    <#local imageUrl=((content_option[3]!'')?trim != '')?then('style="background-image: url(${content_option[3]?trim})"', '')>-->
-<!--    <#local targetUrl=((content_option[4]!'')?trim != '')?then('href="${content_option[4]?trim}"', '')>-->
-<!--  <a class="card widget brightness ${(content!='')?then('bg-shadow', '')}" ${target} ${imageUrl} ${targetUrl}>${content}<div class="tag">${tag}</div></a>-->
-<!--</#macro>-->
-<!--<#macro article_list posts>-->
-
-<!--</#macro>-->
+  <div th:if="${theme.config.post.top_thumbnail_mode == 'grid' || theme.config.post.thumbnail_mode == 'grid'}"
+       class="column-main-grid">
+    <th:block th:each="post : ${posts}"
+              th:with="thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail + '?id=' + postStat.index : post.spec.cover}">
+      <div
+        th:if="${(theme.config.post.top_thumbnail_mode == 'grid' || (!post.spec.pinned && theme.config.post.thumbnail_mode == 'grid'))}"
+        class="card widget">
+        <a class="thumbnail" th:href="${post.status.permalink}">
+          <div class="thumbnail-image" th:style="'background-image: url(' + ${thumbnail} + ')'"></div>
+        </a>
+        <ul class="breadcrumb">
+          <li th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></li>
+          <li><i class="fa fa-eye"></i>[[${post.stats.visit}]]</li>
+          <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="fa fa-comments-o"></i>[[${post.stats.comment}]]
+          </li>
+          <li class="is-hidden-mobile"><i class="fa fa-thumbs-o-up"></i>[[${post.stats.upvote}]]</li>
+          <li
+            th:with="heat= ${24+post.stats.visit*0.1+post.stats.upvote*2+post.stats.comment*3}, heatColor= '#'+${(heat < 37)? 'ffa87e' : (heat < 120)? 'fb734a' : 'e0081c'}"
+            th:style="'color: ' + ${heatColor}">[[${heat}]]℃
+          </li>
+        </ul>
+        <h2 class="title">
+          <span class="top" th:if="${post.spec.pinned}">置顶</span>
+          <a
+            th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
+        </h2>
+      </div>
+    </th:block>
+  </div>
+</th:block>

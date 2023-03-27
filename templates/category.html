@@ -14,7 +14,7 @@
           <li th:text="${category.spec.displayName}"></li>
         </ul>
       </div>
-      <th:block th:replace="~{main/article_list :: articleList (${posts.items}, false)}"/>
+      <th:block th:replace="~{main/article_list :: articleList (${posts.items})}"/>
       <th:block th:replace="~{main/pagination :: pagination (${posts}, ${category.status.permalink})}"/>
     </th:block>
   </th:block>

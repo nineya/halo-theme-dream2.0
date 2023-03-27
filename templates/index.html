@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <th:block xmlns:th="https://www.thymeleaf.org"
-          th:insert="~{common/layout :: layout (title = ${site.title}, canonical = ${site.url}, content = ~{::content}, isPost = false)}">
+          th:insert="~{common/layout :: layout (title = ${site.title}, canonical = ${site.url}, content = ~{::content}, isPost = false)}"
+          th:with="isFirstIndex = ${posts.first}">
   <th:block th:fragment="content" th:with="isEmpty = ${#lists.isEmpty(posts)}">
     <div th:if="${isEmpty}" class="card card-empty">
       <i class="fa fa-inbox"></i>
@@ -8,91 +9,63 @@
     </div>
     <th:block th:unless="${isEmpty}">
       <th:block th:replace="~{::firstIndex}"/>
-      <th:block th:replace="~{main/article_list :: articleList (${posts.items}, ${posts.first})}"/>
+      <th:block th:replace="~{main/article_list :: articleList (${posts.items})}"/>
       <th:block th:replace="~{main/pagination :: pagination (${posts}, '/index')}"/>
     </th:block>
   </th:block>
 
-  <th:block th:if="${posts.first}" th:fragment="firstIndex">
-    <th:block th:replace="~{::carousel}"/>
+  <th:block th:if="${posts.first}" th:fragment="firstIndex"
+            th:with="moduleSize = ${#lists.size(theme.config.basic_style.module_options)}, isModule = ${(theme.config.basic_style.sidebar_column=='module-left' || theme.config.basic_style.sidebar_column=='module-right') && moduleSize > 0}">
+    <th:block th:if="${isModule}">
+      <div class="model model-index">
+        <th:block th:replace="~{::carousel}"/>
+        <div class="model model-index-side">
+          <th:block th:each="index : ${#numbers.sequence(0, 1)}">
+            <th:block th:if="${index < moduleSize}">
+              <th:block th:replace="~{::buildModule (${theme.config.basic_style.module_options.get(index)})}"/>
+            </th:block>
+          </th:block>
+        </div>
+      </div>
+      <div th:if="${moduleSize > 2}" class="'model model-attach model-attach-' + ${moduleSize - 2}">
+        <th:block th:each="index : ${#numbers.sequence(2, 5)}">
+          <th:block th:if="${index < moduleSize}">
+            <th:block th:replace="~{::buildModule (${theme.config.basic_style.module_options.get(index)})}"/>
+          </th:block>
+        </th:block>
+      </div>
+    </th:block>
+    <th:block th:unless="${isModule}">
+      <th:block th:replace="~{::carousel}"/>
+    </th:block>
     <div th:if="${!#strings.isEmpty(theme.config.basic_info.index_inform)}" class="card tips brightness"
          th:text="${theme.config.basic_info.index_inform}"></div>
   </th:block>
 
+  <th:block th:fragment="buildModule (option)">
+    <a th:class="'card widget brightness ' + ${option.title != ''? 'bg-shadow' : ''}"
+       th:target="${option.target}"
+       th:style="'background-image: url(' + ${option.image} + ')'"
+       th:href="${option.url}">
+      <div class="title" th:href="${option.title}"></div>
+      <div class="tag" th:text="${option.tag}"></div>
+    </a>
+  </th:block>
+
   <th:block th:fragment="carousel">
+    <div th:if="${!#lists.isEmpty(theme.config.basic_style.carousel_options)}" class="card widget swiper">
+      <div class="swiper-wrapper">
+        <a th:each="option :${theme.config.basic_style.carousel_options}" class="swiper-slide bg-shadow cover-image"
+           th:style="'background-image: url(' + ${option.image} + ')'" th:target="${option.target}"
+           th:href="${option.url}">
+          <div class="swiper-slide-details" data-swiper-parallax="200" data-swiper-parallax-duration="600">
+            <p class="swiper-slide-details-title" th:text="${option.title}"></p>
+          </div>
+        </a>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
   </th:block>
 </th:block>
-<!--    <#if is_first_index!false>-->
-<!--        <#local carousel_content>-->
-<!--          <#list posts as post>-->
-<!--              <#if post.topPriority!=1>-->
-<!--                  <#break>-->
-<!--              </#if>-->
-<!--              <#if !post.metas?? || (post.metas.index_carousel!'false')=='false'>-->
-<!--                  <#continue>-->
-<!--              </#if>-->
-<!--              <#local thumbnail = (post.thumbnail?? && post.thumbnail!='')?then(post.thumbnail!, (settings.default_thumbnail?? && settings.default_thumbnail!='')?then(settings.default_thumbnail + settings.default_thumbnail?contains('?')?then("&","?") + "postId=" + post.id?c, ''))>-->
-<!--              <#if thumbnail != ''>-->
-<!--                <a class="swiper-slide bg-shadow cover-image" style="background-image: url(${thumbnail})" href="${post.fullPath!}">-->
-<!--                    <div class="swiper-slide-details" data-swiper-parallax="200" data-swiper-parallax-duration="600">-->
-<!--                        <p class="swiper-slide-details-title">${post.title!}</p>-->
-<!--                        <ul class="breadcrumb">-->
-<!--                            <li><@global.timeline datetime=post.createTime/></li>-->
-<!--                            <li><i class="fa fa-eye"></i>${post.visits?c}</li>-->
-<!--                            <#if !post.disallowComment!false>-->
-<!--                                <li><i class="fa fa-comments-o"></i>${post.commentCount?c}</li></#if>-->
-<!--                            <li><i class="fa fa-thumbs-o-up"></i>${post.likes?c}</li>-->
-<!--                            <#local heat= (24+post.visits*0.1+post.likes*2+post.commentCount*3) />-->
-<!--                            <#local heatColor= '#'+(heat < 37)?string('ffa87e',(heat < 120)?string('fb734a','e0081c')) />-->
-<!--                            <li style="color: ${heatColor}">${heat}℃</li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--              </#if>-->
-<!--          </#list>-->
-<!--        </#local>-->
-<!--        <#if settings.sidebar_column=='module-left' || settings.sidebar_column=='module-right'>-->
-<!--          <#if settings.module_links?? && settings.module_links?trim != ''>-->
-<!--              <#local module_links=settings.module_links?split('\n')>-->
-<!--          <#else>-->
-<!--              <#local module_links=[]>-->
-<!--              <#list 0..1 as i>-->
-<!--                <#local post=posts[i]>-->
-<!--                <#local module_links=module_links+["推荐|${post.title!}|false|${post.thumbnail!}|${post.fullPath!}"]>-->
-<!--              </#list>-->
-<!--          </#if>-->
-<!--          <div class="model model-index">-->
-<!--            <div class="card widget swiper">-->
-<!--              <div class="swiper-wrapper">${carousel_content}</div>-->
-<!--              <div class="swiper-pagination"></div>-->
-<!--              <div class="swiper-button-prev"></div>-->
-<!--              <div class="swiper-button-next"></div>-->
-<!--            </div>-->
-<!--            <div class="model model-index-side">-->
-<!--              <#list 0..1 as i>-->
-<!--                <#if i &lt; module_links?size >-->
-<!--                    <@model_build module_links[i]/>-->
-<!--                </#if>-->
-<!--              </#list>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--            <#if module_links?size &gt; 2 && module_links?size&lt;=6>-->
-<!--              <div class="model model-attach model-attach-${module_links?size-2}">-->
-<!--                <#list 2..5 as i>-->
-<!--                    <#if i &lt; module_links?size >-->
-<!--                        <@model_build module_links[i]/>-->
-<!--                    </#if>-->
-<!--                </#list>-->
-<!--              </div>-->
-<!--            </#if>-->
-<!--          <#assign is_carousel=true />-->
-<!--        <#elseif carousel_content != ''>-->
-<!--          <div class="card widget swiper">-->
-<!--            <div class="swiper-wrapper">${carousel_content}</div>-->
-<!--            <div class="swiper-pagination"></div>-->
-<!--            <div class="swiper-button-prev"></div>-->
-<!--            <div class="swiper-button-next"></div>-->
-<!--          </div>-->
-<!--          <#assign is_carousel=true />-->
-<!--        </#if>-->
-<!--    </#if>-->
