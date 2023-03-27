@@ -11,6 +11,7 @@
 <a href="https://github.com/nineya/halo-theme-dream2.0/commits"><img alt="commits" src="https://img.shields.io/github/last-commit/nineya/halo-theme-dream2.0.svg?style=flat-square"/></a>
 <a href="https://github.com/nineya/halo-theme-dream2.0#donate"><img alt="donate" src="https://img.shields.io/badge/$-donate-ff69b4.svg?style=flat-square"/></a>
 </p>
+
 本仓库为 `Halo 2.x` 主题仓库，如果你使用的是 `Halo 1.x` ，请前往：https://github.com/nineya/halo-theme-dream
 
 ## 一、预览
