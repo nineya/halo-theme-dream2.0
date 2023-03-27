@@ -53,7 +53,7 @@
           const version = new URLSearchParams(url.split('?')[1]).get('mew') || 'latest'
           return [
             url,
-            ...cdn.npm.urlTemplates.map(value => `${value}/halo-theme-dream@${version}${path}`)
+            ...cdn.npm.urlTemplates.map(value => `${value}/halo-theme-dream2.0@${version}${path}`)
           ]
         },
       },
