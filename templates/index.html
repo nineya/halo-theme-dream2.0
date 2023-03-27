@@ -15,7 +15,7 @@
   </th:block>
 
   <th:block th:if="${posts.first}" th:fragment="firstIndex"
-            th:with="moduleSize = ${#lists.size(theme.config.basic_style.module_options)}, isModule = ${(theme.config.basic_style.sidebar_column=='module-left' || theme.config.basic_style.sidebar_column=='module-right') && moduleSize > 0}">
+            th:with="moduleSize = ${#lists.isEmpty(theme.config.basic_style.module_options) ? 0 : #lists.size(theme.config.basic_style.module_options)}, isModule = ${(theme.config.basic_style.sidebar_column=='module-left' || theme.config.basic_style.sidebar_column=='module-right') && moduleSize > 0}">
     <th:block th:if="${isModule}">
       <div class="model model-index">
         <th:block th:replace="~{::carousel}"/>

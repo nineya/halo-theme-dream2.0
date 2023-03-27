@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<th:block xmlns:th="https://www.thymeleaf.org"
+          th:insert="~{common/layout :: layout (title = ${error.status + ' - ' + #strings.defaultString(error.title, 'Internal server error')},
+       canonical = ${site.url + '/' + error.status}, content = ~{::content}, isPost = true)}">
+    <th:block th:fragment="content"
+    th:with="posts = ${postFinder.list(1,6)}, isEmpty = ${#lists.isEmpty(posts)}">
+        <div class="card">
+            <div class="title card-content main-title" th:text="${error.status + '错误 - ' + site.title}"></div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="main-content">
+                    <div style="margin: 20px 0; text-align: center; ">
+                        <i style="font-size: 7rem" th:text="${error.status}"></i>
+                        <p th:if="${error.status == 404}" style="font-size: 1.4em;text-indent: 2em;">找不到网页，可能已被删除，去<a th:href='${site.url}'>首页</a>看看吧。</p>
+                        <p th:unless="${error.status == 404}" style="font-size: 1.4em;text-indent: 2em;">围观群众太过热情，服务器繁忙，请稍后访问。</p>
+                    </div>
+                    <pre th:if="${not #strings.isEmpty(error.detail)}"><code class="|异常信息">[(${#strings.defaultString(error.title, 'Internal server error')} + ':
+' + ${error.detail})]</code></pre>
+                </div>
+            </div>
+        </div>
+        <th:block th:if="${!isEmpty}">
+            <div class="card">
+                <div class="title card-content main-title">最新文章推荐</div>
+            </div>
+            <th:block th:replace="~{main/article_list :: articleList (${posts.items})}"/>
+        </th:block>
+    </th:block>
+</th:block>

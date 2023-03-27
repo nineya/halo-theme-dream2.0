@@ -1,7 +1,7 @@
 <th:block xmlns:th="https://www.thymeleaf.org">
     <script th:src="@{/assets/js/utils.min.js(mew=${theme.spec.version})}"></script>
     <script th:src="@{/assets/js/btoc.min.js(mew=${theme.spec.version})}"></script>
-    <script th:if="${isFirstIndex && !#strings.isEmpty(theme.config.basic_style.carousel_options)}" data-pjax
+    <script th:if="${isFirstIndex == true && !#lists.isEmpty(theme.config.basic_style.carousel_options)}" data-pjax
             th:src="@{/assets/lib/swiper@8.4.6/swiper-bundle.min.js}"></script>
     <script th:src="@{/assets/js/common.min.js(mew=${theme.spec.version})}"></script>
 
