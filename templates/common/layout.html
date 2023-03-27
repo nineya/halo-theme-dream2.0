@@ -1,4 +1,5 @@
 <html lang="zh" xmlns:th="https://www.thymeleaf.org"
+      th:class="${theme.config.basic_style.theme_style}"
       th:fragment="layout (title, canonical, content, isPost)">
 <th:block th:if="${!#strings.equals('',param._pjax)}">
   <th:block th:replace="~{common/head :: head}"/>
@@ -11,7 +12,7 @@
 </th:block>
 <th:block th:unless="${!#strings.equals('',param._pjax)}"
           th:with="stats = ${siteStatsFinder.getStats()},
-          contributor = ${contributorFinder.getContributor(theme.config.sidebar.metadata_name)}">
+          contributor = ${contributorFinder.getContributor(theme.config.basic_info.metadata_name)}">
   <th:block th:replace="~{common/head :: head}"/>
   <body>
   <th:block th:replace="~{common/navbar}"/>
