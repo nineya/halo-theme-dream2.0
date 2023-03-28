@@ -14,7 +14,7 @@ spec:
   # 主题描述
   description: '梦之城，童话梦境'
   # 主题logo地址
-  logo: https://q1.qlogo.cn/g?b=qq&nk=361654768&s=640
+  logo: /themes/theme-dream/assets/img/logo.png
   # 主题地址
   website: https://github.com/nineya/halo-theme-dream2.0
   # 主题github开源地址
