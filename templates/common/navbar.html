@@ -6,7 +6,7 @@
                 <th:block th:if="${#strings.isEmpty(site.logo)}" th:text="${site.title}"/>
                 <th:block th:unless="${#strings.isEmpty(site.logo)}">
                     <img class="logo-img" th:src="${site.logo}" th:alt="${site.title}" height="28">
-                    <img class="logo-img-dark" th:src="${#annotations.getOrDefault(theme.config.basic_info, 'night_logo', ${site.logo})}" th:alt="${site.title}" height="28">
+                    <img class="logo-img-dark" th:src="${#strings.defaultString(theme.config.basic_info.night_logo, ${site.logo})}" th:alt="${site.title}" height="28">
                 </th:block>
             </a>
             <nav class="navbar-nav active-animate">

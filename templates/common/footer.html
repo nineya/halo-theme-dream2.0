@@ -6,7 +6,7 @@
                 <th:block th:if="${#strings.isEmpty(site.logo)}" th:text="${site.title}"/>
                 <th:block th:unless="${#strings.isEmpty(site.logo)}">
                   <img class="logo-img" th:src="${site.logo}" th:alt="${site.title}" height="28">
-                  <img class="logo-img-dark" th:src="${#annotations.getOrDefault(theme.config.basic_info, 'night_logo', ${site.logo})}" th:alt="${site.title}" height="28">
+                  <img class="logo-img-dark" th:src="${#strings.defaultString(theme.config.basic_info.night_logo, ${site.logo})}" th:alt="${site.title}" height="28">
                 </th:block>
               </a>
             </li>
@@ -31,7 +31,7 @@
                 src="https://www.beian.gov.cn/portal/download" alt="公网安备" style="vertical-align: text-top; width: 1.2em; margin-right: 4px;"/>[[${theme.config.basic_info.record_number_ps}]]</a></p>
               <p th:if="${!#strings.isEmpty(theme.config.basic_info.cloud_by_logo)}">本站由<a
                 class="cloud-driven" target="_blank" rel="noopener noreferrer nofollow" th:href="${theme.config.basic_info.cloud_by_url}"><img
-                alt="云服务商" src="${theme.config.basic_info.cloud_by_logo}"/></a>提供云服务</p>
+                alt="云服务商" th:src="${theme.config.basic_info.cloud_by_logo}"/></a>提供云服务</p>
             </li>
             <li>
                 <halo:footer />
