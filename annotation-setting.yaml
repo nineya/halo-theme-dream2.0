@@ -10,6 +10,7 @@ spec:
     - $formkit: radio
       name: enable_copyright
       label:  开启文章版权声明
+      value: ""
       help: '当前配置将覆盖主题中的默认配置。'
       options:
         - value: "true"
@@ -21,6 +22,7 @@ spec:
     - $formkit: select
       name: thumbnail_mode
       label: 文章列表缩略图模式
+      value: ""
       help: '文章在列表的缩略图模式，除网格布局外，当前配置将覆盖主题中的默认配置。'
       options:
         - value: default
@@ -40,11 +42,13 @@ spec:
     - $formkit: text
       name: tips
       label:  文章提示
+      value: ""
       placeholder: '请输入提示内容'
       help: '在文章顶部显示一条提示。'
     - $formkit: radio
       name: enable_katex
       label:  KaTeX 公式支持
+      value: ""
       help: '博客通过 KaTeX 做数学公式渲染，当前配置将覆盖主题中的默认配置。'
       options:
         - value: "true"
@@ -56,7 +60,7 @@ spec:
     - $formkit: radio
       name: enable_share
       label:  开启文章分享
-      value: true
+      value: ""
       help: '当前配置将覆盖主题中的默认配置。'
       options:
         - value: "true"
@@ -80,7 +84,7 @@ spec:
     - $formkit: radio
       name: enable_copyright
       label:  开启文章版权声明
-      value: true
+      value: ""
       help: '当前配置将覆盖主题中的默认配置。'
       options:
         - value: "true"
@@ -92,12 +96,13 @@ spec:
     - $formkit: text
       name: tips
       label:  文章提示
+      value: ""
       placeholder: '请输入提示内容'
       help: '在文章顶部显示一条提示。'
     - $formkit: radio
       name: enable_katex
       label:  KaTeX 公式支持
-      value: false
+      value: ""
       help: '博客通过 KaTeX 做数学公式渲染，当前配置将覆盖主题中的默认配置。'
       options:
         - value: "true"
@@ -109,7 +114,7 @@ spec:
     - $formkit: radio
       name: enable_share
       label:  开启文章分享
-      value: true
+      value: ""
       help: '当前配置将覆盖主题中的默认配置。'
       options:
         - value: "true"
