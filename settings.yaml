@@ -512,7 +512,7 @@ spec:
             - $formkit: select
               name: type
               label: 模块类型
-              value: ""
+              value: "profile"
               options:
                 - value: 'profile'
                   label:  信息模块
