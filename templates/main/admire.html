@@ -14,7 +14,7 @@
                     </ol>
                 </div>
             </button>
-            <button th:if="${type == 'Post'}" class="agree like" data-id="${(post.id!0)?c}"
+            <button th:if="${type == 'Post'}" class="agree like" th:data-id="${post.metadata.name}"
                     data-likes="${(post.likes!0)?c}">
                 <i class="fa fa-thumbs-o-up"></i>
                 <span>赞<span th:text="${post.stats.upvote}"></span></span>
