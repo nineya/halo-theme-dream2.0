@@ -23,7 +23,7 @@
                     <div th:unless="${#lists.isEmpty(menuItem.children)}" class="item-dropdown" trigger="hover" placement="60px">
                         <div class="item-dropdown-link">
                             <a class="item"
-                               th:href="${#annotations.getOrDefault(menuItem.status, 'href', 'javascript:')}"
+                               th:href="${#strings.defaultString(menuItem.status.href, 'javascript:')}"
                                th:target="${menuItem.spec.target}"
                                th:title="${menuItem.status.displayName}">
                                 <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
@@ -35,7 +35,7 @@
                         <nav class="item-dropdown-menu">
                             <li th:each="dropdown : ${menuItem.children}" class="item-sub-li">
                                 <a class="item"
-                                   th:href="${#annotations.getOrDefault(dropdown.status, 'href', 'javascript:')}"
+                                   th:href="${#strings.defaultString(dropdown.status.href, 'javascript:')}"
                                    th:target="${dropdown.spec.target}"
                                    th:title="${dropdown.status.displayName}">
                                     <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdown, 'icon', ''))}"
