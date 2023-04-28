@@ -188,20 +188,6 @@ const postContext = {
       localStorage.setItem(name, encrypt(JSON.stringify(commentIds)))
     }
     postContextInitial = true
-  },
-  /* 初始化评论区 */
-  initComment() {
-    const $mainContent = $('.main-content')
-    window.CommentWidget && CommentWidget.init(
-      '#comment',
-      '/plugins/PluginCommentWidget/assets/static/style.css',
-      {
-        group: 'content.halo.run',
-        kind: $mainContent.attr('data-target'),
-        name: $mainContent.attr('data-id'),
-        colorScheme: window.dataTheme
-      }
-    )
   }
 }
 window.postPjax = function (serialNumber) {

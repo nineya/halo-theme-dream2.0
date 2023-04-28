@@ -786,6 +786,39 @@ spec:
     - group: page_config
       label: '页面设置'
       formSchema:
+        - $formkit: attachment
+          name: links_thumbnail
+          label: 友链页面-缩略图
+          placeholder: '请输入/选择图片路径'
+        - $formkit: attachment
+          name: links_default_avatar
+          label: '友链页面-默认 Logo'
+          placeholder: '请输入/选择 Logo 路径'
+          help: "在加载用户 Logo 时、友链未设置 Logo 时、友链 Logo 加载失败时显示。"
+        - $formkit: radio
+          name: show_exchange_info
+          label: 友链页面-显示友链交换信息
+          value: true
+          options:
+            - value: true
+              label: 显示
+            - value: false
+              label: 关闭
+        - $formkit: attachment
+          name: links_blogger_avatar
+          label: '友链页面-交换信息自定义 Logo 链接'
+          placeholder: '请输入/选择 Logo 路径'
+          help: '用于交换友链的 Logo 链接。'
+        - $formkit: code
+          name: links_info
+          label: "友链页面-补充信息"
+          placeholder: '请输入补充信息'
+          help: '友链页面最低部的补充说明信息，支持 HTML 格式。'
+        - $formkit: text
+          name: link_comment_id
+          label:  友链页面-评论区ID
+          placeholder: '请输入 ID'
+          help: '友链页面没有 ID，需要指定一个自定义页面的 ID 用于评论，被指定的文章评论区将作为友链的评论区， 放空则不显示评论区。'
         - $formkit: radio
           name: enable_tags_tag_color
           label:  标签页面-开启标签颜色

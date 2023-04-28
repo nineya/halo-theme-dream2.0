@@ -10,7 +10,9 @@
         <script th:if="${isPost}" data-pjax th:src="@{/assets/lib/clipboard@2.0.10/clipboard.min.js}"></script>
         <script th:if="${enableShare}" data-pjax th:src="@{/assets/js/dshare.min.js(mew=${theme.spec.version})}"></script>
         <script th:if="${isPost}" data-pjax th:src="@{/assets/js/post.min.js(mew=${theme.spec.version})}"></script>
-        <script th:if="${pluginFinder.available('PluginCommentWidget') && (post != null || singlePage != null)}" data-pjax src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
+    </th:block>
+    <th:block th:if="${isPost || enableComment != null}">
+        <script th:if="${pluginFinder.available('PluginCommentWidget') && (post != null || singlePage != null || enableComment != null)}" data-pjax src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
     </th:block>
 
     <script th:src="@{/assets/js/mew-custom.min.js(mew=${theme.spec.version})}"></script>
