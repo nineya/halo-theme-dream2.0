@@ -24,7 +24,7 @@
         <span class="level-item tag" th:text="${category.status.postCount}"></span>
       </a>
       <ul th:if="${!#lists.isEmpty(category.children)}">
-        <th:block th:replace="~{:: categories (category.children)}"/>
+        <th:block th:replace="~{:: categories (${category.children})}"/>
       </ul>
     </li>
   </th:block>
