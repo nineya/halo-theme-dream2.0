@@ -28,7 +28,7 @@
         天，若文章内容或图片链接失效，请留言反馈。
     </div>
 
-    <div th:if="${post.metadata.annotations.containsKey('tips')}" class="card tips brightness"><i
+    <div th:if="${!#strings.isEmpty(post.metadata.annotations.get('tips'))}" class="card tips brightness"><i
             class="fa fa-times click-close" data-close=".tips"></i>[[${post.metadata.annotations.tips}]]
     </div>
 
