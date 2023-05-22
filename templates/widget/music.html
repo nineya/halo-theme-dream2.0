@@ -7,10 +7,21 @@
   <div style="min-height: 90px;margin-top: -0.5rem;">
     <meting-js th:if="${theme.config.sidebar.music_mode == 'playlist'}" list-folded="true" server="netease"
                type="playlist" th:id="${theme.config.sidebar.netease_playlist_id}"></meting-js>
-    <meting-js th:if="${theme.config.sidebar.music_mode == 'config'}"
-               th:attr="${theme.config.sidebar.music_config}"></meting-js>
+    <meting-js th:if="${theme.config.sidebar.music_mode == 'config'}"></meting-js>
   </div>
+  <script th:inline="javascript">
+    var musicMode = [[${theme.config.sidebar.music_mode}]];
+    if (musicMode === 'config') {
+      var configStr = [[${theme.config.sidebar.music_config}]];
+      var musicConfig = JSON.parse(configStr);
+      var metingElements = document.querySelectorAll('meting-js');
+      for (var key in musicConfig) {
+          metingElements[0].setAttribute(key, musicConfig[key]);
+      }
+    }
+  </script>
   <link rel="stylesheet" th:href="@{/assets/lib/aplayer@1.10.1/APlayer.min.css}">
   <script defer th:src="@{/assets/lib/aplayer@1.10.1/APlayer.min.js}"></script>
+  <script defer th:src="@{/assets/lib/meting@2.0.1/Meting.min.js}"></script>
   <script defer th:src="@{/assets/lib/meting@2.0.1/Meting.min.js}"></script>
 </div>

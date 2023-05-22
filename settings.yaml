@@ -668,11 +668,8 @@ spec:
           name: music_config
           label:  侧边栏音乐-参数进阶配置
           placeholder: '请输入音乐参数配置'
-          value: 'list-folded="true"
-                server="netease"
-                type="playlist"
-                id="7355014621"'
-          help: '输入音乐参数配置(id / server / type必填)，详细配置方式见官方文档：https://github.com/metowolf/MetingJS/'
+          value: '{"list-folded":"true","server":"netease","type":"playlist","id":"7355014621"}'
+          help: '输入音乐参数配置(JSON格式，id / server / type必填)，详细配置方式见官方文档：https://github.com/metowolf/MetingJS/'
         - $formkit: radio
           name: show_ad_tag
           label:  侧边栏广告-显示“广告”标签
