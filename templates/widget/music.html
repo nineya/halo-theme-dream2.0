@@ -7,8 +7,8 @@
   <div style="min-height: 90px;margin-top: -0.5rem;">
     <meting-js th:if="${theme.config.sidebar.music_mode == 'playlist'}" list-folded="true" server="netease"
                type="playlist" th:id="${theme.config.sidebar.netease_playlist_id}"></meting-js>
-    <meting-js th:if="${theme.config.sidebar.music_mode == 'config'}"
-               th:attr="${theme.config.sidebar.music_config}"></meting-js>
+    <th:block th:if="${theme.config.sidebar.music_mode == 'config'}"
+              th:utext="'<meting-js ' + ${theme.config.sidebar.music_config} + '></meting-js>'"></th:block>
   </div>
   <link rel="stylesheet" th:href="@{/assets/lib/aplayer@1.10.1/APlayer.min.css}">
   <script defer th:src="@{/assets/lib/aplayer@1.10.1/APlayer.min.js}"></script>
