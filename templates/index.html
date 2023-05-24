@@ -39,7 +39,7 @@
       <th:block th:replace="~{::carousel}"/>
     </th:block>
     <div th:if="${!#strings.isEmpty(theme.config.basic_info.index_inform)}" class="card tips brightness"
-         th:text="${theme.config.basic_info.index_inform}"></div>
+         th:utext="${theme.config.basic_info.index_inform}"></div>
   </th:block>
 
   <th:block th:fragment="buildModule (option)">
