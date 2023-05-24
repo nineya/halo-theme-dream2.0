@@ -66,8 +66,8 @@
     DreamConfig["theme_version"] = [[${theme.spec.version}]];
     DreamConfig["theme_base"] = "[(${#theme.assets('/')})]";
     [(${!#strings.isEmpty(theme.config.post.code_fold_line)?'DreamConfig["code_fold_line"] = "' + theme.config.post.code_fold_line + '";': ''})]
-      [(${!#strings.isEmpty(theme.config.basic_info.document_hidden_title)?'DreamConfig["document_hidden_title"] = "' + theme.config.basic_info.document_hidden_title + '";': ''})]
-      [(${!#strings.isEmpty(theme.config.basic_info.document_visible_title)?'DreamConfig["document_visible_title"] = "' + theme.config.basic_info.document_visible_title + '";' : ''})]
+      [(${!#strings.isEmpty(theme.config.basic_info.document_hidden_title)?'DreamConfig["document_hidden_title"] = "' + #strings.escapeJavaScript(theme.config.basic_info.document_hidden_title) + '";': ''})]
+      [(${!#strings.isEmpty(theme.config.basic_info.document_visible_title)?'DreamConfig["document_visible_title"] = "' + #strings.escapeJavaScript(theme.config.basic_info.document_visible_title) + '";' : ''})]
       [(${!#strings.isEmpty(theme.config.basic_info.website_time)?'DreamConfig["website_time"] = "' + theme.config.basic_info.website_time + '";' : ''})]
       [(${(theme.config.sidebar.enable_color_character && !#strings.isEmpty(theme.config.sidebar.color_character))? 'DreamConfig["spark_input_content"] = ["' + #strings.escapeJavaScript(theme.config.sidebar.color_character).replace('\\n', '","') + '"]' : ''})]
       DreamConfig["notice_show_mode"] = '[(${theme.config.basic_info.notice_show_mode})]';
