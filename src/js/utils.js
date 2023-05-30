@@ -108,6 +108,7 @@ const Utils = {
     headers = {},
     timeout = 10000,
     returnRaw = false,
+    contentType,
   }) {
     return new Promise((resolve, reject) => {
       method = method.toUpperCase()
@@ -120,6 +121,7 @@ const Utils = {
         },
         async: true,
         dataType: 'json',
+        contentType,
         timeout,
         data,
         success(res) {
@@ -171,8 +173,14 @@ const Utils = {
       let $this = $(this)
       let id = $this.attr('data-id')
       Utils.request({
-        url: '/api/content/' + type + '/' + id + '/likes',
+        url: '/apis/api.halo.run/v1alpha1/trackers/upvote',
         method: 'POST',
+        contentType: 'application/json;charset=UTF-8',
+        data: JSON.stringify({
+          group: 'moment.halo.run',
+          plural: 'moments',
+          name: id
+        })
       })
         .then((_res) => {
           let agrees = localStorage.getItem(name)
