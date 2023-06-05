@@ -44,7 +44,7 @@
                             <li>描述：[[${contributor.bio}]]</li>
                         </ul>
                     </th:block>
-                    <div th:if="${!#strings.isEmpty(theme.config.page_config.links_info)}" th:html="${theme.config.page_config.links_info"></div>
+                    <div th:if="${!#strings.isEmpty(theme.config.page_config.links_info)}" th:utext="${theme.config.page_config.links_info}"></div>
                 </div>
             </div>
         </div>
