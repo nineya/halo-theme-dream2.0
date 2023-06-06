@@ -38,7 +38,7 @@
     <div th:if="${!#strings.isEmpty(theme.config.sidebar.profile_theme_button)}" class="level"
          th:with="content = ${#strings.arraySplit(theme.config.sidebar.profile_theme_button,'|')}">
       <a class="level-item button is-link is-rounded"
-         th:href="${content[1]}" target="_blank" rel="nofollow noopener noreferrer"
+         th:href="${content.length>=2?content[1]:''}" target="_blank" rel="nofollow noopener noreferrer"
          th:text="${content[0]}"></a>
     </div>
     <div th:if="${!#lists.isEmpty(theme.config.sidebar.custom_options)}" class="level">
