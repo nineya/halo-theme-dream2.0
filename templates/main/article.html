@@ -34,7 +34,7 @@
 
     <div class="card">
         <div class="card-content main">
-            <th:block th:if="${!#strings.isEmpty(post.spec.cover)}">
+            <th:block th:if="${#strings.isEmpty(post.spec.cover)}">
                 <h1 class="title" th:text="${post.spec.title}"></h1>
                 <div class="meta">
                     <ul class="breadcrumb">
