@@ -109,6 +109,7 @@ const Utils = {
     timeout = 10000,
     returnRaw = false,
     contentType,
+    resultType = 'json'
   }) {
     return new Promise((resolve, reject) => {
       method = method.toUpperCase()
@@ -120,7 +121,7 @@ const Utils = {
           ...headers,
         },
         async: true,
-        dataType: 'json',
+        dataType: resultType,
         contentType,
         timeout,
         data,
@@ -138,7 +139,7 @@ const Utils = {
         error(err) {
           const errMsg = err
             ? err.responseJSON
-              ? err.responseJSON.message
+              ? err.responseJSON.title
               : '请求失败'
             : '请求失败'
           Qmsg.error(errMsg)
@@ -176,9 +177,11 @@ const Utils = {
         url: '/apis/api.halo.run/v1alpha1/trackers/upvote',
         method: 'POST',
         contentType: 'application/json;charset=UTF-8',
+        returnRaw: true,
+        resultType: 'text',
         data: JSON.stringify({
-          group: 'moment.halo.run',
-          plural: 'moments',
+          group: 'content.halo.run',
+          plural: type,
           name: id
         })
       })
