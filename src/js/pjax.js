@@ -165,6 +165,8 @@ $(document).on('pjax:success', async function (event, data, status, xhr, options
   }
   console.log('全部处理完成')
   if (window.pjaxSerialNumber !== serialNumber) return
+  /* 初始化日志界面 */
+  window.journalPjax && window.journalPjax(serialNumber)
   /* 初始化文章界面 */
   window.postPjax && window.postPjax(serialNumber)
   /* 初始化评论 */

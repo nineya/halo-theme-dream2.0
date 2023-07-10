@@ -828,6 +828,33 @@ spec:
               label:  开启
             - value: false
               label:  关闭
+        - $formkit: text
+          name: journals_fold_height
+          label:  日志页面-动态内容折叠
+          placeholder: '请输入高度数值（px）'
+          help: '动态内容高度超出指定高度后默认进行折叠，指定的高度需大于等于 260px。'
+        - $formkit: radio
+          name: enable_journals_comment
+          label:  日志页面-开启评论区
+          value: true
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+        - $formkit: radio
+          name: enable_journals_share
+          label:  日志页面-开启日志分享
+          value: true
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+        - $formkit: attachment
+          name: journals_share_image
+          label: 日志页面-日志分享背景图
+          placeholder: '请输入/选择图片路径'
     - group: enhance
       label: '增强功能'
       formSchema:

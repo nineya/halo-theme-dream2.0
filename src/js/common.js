@@ -405,17 +405,23 @@ const commonContext = {
   },
   /* 初始化评论区 */
   initComment() {
-    const $mainContent = $('.main-content')
-    window.CommentWidget && CommentWidget.init(
-      '#comment',
-      '/plugins/PluginCommentWidget/assets/static/style.css',
-      {
-        group: 'content.halo.run',
-        kind: $mainContent.attr('data-target'),
-        name: $mainContent.attr('data-id'),
-        colorScheme: window.dataTheme
-      }
-    )
+    if (!window.CommentWidget) {
+      return
+    }
+    $('.widget-comment').each(function (index, item) {
+      let target = $(this).attr('data-target')
+      let id = $(this).attr('data-id')
+      CommentWidget.init(
+        `.widget-comment[data-id=${id}][data-target=${target}]`,
+        '/plugins/PluginCommentWidget/assets/static/style.css',
+        {
+          group: 'content.halo.run',
+          kind: target,
+          name: id,
+          colorScheme: window.dataTheme
+        }
+      )
+    })
   },
   /* 初始化特效，只需要初始化一次，移动端设备不初始化 */
   initEffects() {

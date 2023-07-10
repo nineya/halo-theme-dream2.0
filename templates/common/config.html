@@ -72,6 +72,7 @@
       [(${(theme.config.sidebar.enable_color_character && !#strings.isEmpty(theme.config.sidebar.color_character))? 'DreamConfig["spark_input_content"] = ["' + #strings.escapeJavaScript(theme.config.sidebar.color_character).replace('\\n', '","') + '"]' : ''})]
       DreamConfig["notice_show_mode"] = '[(${theme.config.basic_info.notice_show_mode})]';
       [(${(!#strings.isEmpty(theme.config.post.img_fold_height) && #numbers.sequence(theme.config.post.img_fold_height,theme.config.post.img_fold_height)[0] >= 400)?'DreamConfig["img_fold_height"] = ' + theme.config.post.img_fold_height + ';': ''})]
+      [(${(!#strings.isEmpty(theme.config.page_config.journals_fold_height) && #numbers.sequence(theme.config.page_config.journals_fold_height,theme.config.page_config.journals_fold_height)[0] >= 260)?'DreamConfig["journals_fold_height"] = ' + theme.config.page_config.journals_fold_height + ';': ''})]
       [(${theme.config.enhance.cursor_move != 'none'?'DreamConfig["cursor_move"] = "' + theme.config.enhance.cursor_move + '";': ''})]
       [(${theme.config.enhance.cursor_click != 'none'?'DreamConfig["cursor_click"] = "' + theme.config.enhance.cursor_click + '";': ''})]
       [(${theme.config.enhance.effects_sakura_mode != 'none'?'DreamConfig["effects_sakura_mode"] = "' + theme.config.enhance.effects_sakura_mode + '";': ''})]
@@ -80,6 +81,7 @@
       [(${theme.config.enhance.enable_baidu_push?'DreamConfig["enable_baidu_push"] = true;': ''})]
       [(${theme.config.enhance.enable_toutiao_push?'DreamConfig["enable_toutiao_push"] = true;': ''})]
       [(${theme.config.basic_style.load_progress != 'none'?'DreamConfig["load_progress"] = "' + theme.config.basic_style.load_progress + '";': ''})]
+      [(${!#strings.isEmpty(theme.config.page_config.journals_share_image)?'DreamConfig["journals_share_image"] = "' + theme.config.page_config.journals_share_image + '";': ''})]
       [(${!#strings.isEmpty(theme.config.sidebar.meting_api)?'var meting_api = "' + theme.config.sidebar.meting_api + '";': ''})]
 
     /** 配置主题模式 */
