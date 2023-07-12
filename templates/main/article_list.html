@@ -37,7 +37,7 @@
           <span class="top" th:if="${post.spec.pinned}">置顶</span><a
           th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
         </h2>
-        <div class="main-content" th:text="${post.spec.excerpt.raw}"></div>
+        <div class="main-content" th:text="${post.status.excerpt}"></div>
         <hr/>
         <div class="meta">
           <ul class="breadcrumb">
@@ -66,7 +66,7 @@
           <span class="top" th:if="${post.spec.pinned}">置顶</span><a
           th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
         </h2>
-        <div class="main-content" th:text="${post.spec.excerpt.raw}"></div>
+        <div class="main-content" th:text="${post.status.excerpt}"></div>
         <hr/>
         <div class="meta">
           <ul class="breadcrumb">
@@ -126,7 +126,7 @@
           </div>
         </div>
         <hr/>
-        <div class="main-content" th:text="${post.spec.excerpt.raw}"></div>
+        <div class="main-content" th:text="${post.status.excerpt}"></div>
       </div>
     </div>
   </th:block>
