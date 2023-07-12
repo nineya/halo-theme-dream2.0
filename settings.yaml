@@ -916,6 +916,16 @@ spec:
             - value: "uninstall"
               label:  卸载
         - $formkit: radio
+          name: enable_pjax
+          label:  Pjax加载
+          value: false
+          help: '使用Pjax加载可极大提升页面跳转的速度，但可能和部分插件不兼容。'
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+        - $formkit: radio
           name: effects_sakura_mode
           label:  樱花飘落特效显示模式
           value: day

@@ -19,9 +19,11 @@
 
     <script th:src="@{/assets/js/mew-custom.min.js(mew=${theme.spec.version})}"></script>
 
-    <script th:src="@{/assets/lib/jquery-pjax@2.0.1/jquery.pjax.min.js}"></script>
     <script th:if="${theme.config.basic_style.load_progress != 'none'}" th:src="@{/assets/js/dprogress.min.js(mew=${theme.spec.version})}"></script>
-    <script th:src="@{/assets/js/pjax.min.js(mew=${theme.spec.version})}"></script>
+    <th:block th:if="${theme.config.enhance.enable_pjax}">
+        <script th:src="@{/assets/lib/jquery-pjax@2.0.1/jquery.pjax.min.js}"></script>
+        <script th:src="@{/assets/js/pjax.min.js(mew=${theme.spec.version})}"></script>
+    </th:block>
     <script async th:src="@{/assets/lib/qmsg/qmsg.min.js}"></script>
 
     <script th:if="${isPost}" data-pjax async th:src="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.js}"></script>
