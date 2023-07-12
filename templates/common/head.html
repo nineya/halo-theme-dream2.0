@@ -30,7 +30,7 @@ th:with="description=${isPost ? post != null ? post.status.excerpt : singlePage 
     <link data-pjax rel="preload stylesheet" as="style"
           th:href="@{'/assets/lib/highlightjs@11.5.1/styles/' + ${theme.config.post.code_pretty} + '.min.css'}"/>
     <link data-pjax rel="preload stylesheet" as="style" th:href="@{/assets/css/post.min.css(mew=${theme.spec.version})}"/>
-    <link th:if="${enableKatex}" data-pjax rel="preload stylesheet" as="style" th:href="@{/assets/lib/katex@0.12.0/katex.min.css(mew=${theme.spec.version})}"/>
+    <link th:if="${enableKatex}" data-pjax rel="preload stylesheet" as="style" th:href="@{/assets/lib/katex@0.12.0/katex.min.css}"/>
     <link th:if="${enableShare}" data-pjax rel="preload stylesheet" as="style" th:href="@{/assets/css/dshare.min.css(mew=${theme.spec.version})}">
   </th:block>
 

@@ -8,6 +8,7 @@
     <th:block th:if="${isPost}">
         <script th:if="${isPost}" data-pjax th:src="@{/assets/lib/highlightjs@11.5.1/highlight.min.js}"></script>
         <script th:if="${isPost}" data-pjax th:src="@{/assets/lib/clipboard@2.0.10/clipboard.min.js}"></script>
+        <script th:if="${enableKatex}" data-pjax th:src="@{/assets/lib/katex@0.12.0/katex.min.js}"></script>
         <script th:if="${enableShare}" data-pjax th:src="@{/assets/js/dshare.min.js(mew=${theme.spec.version})}"></script>
         <script th:if="${isPost}" data-pjax th:src="@{/assets/js/post.min.js(mew=${theme.spec.version})}"></script>
         <script th:if="${isJournals}" data-pjax th:src="@{/assets/js/journals.min.js(mew=${theme.spec.version})}"></script>

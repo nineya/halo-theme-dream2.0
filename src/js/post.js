@@ -188,6 +188,19 @@ const postContext = {
       localStorage.setItem(name, encrypt(JSON.stringify(commentIds)))
     }
     postContextInitial = true
+  },
+  /* 初始化公式 */
+  initKatex() {
+    let $mainContent = $('.main-content')
+    if (!window.katex && $mainContent.length !== 0) {
+      return
+    }
+    $mainContent.find('.katex--inline').each(function (index, domEle) {
+      katex.render(domEle.innerText, domEle, { displayMode: false })
+    })
+    $mainContent.find('.katex--display').each(function (index, domEle) {
+      katex.render(domEle.innerText, domEle, { displayMode: true })
+    })
   }
 }
 window.postPjax = function (serialNumber) {
