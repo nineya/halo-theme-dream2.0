@@ -917,7 +917,7 @@ spec:
               label:  卸载
         - $formkit: radio
           name: enable_pjax
-          label:  Pjax加载
+          label:  Pjax 加载
           value: false
           help: '使用Pjax加载可极大提升页面跳转的速度，但可能和部分插件不兼容。'
           options:
@@ -969,16 +969,6 @@ spec:
           label:  灰色模式
           value: false
           help: '向英雄致敬，愿精神长存！'
-          options:
-            - value: true
-              label:  开启
-            - value: false
-              label:  关闭
-        - $formkit: radio
-          name: enable_patch
-          label: 补丁模式
-          value: true
-          help: '引入补丁脚本，实现对部分异常不更新主题进行 bug 修复！'
           options:
             - value: true
               label:  开启
