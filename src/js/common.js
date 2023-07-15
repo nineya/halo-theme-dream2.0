@@ -412,7 +412,7 @@ const commonContext = {
       let target = $(this).attr('data-target')
       let id = $(this).attr('data-id')
       CommentWidget.init(
-        `.widget-comment[data-id=${id}][data-target=${target}]`,
+        `.widget-comment[data-id='${id}'][data-target='${target}']`,
         '/plugins/PluginCommentWidget/assets/static/style.css',
         {
           group: 'content.halo.run',
