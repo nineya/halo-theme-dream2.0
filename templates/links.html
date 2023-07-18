@@ -9,9 +9,7 @@
             </div>
             <div class="card-content main">
                 <h1 class="title" th:text="'友情链接 - ' + ${contributor.displayName} + '的小伙伴们'"></h1>
-                <div class="main-content"
-                     th:data-id="${theme.config.page_config.link_comment_id}"
-                     data-target="SinglePage">
+                <div class="main-content">
                     <th:block th:each="group : ${groups}">
                         <div th:if="${!#lists.isEmpty(group.links)}" class="links">
                             <h3 class="link-title" th:text="${#strings.defaultString(group.spec.displayName, '小伙伴们')}" th:id="'toc' + ${groupStat.index}"></h3>
@@ -48,9 +46,9 @@
                 </div>
             </div>
         </div>
-        <div class="card card-content" id="comment-wrapper" th:if="${pluginFinder.available('PluginCommentWidget') && !#strings.isEmpty(theme.config.page_config.link_comment_id)}">
+        <div class="card card-content" id="comment-wrapper" th:if="${pluginFinder.available('PluginCommentWidget') && enableComment}">
             <h3 class="comment-title">评论</h3>
-            <div id="comment"></div>
+            <div class="widget-comment" th:data-id="${theme.config.page_config.link_comment_id}" data-target="SinglePage"></div>
         </div>
     </th:block>
 </th:block>
