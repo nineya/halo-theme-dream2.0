@@ -45,8 +45,8 @@ th:with="description=${isPost ? post != null ? post.status.excerpt : singlePage 
   <script th:src="@{/assets/lib/jquery@3.5.1/jquery.min.js}"></script>
 
   <link th:if="${!#strings.isEmpty(theme.config.custom.external_css)}" rel="stylesheet" th:href="${theme.config.custom.external_css}">
-  <style th:if="${!#strings.isEmpty(theme.config.custom.inline_css)}" type="text/css" th:text="${theme.config.custom.inline_css}"></style>
+  <style th:if="${!#strings.isEmpty(theme.config.custom.inline_css)}" type="text/css" th:utext="${theme.config.custom.inline_css}"></style>
   [(${theme.config.custom.external_js_head})]
-  <script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_head)}" type="text/javascript" th:text="${theme.config.custom.inline_js_head}">
+  <script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_head)}" type="text/javascript" th:utext="${theme.config.custom.inline_js_head}">
   </script>
 </head>

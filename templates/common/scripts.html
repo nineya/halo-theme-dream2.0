@@ -30,6 +30,7 @@
 
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-    <script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_body)}" type="text/javascript" th:text="${theme.config.custom.inline_js_body}">
+    [(${theme.config.custom.external_js_body})]
+    <script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_body)}" type="text/javascript" th:utext="${theme.config.custom.inline_js_body}">
     </script>
 </th:block>
