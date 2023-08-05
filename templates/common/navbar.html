@@ -14,7 +14,7 @@
                     <a th:if="${#lists.isEmpty(menuItem.children)}"
                        class="item"
                        th:href="${menuItem.status.href}"
-                       th:target="${menuItem.spec.target}"
+                       th:target="${menuItem.spec.target?.value}"
                        th:title="${menuItem.status.displayName}">
                         <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
                            th:class="${'m-icon ' + #annotations.getOrDefault(menuItem, 'icon', '')}"></i>
@@ -24,7 +24,7 @@
                         <div class="item-dropdown-link">
                             <a class="item"
                                th:href="${#strings.defaultString(menuItem.status.href, 'javascript:')}"
-                               th:target="${menuItem.spec.target}"
+                               th:target="${menuItem.spec.target?.value}"
                                th:title="${menuItem.status.displayName}">
                                 <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
                                    th:class="${'m-icon ' + #annotations.getOrDefault(menuItem, 'icon', '')}"></i>
@@ -36,7 +36,7 @@
                             <li th:each="dropdown : ${menuItem.children}" class="item-sub-li">
                                 <a class="item"
                                    th:href="${#strings.defaultString(dropdown.status.href, 'javascript:')}"
-                                   th:target="${dropdown.spec.target}"
+                                   th:target="${dropdown.spec.target?.value}"
                                    th:title="${dropdown.status.displayName}">
                                     <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdown, 'icon', ''))}"
                                        th:class="${'m-icon ' + #annotations.getOrDefault(dropdown, 'icon', '')}"></i>
@@ -46,7 +46,7 @@
                                     <li th:each="dropdownChild : ${dropdown.children}">
                                         <a class="item"
                                            th:href="${dropdownChild.status.href}"
-                                           th:target="${dropdownChild.spec.target}"
+                                           th:target="${dropdownChild.spec.target?.value}"
                                            th:title="${dropdownChild.status.displayName}">
                                             <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdownChild, 'icon', ''))}"
                                                th:class="${'m-icon ' + #annotations.getOrDefault(dropdownChild, 'icon', '')}"></i>
@@ -68,7 +68,7 @@
             <div class="navbar-slideout-author">
                 <img width="50" height="50" th:src="${contributor.avatar}" th:alt="${contributor.displayName}" class="avatar"/>
                 <div class="info">
-                    <a class="link" target="_blank" rel="noopener noreferrer nofollow" th:text="${contributor.displayName}"></a>
+                    <p class="link" th:text="${contributor.displayName}"></p>
                     <p class="motto" th:text="${contributor.bio}"></p>
                 </div>
             </div>
