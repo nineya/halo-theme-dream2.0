@@ -4,7 +4,7 @@
   <a th:if="${theme.config.sidebar.ad_mode}" target="_blank" th:href="${theme.config.sidebar.ad_target_url}">
     <img width="100%" th:src="${theme.config.sidebar.ad_image}" alt="广告"/>
   </a>
-  <th:block th:unless="${theme.config.sidebar.ad_mode}" th:text="${theme.config.sidebar.ad_custom_code}"/>
+  <th:block th:unless="${theme.config.sidebar.ad_mode}" th:utext="${theme.config.sidebar.ad_custom_code}"/>
   <span th:if="${theme.config.sidebar.show_ad_tag}" class="ad-tag">广告
                 <svg th:if="${theme.config.sidebar.ad_tag_close}" class="click-close" data-close=".widget"
                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><path
