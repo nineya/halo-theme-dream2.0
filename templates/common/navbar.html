@@ -59,7 +59,9 @@
                     </div>
                 </th:block>
             </nav>
-            <i th:if="${pluginFinder.available('PluginSearchWidget')}" class="fa fa-search navbar-searchicon" onclick="javascript:SearchWidget.open();"><span>搜索</span></i>
+            <div th:if="${pluginFinder.available('PluginSearchWidget')}" class="navbar-search">
+                <button onclick="javascript:SearchWidget.open();" class="submit" aria-label="搜索按钮" style="border-radius: 17px;"><i class="fa fa-search"></i></button>
+            </div>
         </div>
     </div>
 
