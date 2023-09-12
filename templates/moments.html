@@ -6,7 +6,7 @@
   <th:block th:fragment="content">
     <div class="card card-content journal" th:each="moment : ${moments.items}">
       <p class="journal-date">
-        <i class="fa fa-paper-plane-o"></i>
+        <i class="ri-send-plane-line"></i>
         <em th:text="${#dates.format(moment.spec.releaseTime,'yyyy年MM月dd日 HH:mm:ss')}"></em>
       </p>
       <div class="journal-content fold">
@@ -23,18 +23,18 @@
       <div class="journal-operation">
         <span class="journal-operation-item">
           <a class="like" th:data-id="${moment.metadata.name}" th:data-likes="${moment.stats.upvote}">
-            <i class="fa fa-heart-o"></i>
+            <i class="ri-heart-3-line"></i>
             <em th:text="${(moment.stats.upvote != 0)? moment.stats.upvote : '喜欢'}"></em>
           </a>
         </span>
         <span class="journal-operation-item" th:if="${enableComment}">
           <a class="comment">
-            <i class="fa fa-commenting-o"></i>
+            <i class="ri-message-3-line"></i>
             <em th:text="${(moment.stats.approvedComment != 0)? moment.stats.approvedComment : '评论'}"></em>
           </a>
         </span>
         <span class="journal-operation-item" th:if="${enableShare}">
-          <a class="share"><i class="fa fa-share"></i><em>分享</em></a>
+          <a class="share"><i class="ri-share-forward-line"></i><em>分享</em></a>
         </span>
       </div>
       <div class="journal-comment" th:if="${enableComment && pluginFinder.available('PluginCommentWidget')}">

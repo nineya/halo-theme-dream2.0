@@ -10,10 +10,10 @@
           <h2 class="title"><span class="top" th:if="${post.spec.pinned}">置顶</span>[[${post.spec.title}]]</h2>
           <ul class="breadcrumb">
             <li th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></li>
-            <li><i class="fa fa-eye"></i>[[${post.stats.visit}]]</li>
-            <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="fa fa-comments-o"></i>[[${post.stats.comment}]]
+            <li><i class="ri-eye-line"></i>[[${post.stats.visit}]]</li>
+            <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="ri-question-answer-line"></i>[[${post.stats.comment}]]
             </li>
-            <li><i class="fa fa-thumbs-o-up"></i>[[${post.stats.upvote}]]</li>
+            <li><i class="ri-thumb-up-line"></i>[[${post.stats.upvote}]]</li>
             <li
               th:with="heat= ${24+post.stats.visit*0.1+post.stats.upvote*2+post.stats.comment*3}, heatColor= '#'+${(heat < 37)? 'ffa87e' : (heat < 120)? 'fb734a' : 'e0081c'}"
               th:style="'color: ' + ${heatColor}">[[${#numbers.formatDecimal(heat,0,1)}]]℃
@@ -42,10 +42,10 @@
         <div class="meta">
           <ul class="breadcrumb">
             <li th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></li>
-            <li><i class="fa fa-eye"></i>[[${post.stats.visit}]]</li>
-            <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="fa fa-comments-o"></i>[[${post.stats.comment}]]
+            <li><i class="ri-eye-line"></i>[[${post.stats.visit}]]</li>
+            <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="ri-question-answer-line"></i>[[${post.stats.comment}]]
             </li>
-            <li><i class="fa fa-thumbs-o-up"></i>[[${post.stats.upvote}]]</li>
+            <li><i class="ri-thumb-up-line"></i>[[${post.stats.upvote}]]</li>
             <li
               th:with="heat= ${24+post.stats.visit*0.1+post.stats.upvote*2+post.stats.comment*3}, heatColor= '#'+${(heat < 37)? 'ffa87e' : (heat < 120)? 'fb734a' : 'e0081c'}"
               th:style="'color: ' + ${heatColor}">[[${#numbers.formatDecimal(heat,0,1)}]]℃
@@ -71,10 +71,10 @@
         <div class="meta">
           <ul class="breadcrumb">
             <li th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></li>
-            <li><i class="fa fa-eye"></i>[[${post.stats.visit}]]</li>
-            <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="fa fa-comments-o"></i>[[${post.stats.comment}]]
+            <li><i class="ri-eye-line"></i>[[${post.stats.visit}]]</li>
+            <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="ri-question-answer-line"></i>[[${post.stats.comment}]]
             </li>
-            <li><i class="fa fa-thumbs-o-up"></i>[[${post.stats.upvote}]]</li>
+            <li><i class="ri-thumb-up-line"></i>[[${post.stats.upvote}]]</li>
             <li
               th:with="heat= ${24+post.stats.visit*0.1+post.stats.upvote*2+post.stats.comment*3}, heatColor= '#'+${(heat < 37)? 'ffa87e' : (heat < 120)? 'fb734a' : 'e0081c'}"
               th:style="'color: ' + ${heatColor}">[[${#numbers.formatDecimal(heat,0,1)}]]℃
@@ -112,10 +112,10 @@
         <div class="meta">
           <ul class="breadcrumb">
             <li th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></li>
-            <li><i class="fa fa-eye"></i>[[${post.stats.visit}]]</li>
-            <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="fa fa-comments-o"></i>[[${post.stats.comment}]]
+            <li><i class="ri-eye-line"></i>[[${post.stats.visit}]]</li>
+            <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="ri-question-answer-line"></i>[[${post.stats.comment}]]
             </li>
-            <li class="is-hidden-mobile"><i class="fa fa-thumbs-o-up"></i>[[${post.stats.upvote}]]</li>
+            <li class="is-hidden-mobile"><i class="ri-thumb-up-line"></i>[[${post.stats.upvote}]]</li>
             <li
               th:with="heat= ${24+post.stats.visit*0.1+post.stats.upvote*2+post.stats.comment*3}, heatColor= '#'+${(heat < 37)? 'ffa87e' : (heat < 120)? 'fb734a' : 'e0081c'}"
               th:style="'color: ' + ${heatColor}">[[${#numbers.formatDecimal(heat,0,1)}]]℃
@@ -142,10 +142,10 @@
         </a>
         <ul class="breadcrumb">
           <li th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></li>
-          <li><i class="fa fa-eye"></i>[[${post.stats.visit}]]</li>
-          <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="fa fa-comments-o"></i>[[${post.stats.comment}]]
+          <li><i class="ri-eye-line"></i>[[${post.stats.visit}]]</li>
+          <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="ri-question-answer-line"></i>[[${post.stats.comment}]]
           </li>
-          <li class="is-hidden-mobile"><i class="fa fa-thumbs-o-up"></i>[[${post.stats.upvote}]]</li>
+          <li class="is-hidden-mobile"><i class="ri-thumb-up-line"></i>[[${post.stats.upvote}]]</li>
           <li
             th:with="heat= ${24+post.stats.visit*0.1+post.stats.upvote*2+post.stats.comment*3}, heatColor= '#'+${(heat < 37)? 'ffa87e' : (heat < 120)? 'fb734a' : 'e0081c'}"
             th:style="'color: ' + ${heatColor}">[[${#numbers.formatDecimal(heat,0,1)}]]℃

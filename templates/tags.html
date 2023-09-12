@@ -4,7 +4,7 @@
   <th:block th:fragment="content"
             th:with="isEmpty = ${#lists.isEmpty(tags)}, enableTagsColor = ${theme.config.page_config.enable_tags_tag_color}">
     <div th:if="${isEmpty}" class="card card-empty">
-      <i class="fa fa-inbox"></i>
+      <i class="ri-inbox-2-fill"></i>
       还没有创建过标签，回<a th:href="${site.url}">主页</a>看看吧
     </div>
     <th:block th:unless="${isEmpty}">

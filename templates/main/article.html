@@ -12,24 +12,24 @@
                 <h1 class="title" th:text="${post.spec.title}"></h1>
                 <ul class="breadcrumb">
                     <li th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></li>
-                    <li><i class="fa fa-eye"></i>[[${post.stats.visit}]]</li>
-                    <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="fa fa-comments-o"></i>[[${post.stats.comment}]]
+                    <li><i class="ri-eye-line"></i>[[${post.stats.visit}]]</li>
+                    <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="ri-question-answer-line"></i>[[${post.stats.comment}]]
                     </li>
-                    <li><i class="fa fa-thumbs-o-up"></i>[[${post.stats.upvote}]]</li>
-                    <li><i class="fa fa-pencil"></i>[[${#strings.length(#strings.trim(post.content.content))}]]</li>
+                    <li><i class="ri-thumb-up-line"></i>[[${post.stats.upvote}]]</li>
+                    <li><i class="ri-quill-pen-line"></i>[[${#strings.length(#strings.trim(post.content.content))}]]</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div th:if="${!#strings.isEmpty(theme.config.post.invalid_tips_day) && updateInterval > T(java.lang.Long).parseLong(theme.config.post.invalid_tips_day)}"
-         class="card tips brightness"><i class="fa fa-times click-close" data-close=".tips"></i>本文最后更新于
+         class="card tips brightness"><i class="ri-close-line click-close" data-close=".tips"></i>本文最后更新于
         [[${#dates.format(post.status.lastModifyTime,'yyyy-MM-dd')}]]，距今已有 [[${updateInterval}]]
         天，若文章内容或图片链接失效，请留言反馈。
     </div>
 
     <div th:if="${!#strings.isEmpty(post.metadata.annotations.get('tips'))}" class="card tips brightness"><i
-            class="fa fa-times click-close" data-close=".tips"></i>[[${post.metadata.annotations.tips}]]
+      class="ri-close-line click-close" data-close=".tips"></i>[[${post.metadata.annotations.tips}]]
     </div>
 
     <div class="card">
@@ -39,11 +39,11 @@
                 <div class="meta">
                     <ul class="breadcrumb">
                         <li th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}"></li>
-                        <li><i class="fa fa-eye"></i>[[${post.stats.visit}]]</li>
-                        <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="fa fa-comments-o"></i>[[${post.stats.comment}]]
+                        <li><i class="ri-eye-line"></i>[[${post.stats.visit}]]</li>
+                        <li th:if="${post.spec.allowComment}" class="is-hidden-mobile"><i class="ri-question-answer-line"></i>[[${post.stats.comment}]]
                         </li>
-                        <li><i class="fa fa-thumbs-o-up"></i>[[${post.stats.upvote}]]</li>
-                        <li><i class="fa fa-pencil"></i>[[${#strings.length(#strings.trim(post.content.content))}]]</li>
+                        <li><i class="ri-thumb-up-line"></i>[[${post.stats.upvote}]]</li>
+                        <li><i class="ri-quill-pen-line"></i>[[${#strings.length(#strings.trim(post.content.content))}]]</li>
                     </ul>
                     <div th:if="${type == 'Post' && !#lists.isEmpty(post.categories)}" class="level-item">
                         <a th:each="cy : ${post.categories}" th:href="${cy.status.permalink}"
@@ -80,10 +80,10 @@
             <div class="level post-navigation card-content">
                 <a th:if="${postCursor.hasPrevious()}" class="level-item"
                    th:href="@{${postCursor.previous.status.permalink}}">
-                    <i class="fa fa-angle-left"></i><span th:text="${postCursor.previous.spec.title}"></span>
+                    <i class="ri-arrow-left-s-line"></i><span th:text="${postCursor.previous.spec.title}"></span>
                 </a>
                 <a th:if="${postCursor.hasNext()}" class="level-item" th:href="@{${postCursor.next.status.permalink}}">
-                    <span th:text="${postCursor.next.spec.title}"></span><i class="fa fa-angle-right"></i>
+                    <span th:text="${postCursor.next.spec.title}"></span><i class="ri-arrow-right-s-line"></i>
                 </a>
             </div>
         </div>

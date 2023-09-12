@@ -10,7 +10,7 @@
         <p class="nickname" th:text="${contributor.displayName}"></p>
         <p class="motto spark-input" th:text="${contributor.bio}"></p>
         <p th:if="${!#strings.isEmpty(theme.config.sidebar.profile_location)}" class="address">
-          <i class="fa fa-map-marker"></i>
+          <i class="ri-map-pin-line"></i>
           <span th:text="${theme.config.sidebar.profile_location}"></span>
         </p>
       </div>
@@ -48,7 +48,7 @@
          th:title="${option.name}"
          th:href="${option.url}"
          rel="nofollow noopener noreferrer">
-        <i th:class="'fa ' + ${option.icon}"></i>
+        <i th:class="${option.icon}"></i>
       </a>
     </div>
   </div>

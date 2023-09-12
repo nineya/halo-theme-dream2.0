@@ -1,7 +1,7 @@
 <header class="navbar" xmlns:th="https://www.thymeleaf.org">
     <div class="navbar-above">
         <div th:class="${theme.config.basic_style.sidebar_column != 'all' ? 'container two-column' : 'container' }">
-            <i class="fa fa-bars navbar-slideicon"></i>
+            <i class="ri-list-unordered navbar-slideicon"></i>
             <a class="navbar-item logo-title" th:href="${site.url}">
                 <th:block th:if="${#strings.isEmpty(site.logo)}" th:text="${site.title}"/>
                 <th:block th:unless="${#strings.isEmpty(site.logo)}">
@@ -30,7 +30,7 @@
                                    th:class="${'m-icon ' + #annotations.getOrDefault(menuItem, 'icon', '')}"></i>
                                 [[${menuItem.status.displayName}]]
                             </a>
-                            <i class="fa fa-angle-down item-dropdown-link-icon" style="color:var(--main)"></i>
+                            <i class="ri-arrow-down-s-line item-dropdown-link-icon" style="color:var(--main)"></i>
                         </div>
                         <nav class="item-dropdown-menu">
                             <li th:each="dropdown : ${menuItem.children}" class="item-sub-li">
@@ -60,7 +60,7 @@
                 </th:block>
             </nav>
             <div th:if="${pluginFinder.available('PluginSearchWidget')}" class="navbar-search">
-                <button onclick="javascript:SearchWidget.open();" class="submit" aria-label="搜索按钮" style="border-radius: 17px;"><i class="fa fa-search"></i></button>
+                <button onclick="javascript:SearchWidget.open();" class="submit" aria-label="搜索按钮" style="border-radius: 17px;"><i class="ri-search-line"></i></button>
             </div>
         </div>
     </div>
@@ -76,15 +76,15 @@
             </div>
             <ul class="navbar-slideout-menu">
                 <li class="item">
-                    <i class="fa fa-pencil-square-o"></i>
+                    <i class="ri-edit-circle-line"></i>
                     <span>累计撰写 <strong th:text="${stats.post}"></strong> 篇文章</span>
                 </li>
                 <li class="item">
-                    <i class="fa fa-tags"></i>
+                    <i class="ri-apps-line"></i>
                     <span>累计创建 <strong th:text="${stats.category}"></strong> 个分类</span>
                 </li>
                 <li class="item">
-                    <i class="fa fa-commenting-o"></i>
+                    <i class="ri-message-2-line"></i>
                     <span>累计收到 <strong th:text="${stats.comment}"></strong> 条评论</span>
                 </li>
             </ul>
@@ -92,7 +92,7 @@
                 <li>
                     <a class="link panel" href="#" rel="nofollow">
                         <span>导航</span>
-                        <i class="fa fa-angle-right"></i>
+                        <i class="ri-arrow-right-s-line"></i>
                     </a>
                     <ul class="slides panel-body panel-side-menu">
                         <li th:each="menuItem : ${menuFinder.getPrimary().menuItems}">
@@ -106,7 +106,7 @@
                                     <a th:href="${menuItem.status.href}"
                                        th:title="${menuItem.status.displayName}"
                                        th:text="${menuItem.status.displayName}"></a>
-                                    <i class="fa fa-angle-right"></i>
+                                    <i class="ri-arrow-right-s-line"></i>
                                 </div>
                                 <ul class="slides panel-body">
                                     <li th:each="dropdown : ${menuItem.children}">
@@ -120,7 +120,7 @@
                                                 <a th:href="${dropdown.status.href}"
                                                    th:title="${dropdown.status.displayName}"
                                                    th:text="${dropdown.status.displayName}"></a>
-                                                <i class="fa fa-angle-right"></i>
+                                                <i class="ri-arrow-right-s-line"></i>
                                             </div>
                                             <ul class="slides panel-body">
                                                 <li th:each="dropdownChild : ${dropdown.children}">

@@ -3,7 +3,7 @@
           th:insert="~{common/layout :: layout (title = '分类 - ' + ${site.title}, canonical = @{/categories}, content = ~{::content}, isPost = false)}">
   <th:block th:fragment="content" th:with="isEmpty = ${#lists.isEmpty(categories)}">
     <div th:if="${isEmpty}" class="card card-empty">
-      <i class="fa fa-inbox"></i>
+      <i class="ri-inbox-2-fill"></i>
       还没有创建过分类，回<a th:href="${site.url}">主页</a>看看吧
     </div>
     <th:block th:unless="${isEmpty}">

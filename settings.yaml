@@ -594,13 +594,13 @@ spec:
         - $formkit: repeater
           name: custom_options
           label: 社交渠道
-          help: 图标目前仅支持 FontAwesome 4.7。
+          help: 图标目前仅支持 RemixIcon 5.3.0。
           value:
             - name: QQ聊天
-              icon: 'fa-qq'
+              icon: 'ri-qq-fill'
               url: tencent://message/?uin=${qq}&Site=&Menu=yes
             - name: 给我发邮件
-              icon: 'fa-envelope'
+              icon: 'ri-mail-fill'
               url: mailto:邮箱地址
           children:
             - $formkit: text

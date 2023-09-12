@@ -4,7 +4,7 @@
           th:with="isFirstIndex = ${posts.first}">
   <th:block th:fragment="content" th:with="isEmpty = ${#lists.isEmpty(posts)}">
     <div th:if="${isEmpty}" class="card card-empty">
-      <i class="fa fa-inbox"></i>
+      <i class="ri-inbox-2-fill"></i>
       还没有发表过文章
     </div>
     <th:block th:unless="${isEmpty}">
