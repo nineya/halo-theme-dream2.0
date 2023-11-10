@@ -25,6 +25,7 @@ th:with="description=${isPost ? post != null ? post.status.excerpt : singlePage 
   <link rel="preload stylesheet" as="style" th:href="@{/assets/css/theme.min.css(mew=${theme.spec.version})}">
   <link rel="preload stylesheet" as="style" th:href="@{/assets/lib/remixicon@3.5.0/remixicon.min.css}">
   <link rel="preload stylesheet" as="style" th:href="@{/assets/css/style.min.css(mew=${theme.spec.version})}">
+  <link th:if="${theme.config.basic_style.theme_style == 'celebration'}" rel="preload stylesheet" as="style" th:href="@{/assets/css/celebration.min.css(mew=${theme.spec.version})}">
 
   <th:block th:if="${isPost}">
     <link data-pjax rel="preload stylesheet" as="style"
