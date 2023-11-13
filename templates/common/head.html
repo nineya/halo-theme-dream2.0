@@ -39,7 +39,7 @@ th:with="description=${isPost ? post != null ? post.status.excerpt : singlePage 
   <link th:if="${isPost == true || isPhotos == true}" data-pjax rel="stylesheet" th:href="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.css}">
   <link rel="stylesheet" th:href="@{/assets/lib/qmsg/qmsg.min.css}">
 
-  <link th:if="${theme.config.enhance.cursor_style != 'none'}" rel="stylesheet" th:href="@{'/assets/css/cursor/' + ${theme.config.enhance.cursor_style} + '.min.css'(mew=${theme.spec.version})}">
+  <link th:if="${theme.config.enhance.cursor_style != 'none'}" rel="stylesheet" th:href="@{/assets/css/cursor.min.css(mew=${theme.spec.version})}">
 
   <th:block th:replace="~{common/config}"/>
 

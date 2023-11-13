@@ -880,6 +880,10 @@ spec:
               label:  关闭
             - value: breeze
               label:  清风（深色）
+            - value: mellow
+              label: 卡通圆润
+            - value: black_cat
+              label: 黑色小猫
         - $formkit: select
           name: cursor_move
           label:  鼠标移动特效
