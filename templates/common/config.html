@@ -15,8 +15,8 @@
       filter: [(${theme.config.enhance.enable_gray_mode ? 'grayscale(1) !important' : 'none'})];
       [(${theme.config.enhance.cursor_style == 'breeze' ? '--cursor-default: url(/themes/theme-dream/assets/cursor/breeze/Arrow.cur), auto;--cursor-pointer: url(/themes/theme-dream/assets/cursor/breeze/Hand.cur), auto; --cursor-text: url(/themes/theme-dream/assets/cursor/breeze/IBeam.cur), auto; --cursor-zoom-in: url(/themes/theme-dream/assets/cursor/breeze/Cross.cur), auto;'
       : theme.config.enhance.cursor_style == 'black_cat' ? '--cursor-default: url(/themes/theme-dream/assets/cursor/black_cat/normal.cur), auto;--cursor-pointer: url(/themes/theme-dream/assets/cursor/black_cat/ayuda.cur), auto;--cursor-text: url(/themes/theme-dream/assets/cursor/black_cat/texto.cur), auto;--cursor-zoom-in: url(/themes/theme-dream/assets/cursor/black_cat/precision.cur), auto;'
-      : theme.config.enhance.cursor_style == 'mellow' ? '--cursor-default: url(/themes/theme-dream/assets/cursor/mellow/normal.cur), auto;--cursor-pointer: url(/themes/theme-dream/assets/cursor/mellow/link.cur), auto;--cursor-text: url(/themes/theme-dream/assets/cursor/mellow/normal.cur), auto;--cursor-zoom-in: url(/themes/theme-dream/assets/cursor/mellow/normal.cur), auto;'
-      : '' })]
+      : '--cursor-default: url(/themes/theme-dream/assets/cursor/' + theme.config.enhance.cursor_style + '/arrow.cur), auto;--cursor-pointer: url(/themes/theme-dream/assets/cursor/' + theme.config.enhance.cursor_style + '/hand.cur), auto;--cursor-text: url(/themes/theme-dream/assets/cursor/' + theme.config.enhance.cursor_style + '/arrow.cur), auto;--cursor-zoom-in: url(/themes/theme-dream/assets/cursor/' + theme.config.enhance.cursor_style + '/arrow.cur), auto;'
+      })]
     }
 
     html.night {
