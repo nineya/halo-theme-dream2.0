@@ -415,7 +415,7 @@ const commonContext = {
         `.widget-comment[data-id='${id}'][data-target='${target}']`,
         '/plugins/PluginCommentWidget/assets/static/style.css',
         {
-          group: 'content.halo.run',
+          group: target === 'Moment' ? 'moment.halo.run' : 'content.halo.run',
           kind: target,
           name: id,
           colorScheme: window.dataTheme

@@ -30,7 +30,7 @@
         <span class="journal-operation-item" th:if="${enableComment}">
           <a class="comment">
             <i class="ri-message-3-line"></i>
-            <em th:text="${(moment.stats.approvedComment != 0)? moment.stats.approvedComment : '评论'}"></em>
+            <em th:text="${(moment.stats.totalComment != 0)? moment.stats.totalComment : '评论'}"></em>
           </a>
         </span>
         <span class="journal-operation-item" th:if="${enableShare}">
