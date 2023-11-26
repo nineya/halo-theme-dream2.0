@@ -591,6 +591,12 @@ spec:
           label: 侧边栏信息-地理位置
           placeholder: '请输入个人所在地'
         - $formkit: text
+          name: profile_theme_stats
+          label: 侧边栏信息-统计
+          placeholder: 'post|category|comment'
+          value: post|category|comment
+          help: '请输入3个统计项，按顺序排布，参数间用 “|” 分隔。visit：访问数量；upvote：点赞数量；comment：评论数量；post：文章数量；category：分类数量'
+        - $formkit: text
           name: profile_theme_button
           label: 侧边栏信息-主题按钮
           placeholder: '按钮名称|按钮地址'
