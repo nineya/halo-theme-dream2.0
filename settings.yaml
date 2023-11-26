@@ -595,7 +595,7 @@ spec:
           label: 侧边栏信息-统计
           placeholder: 'post|category|comment'
           value: post|category|comment
-          help: '最多可配置3个统计项，按输入顺序显示，缺失或错误配置则显示默认统计项，参数间用 “|” 分隔。visit：访问数量；upvote：点赞数量；comment：评论数量；post：文章数量；category：分类数量'
+          help: '最多可配置3个统计项，按输入顺序显示，缺失或错误配置则显示默认统计项，参数间用 “|” 分隔。visit：访问数量；upvote：点赞数量；comment：评论数量；post：文章数量；category：分类数量。'
         - $formkit: text
           name: profile_theme_button
           label: 侧边栏信息-主题按钮
