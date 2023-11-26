@@ -15,23 +15,47 @@
         </p>
       </div>
     </nav>
-    <nav class="level">
+    <nav class="level" th:with="statsItems = ${#strings.arraySplit(theme.config.sidebar.profile_theme_stats,'|')}">
       <div class="level-item">
         <div>
-          <p class="heading">文章</p>
-          <p class="value" th:text="${stats.post}"></p>
+          <p th:if="${statsItems.length>=1 && statsItems[0] == 'visit'}" class="heading">访问</p>
+		  <p th:if="${statsItems.length>=1 && statsItems[0] == 'upvote'}" class="heading">点赞</p>
+		  <p th:if="${statsItems.length>=1 && statsItems[0] == 'comment'}" class="heading">评论</p>
+		  <p th:if="${statsItems.length>=1 && statsItems[0] == 'post'}" class="heading">文章</p>
+		  <p th:if="${statsItems.length>=1 && statsItems[0] == 'category'}" class="heading">分类</p>
+		  <p th:if="${statsItems.length>=1 && statsItems[0] == 'visit'}" class="value" th:text="${stats.visit}"></p>
+		  <p th:if="${statsItems.length>=1 && statsItems[0] == 'upvote'}" class="value" th:text="${stats.upvote}"></p>
+		  <p th:if="${statsItems.length>=1 && statsItems[0] == 'comment'}" class="value" th:text="${stats.comment}"></p>
+		  <p th:if="${statsItems.length>=1 && statsItems[0] == 'post'}" class="value" th:text="${stats.post}"></p>
+		  <p th:if="${statsItems.length>=1 && statsItems[0] == 'category'}" class="value" th:text="${stats.category}"></p>
         </div>
       </div>
       <div class="level-item has-text-centered is-marginless">
         <div>
-          <p class="heading">分类</p>
-          <p class="value" th:text="${stats.category}"></p>
+          <p th:if="${statsItems.length>=2 && statsItems[1] == 'visit'}" class="heading">访问</p>
+		  <p th:if="${statsItems.length>=2 && statsItems[1] == 'upvote'}" class="heading">点赞</p>
+		  <p th:if="${statsItems.length>=2 && statsItems[1] == 'comment'}" class="heading">评论</p>
+		  <p th:if="${statsItems.length>=2 && statsItems[1] == 'post'}" class="heading">文章</p>
+		  <p th:if="${statsItems.length>=2 && statsItems[1] == 'category'}" class="heading">分类</p>
+		  <p th:if="${statsItems.length>=2 && statsItems[1] == 'visit'}" class="value" th:text="${stats.visit}"></p>
+		  <p th:if="${statsItems.length>=2 && statsItems[1] == 'upvote'}" class="value" th:text="${stats.upvote}"></p>
+		  <p th:if="${statsItems.length>=2 && statsItems[1] == 'comment'}" class="value" th:text="${stats.comment}"></p>
+		  <p th:if="${statsItems.length>=2 && statsItems[1] == 'post'}" class="value" th:text="${stats.post}"></p>
+		  <p th:if="${statsItems.length>=2 && statsItems[1] == 'category'}" class="value" th:text="${stats.category}"></p>
         </div>
       </div>
       <div class="level-item">
         <div>
-          <p class="heading">评论</p>
-          <p class="value" th:text="${stats.comment}"></p>
+          <p th:if="${statsItems.length>=3 && statsItems[2] == 'visit'}" class="heading">访问</p>
+		  <p th:if="${statsItems.length>=3 && statsItems[2] == 'upvote'}" class="heading">点赞</p>
+		  <p th:if="${statsItems.length>=3 && statsItems[2] == 'comment'}" class="heading">评论</p>
+		  <p th:if="${statsItems.length>=3 && statsItems[2] == 'post'}" class="heading">文章</p>
+		  <p th:if="${statsItems.length>=3 && statsItems[2] == 'category'}" class="heading">分类</p>
+		  <p th:if="${statsItems.length>=3 && statsItems[2] == 'visit'}" class="value" th:text="${stats.visit}"></p>
+		  <p th:if="${statsItems.length>=3 && statsItems[2] == 'upvote'}" class="value" th:text="${stats.upvote}"></p>
+		  <p th:if="${statsItems.length>=3 && statsItems[2] == 'comment'}" class="value" th:text="${stats.comment}"></p>
+		  <p th:if="${statsItems.length>=3 && statsItems[2] == 'post'}" class="value" th:text="${stats.post}"></p>
+		  <p th:if="${statsItems.length>=3 && statsItems[2] == 'category'}" class="value" th:text="${stats.category}"></p>
         </div>
       </div>
     </nav>
