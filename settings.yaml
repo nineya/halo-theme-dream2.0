@@ -590,6 +590,30 @@ spec:
           name: profile_location
           label: 侧边栏信息-地理位置
           placeholder: '请输入个人所在地'
+        - $formkit: repeater
+          name: custom_stats
+          label: 侧边栏信息-统计
+          help: 可配置0-3个统计项，不满足三项时缺失的位置显示默认统计项。
+          value:
+            - type: post
+            - type: category
+            - type: comment
+          children:
+            - $formkit: select
+              name: type
+              label: 统计项
+              value: ""
+              options:
+                - value: 'post'
+                  label:  文章数量
+                - value: 'category'
+                  label:  分类数量
+                - value: 'comment'
+                  label:  评论数量
+                - value: 'upvote'
+                  label:  点赞数量
+                - value: 'visit'
+                  label:  访问数量
         - $formkit: text
           name: profile_theme_button
           label: 侧边栏信息-主题按钮
