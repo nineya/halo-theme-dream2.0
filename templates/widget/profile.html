@@ -16,20 +16,68 @@
       </div>
     </nav>
     <nav class="level">
-      <div class="level-item">
-        <div>
+      <div class="level-item" th:switch="${#lists.size(theme.config.sidebar.custom_stats)>=1?theme.config.sidebar.custom_stats[0].type:'post'}">
+        <div th:case="visit">
+          <p class="heading">访问</p>
+          <p class="value" th:text="${stats.visit}"></p>
+        </div>
+        <div th:case="upvote">
+          <p class="heading">点赞</p>
+          <p class="value" th:text="${stats.upvote}"></p>
+        </div>
+        <div th:case="comment">
+          <p class="heading">评论</p>
+          <p class="value" th:text="${stats.comment}"></p>
+        </div>
+        <div th:case="category">
+          <p class="heading">分类</p>
+          <p class="value" th:text="${stats.category}"></p>
+        </div>
+        <div th:case="*">
           <p class="heading">文章</p>
           <p class="value" th:text="${stats.post}"></p>
         </div>
       </div>
-      <div class="level-item has-text-centered is-marginless">
-        <div>
+      <div class="level-item has-text-centered is-marginless" th:switch="${#lists.size(theme.config.sidebar.custom_stats)>=2?theme.config.sidebar.custom_stats[1].type:'category'}">
+        <div th:case="visit">
+          <p class="heading">访问</p>
+          <p class="value" th:text="${stats.visit}"></p>
+        </div>
+        <div th:case="upvote">
+          <p class="heading">点赞</p>
+          <p class="value" th:text="${stats.upvote}"></p>
+        </div>
+        <div th:case="comment">
+          <p class="heading">评论</p>
+          <p class="value" th:text="${stats.comment}"></p>
+        </div>
+        <div th:case="post">
+          <p class="heading">文章</p>
+          <p class="value" th:text="${stats.post}"></p>
+        </div>
+        <div th:case="*">
           <p class="heading">分类</p>
           <p class="value" th:text="${stats.category}"></p>
         </div>
       </div>
-      <div class="level-item">
-        <div>
+      <div class="level-item" th:switch="${#lists.size(theme.config.sidebar.custom_stats)>=3?theme.config.sidebar.custom_stats[2].type:'comment'}">
+        <div th:case="visit">
+          <p class="heading">访问</p>
+          <p class="value" th:text="${stats.visit}"></p>
+        </div>
+        <div th:case="upvote">
+          <p class="heading">点赞</p>
+          <p class="value" th:text="${stats.upvote}"></p>
+        </div>
+        <div th:case="post">
+          <p class="heading">文章</p>
+          <p class="value" th:text="${stats.post}"></p>
+        </div>
+        <div th:case="category">
+          <p class="heading">分类</p>
+          <p class="value" th:text="${stats.category}"></p>
+        </div>
+        <div th:case="*">
           <p class="heading">评论</p>
           <p class="value" th:text="${stats.comment}"></p>
         </div>
