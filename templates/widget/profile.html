@@ -16,7 +16,7 @@
       </div>
     </nav>
     <nav class="level">
-      <div class="level-item" th:switch="${#lists.size(theme.config.sidebar.custom_stats)>=1?theme.config.sidebar.custom_stats[0].type:'post'}">
+      <div class="level-item" th:switch="${!#lists.isEmpty(theme.config.sidebar.custom_stats)&&#lists.size(theme.config.sidebar.custom_stats)>=1?theme.config.sidebar.custom_stats[0].type:'post'}">
         <div th:case="visit">
           <p class="heading">访问</p>
           <p class="value" th:text="${stats.visit}"></p>
@@ -38,7 +38,7 @@
           <p class="value" th:text="${stats.post}"></p>
         </div>
       </div>
-      <div class="level-item has-text-centered is-marginless" th:switch="${#lists.size(theme.config.sidebar.custom_stats)>=2?theme.config.sidebar.custom_stats[1].type:'category'}">
+      <div class="level-item has-text-centered is-marginless" th:switch="${!#lists.isEmpty(theme.config.sidebar.custom_stats)&&#lists.size(theme.config.sidebar.custom_stats)>=2?theme.config.sidebar.custom_stats[1].type:'category'}">
         <div th:case="visit">
           <p class="heading">访问</p>
           <p class="value" th:text="${stats.visit}"></p>
@@ -60,7 +60,7 @@
           <p class="value" th:text="${stats.category}"></p>
         </div>
       </div>
-      <div class="level-item" th:switch="${#lists.size(theme.config.sidebar.custom_stats)>=3?theme.config.sidebar.custom_stats[2].type:'comment'}">
+      <div class="level-item" th:switch="${!#lists.isEmpty(theme.config.sidebar.custom_stats)&&#lists.size(theme.config.sidebar.custom_stats)>=3?theme.config.sidebar.custom_stats[2].type:'comment'}">
         <div th:case="visit">
           <p class="heading">访问</p>
           <p class="value" th:text="${stats.visit}"></p>
