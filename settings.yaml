@@ -608,7 +608,8 @@ spec:
         - $formkit: repeater
           name: custom_stats
           label: 侧边栏信息-统计
-          help: 可任意配置统计项，未配置统计项时不显示，不建议配置多于3个统计项。
+          help: 可最多配置3个统计项，未配置统计项时不显示。
+          max: 3
           value:
             - type: post
             - type: category
