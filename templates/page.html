@@ -3,5 +3,6 @@
           th:insert="~{common/layout :: layout (title = ${singlePage.spec.title + ' - ' + site.title}, canonical = ${singlePage.status.permalink}, content = ~{main/article :: article (${singlePage}, 'SinglePage')}, isPost = true)}"
           th:with="enableKatex = ${!#strings.isEmpty(singlePage.metadata.annotations.get('enable_katex'))? singlePage.metadata.annotations.get('enable_katex') : theme.config.post.enable_katex},
       enableShare = ${!#strings.isEmpty(singlePage.metadata.annotations.get('enable_share'))? singlePage.metadata.annotations.get('enable_share') : theme.config.post.enable_post_share},
-      enableCopyright = ${!#strings.isEmpty(singlePage.metadata.annotations.get('enable_copyright'))? singlePage.metadata.annotations.get('enable_copyright') : theme.config.post.enable_copyright}">
+      enableCopyright = ${!#strings.isEmpty(singlePage.metadata.annotations.get('enable_copyright'))? singlePage.metadata.annotations.get('enable_copyright') : theme.config.post.enable_copyright},
+      enableDonate = ${!#strings.isEmpty(singlePage.metadata.annotations.get('enable_donate'))? singlePage.metadata.annotations.get('enable_donate') : theme.config.post.enable_post_donate}">
 </th:block>
