@@ -507,6 +507,16 @@ spec:
               label:  默认开启
             - value: false
               label:  默认关闭
+        - $formkit: radio
+          name: enable_post_donate
+          label:  开启文章打赏
+          value: true
+          help: '如果文章或页面元数据配置了enable_donate项，则当前配置将被覆盖。'
+          options:
+            - value: true
+              label:  默认开启
+            - value: false
+              label:  默认关闭
         - $formkit: attachment
           name: donate_alipay
           label: 支付宝捐赠二维码
