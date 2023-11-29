@@ -46,6 +46,11 @@ spec:
           name: record_number_ps
           label: 公安部备案
           placeholder: 'X公网安备 XXXXXXXXXXXXXX号'
+        - $formkit: attachment
+          name: record_number_ps_logo
+          label: '公安部备案 Logo'
+          placeholder: '请输入/选择公安部备案 Logo 路径'
+          value: https://beian.mps.gov.cn/img/logo01.dd7ff50e.png
         - $formkit: text
           name: website_time
           label: 建站时间
