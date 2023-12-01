@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <th:block xmlns:th="https://www.thymeleaf.org"
           th:insert="~{common/layout :: layout (title = '友链 - ' + ${site.title}, canonical = @{/links}, content = ~{::content}, isPost = false)}"
-          th:with="enableComment = ${!#strings.isEmpty(theme.config.page_config.link_comment_id)}">
+          th:with="enableComment = ${!#strings.isEmpty(theme.config.page_config.link_comment_id) && site.comment.enable && pluginFinder.available('PluginCommentWidget')}">
     <th:block th:fragment="content"
               th:with="defaultAvatar = ${#strings.defaultString(theme.config.page_config.links_default_avatar, #theme.assets('/img/avatar.svg'))}">
         <div class="card">
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="card card-content" id="comment-wrapper" th:if="${pluginFinder.available('PluginCommentWidget') && enableComment}">
+        <div class="card card-content" id="comment-wrapper" th:if="${enableComment}">
             <h3 class="comment-title">评论</h3>
             <div class="widget-comment" th:data-id="${theme.config.page_config.link_comment_id}" data-target="SinglePage"></div>
         </div>
