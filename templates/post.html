@@ -4,5 +4,6 @@
           th:with="enableKatex = ${!#strings.isEmpty(post.metadata.annotations.get('enable_katex'))? post.metadata.annotations.get('enable_katex') : theme.config.post.enable_katex},
       enableShare = ${!#strings.isEmpty(post.metadata.annotations.get('enable_share'))? post.metadata.annotations.get('enable_share') : theme.config.post.enable_post_share},
       enableCopyright = ${!#strings.isEmpty(post.metadata.annotations.get('enable_copyright'))? post.metadata.annotations.get('enable_copyright') : theme.config.post.enable_copyright},
-      enableDonate = ${!#strings.isEmpty(post.metadata.annotations.get('enable_donate'))? post.metadata.annotations.get('enable_donate') : theme.config.post.enable_post_donate}">
+      enableDonate = ${!#strings.isEmpty(post.metadata.annotations.get('enable_donate'))? post.metadata.annotations.get('enable_donate') : theme.config.post.enable_post_donate},
+      baseEnableComment = ${post.spec.allowComment}">
 </th:block>

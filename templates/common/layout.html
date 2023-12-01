@@ -1,45 +1,46 @@
 <html lang="zh" xmlns:th="https://www.thymeleaf.org"
       th:class="${theme.config.basic_style.theme_style}"
       th:fragment="layout (title, canonical, content, isPost)">
-<th:block th:if="${!#strings.equals('',param._pjax)}"
-          th:with="contributor = ${contributorFinder.getContributor(theme.config.basic_info.metadata_name)}">
-  <th:block th:replace="~{common/head :: head}"/>
-  <body>
-  <div class="column-main">
-    <th:block th:replace="${content}"/>
-  </div>
-  <th:block th:replace="~{common/scripts}"/>
-  </body>
-</th:block>
-<th:block th:unless="${!#strings.equals('',param._pjax)}"
-          th:with="stats = ${siteStatsFinder.getStats()},
-          contributor = ${contributorFinder.getContributor(theme.config.basic_info.metadata_name)}">
-  <th:block th:replace="~{common/head :: head}"/>
-  <body>
-  <th:block th:replace="~{common/navbar}"/>
-  <th:block th:if="${theme.config.basic_style.enable_banner}">
-    <th:block th:replace="~{common/banner :: banner}"/>
-  </th:block>
-  <section class="section">
-    <div th:class="${theme.config.basic_style.sidebar_column != 'all' ? 'container two-column' : 'container' }">
-      <div class="columns">
-        <div class="column column-main">
-          <th:block th:replace="${content}"/>
-        </div>
-        <th:block
-            th:if="${theme.config.basic_style.sidebar_column!='only-right' && theme.config.basic_style.sidebar_column!='module-left'}">
-          <th:block th:replace="~{common/widget :: widget('left')}"/>
-        </th:block>
-        <th:block
-            th:if="${theme.config.basic_style.sidebar_column!='only-left' && theme.config.basic_style.sidebar_column!='module-right'}">
-          <th:block th:replace="~{common/widget :: widget('right')}"/>
-        </th:block>
-      </div>
+<th:block th:with="contributor = ${contributorFinder.getContributor(theme.config.basic_info.metadata_name)},
+      enableComment = ${baseEnableComment && site.comment.enable && pluginFinder.available('PluginCommentWidget')}">
+  <th:block th:if="${!#strings.equals('',param._pjax)}">
+    <th:block th:replace="~{common/head :: head}"/>
+    <body>
+    <div class="column-main">
+      <th:block th:replace="${content}"/>
     </div>
-  </section>
-  <th:block th:replace="~{common/actions}"/>
-  <th:block th:replace="~{common/footer}"/>
-  <th:block th:replace="~{common/scripts}"/>
-  </body>
+    <th:block th:replace="~{common/scripts}"/>
+    </body>
+  </th:block>
+  <th:block th:unless="${!#strings.equals('',param._pjax)}"
+            th:with="stats = ${siteStatsFinder.getStats()}">
+    <th:block th:replace="~{common/head :: head}"/>
+    <body>
+    <th:block th:replace="~{common/navbar}"/>
+    <th:block th:if="${theme.config.basic_style.enable_banner}">
+      <th:block th:replace="~{common/banner :: banner}"/>
+    </th:block>
+    <section class="section">
+      <div th:class="${theme.config.basic_style.sidebar_column != 'all' ? 'container two-column' : 'container' }">
+        <div class="columns">
+          <div class="column column-main">
+            <th:block th:replace="${content}"/>
+          </div>
+          <th:block
+            th:if="${theme.config.basic_style.sidebar_column!='only-right' && theme.config.basic_style.sidebar_column!='module-left'}">
+            <th:block th:replace="~{common/widget :: widget('left')}"/>
+          </th:block>
+          <th:block
+            th:if="${theme.config.basic_style.sidebar_column!='only-left' && theme.config.basic_style.sidebar_column!='module-right'}">
+            <th:block th:replace="~{common/widget :: widget('right')}"/>
+          </th:block>
+        </div>
+      </div>
+    </section>
+    <th:block th:replace="~{common/actions}"/>
+    <th:block th:replace="~{common/footer}"/>
+    <th:block th:replace="~{common/scripts}"/>
+    </body>
+  </th:block>
 </th:block>
 </html>

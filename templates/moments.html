@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <th:block
   th:insert="~{common/layout :: layout (title = '瞬间 - ' + ${site.title}, canonical = @{/moments}, content = ~{::content}, isPost = true)}"
-  th:with="isJournals = true, enableShare = ${theme.config.post.enable_post_share}, enableComment = ${theme.config.page_config.enable_journals_comment}"
+  th:with="isJournals = true, enableShare = ${theme.config.post.enable_post_share}, baseEnableComment = ${theme.config.page_config.enable_journals_comment}"
   xmlns:th="https://www.thymeleaf.org">
   <th:block th:fragment="content">
     <div class="card card-content journal" th:each="moment : ${moments.items}">
@@ -37,7 +37,7 @@
           <a class="share"><i class="ri-share-forward-line"></i><em>分享</em></a>
         </span>
       </div>
-      <div class="journal-comment" th:if="${enableComment && pluginFinder.available('PluginCommentWidget')}">
+      <div class="journal-comment" th:if="${enableComment}">
         <div class="widget-comment" data-target="Moment" th:data-id="${moment.metadata.name}"></div>
       </div>
     </div>

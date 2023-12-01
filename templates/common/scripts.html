@@ -14,9 +14,7 @@
         <script th:if="${isJournals}" data-pjax th:src="@{/assets/js/journals.min.js(mew=${theme.spec.version})}"></script>
     </th:block>
     <script th:if="${isPhotos}" data-pjax th:src="@{/assets/lib/justifiedGallery@3.8.1/jquery.justifiedGallery.min.js}"></script>
-    <th:block th:if="${isPost || enableComment != null}">
-        <script th:if="${pluginFinder.available('PluginCommentWidget') && (post != null || singlePage != null || enableComment != null)}" data-pjax src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
-    </th:block>
+    <script th:if="${enableComment}" data-pjax src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
 
     <script th:src="@{/assets/js/mew-custom.min.js(mew=${theme.spec.version})}"></script>
 
