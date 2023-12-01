@@ -609,6 +609,8 @@ spec:
                   label:  文章数量
                 - value: 'category'
                   label:  分类数量
+                - value: 'tag'
+                  label: 标签数量
                 - value: 'comment'
                   label:  评论数量
                 - value: 'upvote'

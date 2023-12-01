@@ -33,6 +33,10 @@
           <p class="heading">分类</p>
           <p class="value" th:text="${stats.category}"></p>
         </div>
+        <div th:case="tag">
+          <p class="heading">标签</p>
+          <p class="value" th:with="tags = ${tagFinder.listAll()}" th:text="${#lists.size(tags)}"></p>
+        </div>
         <div th:case="*">
           <p class="heading">文章</p>
           <p class="value" th:text="${stats.post}"></p>
