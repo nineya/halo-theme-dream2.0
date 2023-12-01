@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <th:block
   th:insert="~{common/layout :: layout (title = '瞬间 - ' + ${site.title}, canonical = @{/moments}, content = ~{::content}, isPost = true)}"
-  th:with="isJournals = true, enableShare = ${theme.config.post.enable_post_share}, baseEnableComment = ${theme.config.page_config.enable_journals_comment}"
+  th:with="isJournals = true, enableShare = ${theme.config.page_config.enable_journals_share}, baseEnableComment = ${theme.config.page_config.enable_journals_comment}"
   xmlns:th="https://www.thymeleaf.org">
   <th:block th:fragment="content">
     <div class="card card-content journal" th:each="moment : ${moments.items}">

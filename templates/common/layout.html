@@ -2,7 +2,7 @@
       th:class="${theme.config.basic_style.theme_style}"
       th:fragment="layout (title, canonical, content, isPost)">
 <th:block th:with="contributor = ${contributorFinder.getContributor(theme.config.basic_info.metadata_name)},
-      enableComment = ${baseEnableComment && site.comment.enable && pluginFinder.available('PluginCommentWidget')}">
+      enableComment = ${baseEnableComment == true && site.comment.enable && pluginFinder.available('PluginCommentWidget')}">
   <th:block th:if="${!#strings.equals('',param._pjax)}">
     <th:block th:replace="~{common/head :: head}"/>
     <body>
