@@ -69,6 +69,18 @@ spec:
           label:  关闭
         - value: ""
           label:  跟随默认配置
+    - $formkit: radio
+      name: enable_donate
+      label:  开启文章打赏
+      value: ""
+      help: '当前配置将覆盖主题中的默认配置。'
+      options:
+        - value: "true"
+          label:  开启
+        - value: "false"
+          label:  关闭
+        - value: ""
+          label:  跟随默认配置
 
 ---
 
@@ -114,6 +126,18 @@ spec:
     - $formkit: radio
       name: enable_share
       label:  开启文章分享
+      value: ""
+      help: '当前配置将覆盖主题中的默认配置。'
+      options:
+        - value: "true"
+          label:  开启
+        - value: "false"
+          label:  关闭
+        - value: ""
+          label:  跟随默认配置
+    - $formkit: radio
+      name: enable_donate
+      label:  开启文章打赏
       value: ""
       help: '当前配置将覆盖主题中的默认配置。'
       options:
