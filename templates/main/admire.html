@@ -1,5 +1,5 @@
 <th:block xmlns:th="https://www.thymeleaf.org"
-     th:with="donate=${!#strings.isEmpty(theme.config.post.donate_alipay) || !#strings.isEmpty(theme.config.post.donate_wechat)}">
+     th:with="donate=${enableDonate && (!#strings.isEmpty(theme.config.post.donate_alipay) || !#strings.isEmpty(theme.config.post.donate_wechat))}">
     <div th:if="${donate || type == 'Post'}" class="admire">
         <div class="admire-content">
             <button th:if="${donate}" class="donate">
