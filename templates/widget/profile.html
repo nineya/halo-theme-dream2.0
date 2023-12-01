@@ -15,23 +15,27 @@
         </p>
       </div>
     </nav>
-    <nav class="level">
-      <div class="level-item">
-        <div>
-          <p class="heading">文章</p>
-          <p class="value" th:text="${stats.post}"></p>
+    <nav class="level" th:if="${!#lists.isEmpty(theme.config.sidebar.custom_stats)}">
+      <div th:each="item,sindex :${theme.config.sidebar.custom_stats}" class="level-item" th:switch="${item.type}">
+        <div th:case="visit">
+          <p class="heading">访问</p>
+          <p class="value" th:text="${stats.visit}"></p>
         </div>
-      </div>
-      <div class="level-item has-text-centered is-marginless">
-        <div>
+        <div th:case="upvote">
+          <p class="heading">点赞</p>
+          <p class="value" th:text="${stats.upvote}"></p>
+        </div>
+        <div th:case="comment">
+          <p class="heading">评论</p>
+          <p class="value" th:text="${stats.comment}"></p>
+        </div>
+        <div th:case="category">
           <p class="heading">分类</p>
           <p class="value" th:text="${stats.category}"></p>
         </div>
-      </div>
-      <div class="level-item">
-        <div>
-          <p class="heading">评论</p>
-          <p class="value" th:text="${stats.comment}"></p>
+        <div th:case="*">
+          <p class="heading">文章</p>
+          <p class="value" th:text="${stats.post}"></p>
         </div>
       </div>
     </nav>
