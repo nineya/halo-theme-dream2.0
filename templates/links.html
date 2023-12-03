@@ -33,7 +33,7 @@
                     </th:block>
                     <hr th:if="${theme.config.page_config.show_exchange_info || !#strings.isEmpty(theme.config.page_config.links_info)}"/>
                     <th:block th:if="${theme.config.page_config.show_exchange_info}"
-                              th:with="bloggerAvatar= ${#strings.defaultString(theme.config.page_config.links_blogger_avatar, ((#strings.endsWith(site.url, '/') ? #strings.substring(site.url, 0, #strings.length(site.url) - 1) : site.url) + site.favicon))}">
+                              th:with="bloggerAvatar= ${#strings.defaultString(theme.config.page_config.links_blogger_avatar, #strings.startsWith(site.favicon, 'http') ? site.favicon : ((#strings.endsWith(site.url, '/') ? #strings.substring(site.url, 0, #strings.length(site.url) - 1) : site.url) + site.favicon))}">
                         申请友链的方法：
                         <ul>
                             <li>名称：[[${site.title}]]</li>
