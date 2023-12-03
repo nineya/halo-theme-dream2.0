@@ -8,7 +8,7 @@
             <div th:if="${!#strings.isEmpty(theme.config.page_config.links_thumbnail)}" class="card-image cover-image" th:style="'background-image: url(' + ${theme.config.page_config.links_thumbnail} + ')'">
             </div>
             <div class="card-content main">
-                <h1 class="title" th:text="'友情链接 - ' + ${contributor.displayName} + '的小伙伴们'"></h1>
+                <h1 class="title" th:text="'友情链接 - ' + ${site.title} + '的小伙伴们'"></h1>
                 <div class="main-content">
                     <th:block th:each="group : ${groups}">
                         <div th:if="${!#lists.isEmpty(group.links)}" class="links">
@@ -33,13 +33,13 @@
                     </th:block>
                     <hr th:if="${theme.config.page_config.show_exchange_info || !#strings.isEmpty(theme.config.page_config.links_info)}"/>
                     <th:block th:if="${theme.config.page_config.show_exchange_info}"
-                              th:with="bloggerAvatar= ${#strings.defaultString(theme.config.page_config.links_blogger_avatar, contributor.avatar)}">
+                              th:with="bloggerAvatar= ${#strings.defaultString(theme.config.page_config.links_blogger_avatar, site.favicon)}">
                         申请友链的方法：
                         <ul>
                             <li>名称：[[${site.title}]]</li>
                             <li>地址：<a th:href="${site.url}" th:text="${site.url}"></a></li>
                             <li>图标：<a th:href="${bloggerAvatar}" th:text="${bloggerAvatar}"></a></li>
-                            <li>描述：[[${contributor.bio}]]</li>
+                            <li>描述：[[${site.seo.description}]]</li>
                         </ul>
                     </th:block>
                     <div th:if="${!#strings.isEmpty(theme.config.page_config.links_info)}" th:utext="${theme.config.page_config.links_info}"></div>
