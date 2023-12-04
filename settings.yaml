@@ -871,6 +871,15 @@ spec:
           label: "友链页面-补充信息"
           placeholder: '请输入补充信息'
           help: '友链页面最低部的补充说明信息，支持 HTML 格式。'
+        - $formkit: radio
+          name: link_comment_enable
+          label:  友链页面-开启评论区
+          value: true
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
         - $formkit: text
           name: link_comment_id
           label:  友链页面-评论区ID
