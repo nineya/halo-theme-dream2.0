@@ -447,12 +447,12 @@ spec:
               label:  Xcode
             - value: xt256
               label:  Xt 256
-        - $formkit: text
+        - $formkit: number
           name: code_fold_line
           label: 代码块折叠
           placeholder: '请输入代码行数数值'
           help: '代码行数超出指定行数后默认进行折叠，指定的行数需大于等于 20。'
-        - $formkit: text
+        - $formkit: number
           name: img_fold_height
           label: 正文长图折叠
           placeholder: '请输入高度数值（px）'
@@ -466,7 +466,7 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: text
+        - $formkit: number
           name: invalid_tips_day
           label:  文章失效提示
           value: 99999999
@@ -767,7 +767,7 @@ spec:
           label:  侧边栏广告-自定义广告代码
           placeholder: '请输入广告代码'
           help: '在这里黏贴广告联盟提供的广告代码，自定义广告代码模式时不能为空。'
-        - $formkit: text
+        - $formkit: number
           name: recent_posts_num
           label:  侧边栏最近文章-展示文章数量
           placeholder: 请输入数量数值
@@ -787,7 +787,7 @@ spec:
               label:  显示
             - value: false
               label:  不显示
-        - $formkit: text
+        - $formkit: number
           name: categories_num
           label:  侧边栏分类-展示分类数量
           placeholder: 请输入数量数值
@@ -802,7 +802,7 @@ spec:
               label:  显示
             - value: false
               label:  不显示
-        - $formkit: text
+        - $formkit: number
           name: tags_num
           label:  侧边栏标签-展示标签数量
           placeholder: 请输入数量数值
@@ -826,7 +826,7 @@ spec:
               label:  显示
             - value: false
               label:  不显示
-        - $formkit: text
+        - $formkit: number
           name: tagcloud_num
           label:  侧边栏标签云-展示标签数量
           placeholder: 请输入数量数值
@@ -885,7 +885,7 @@ spec:
               label:  开启
             - value: false
               label:  关闭
-        - $formkit: text
+        - $formkit: number
           name: journals_fold_height
           label:  瞬间页面-动态内容折叠
           placeholder: '请输入高度数值（px）'
