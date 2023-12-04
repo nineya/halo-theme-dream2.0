@@ -1,0 +1,27 @@
+<div xmlns:th="https://www.thymeleaf.org"
+     th:fragment="widget (hide)"
+     th:class="'card widget recent-comments ' + ${hide}"
+     th:with="num = ${#strings.isEmpty(theme.config.sidebar.recent_comments_num)? 5 : T(java.lang.Integer).parseInt(theme.config.sidebar.recent_comments_num)}, comments = ${commentFinder.list(null,1,num)}, isEmpty = ${#lists.isEmpty(comments)}">
+    <div class="card-title">
+        <i class="ri-history-line card-title-label"></i><span>最新评论</span>
+    </div>
+    <div th:if="${isEmpty}" class="card-empty">暂无评论</div>
+    <div th:unless="${isEmpty}" class="card-content">
+        <ul class="widget-comment">
+            <li class="item" th:each="comment : ${comments}">
+                <div class="user">
+                    <img width="35" height="35" class="avatar" th:src="${comment.owner.avatar}"
+                         th:alt="${comment.owner.displayName}">
+                    <div class="info">
+                        <div class="author">[[${comment.owner.displayName}]]</div>
+                        <span class="date">[[${#temporals.format(comment.spec.creationTime, 'yyyy-MM-dd')}]]</span>
+                    </div>
+                </div>
+                <div class="reply"
+                     th:with="url = ${comment.spec.subjectRef.kind == 'SinglePage'?(comment.spec.subjectRef.name == 'links'?'/links':singlePageFinder.getByName(comment.spec.subjectRef.name).status.permalink):(comment.spec.subjectRef.kind == 'Post'?postFinder.getByName(comment.spec.subjectRef.name).status.permalink:comment.spec.subjectRef.kind == 'Moment'?'/moments':'')}">
+                    <a th:href="@{${url}}+'#comment-wrapper'" class="link">[[${comment.spec.content}]]</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

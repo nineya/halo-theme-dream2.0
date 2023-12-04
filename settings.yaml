@@ -551,6 +551,8 @@ spec:
                   label:  广告模块
                 - value: 'recent_posts'
                   label:  最近文章模块
+                - value: 'recent_comments'
+                  label: 最近评论模块
                 - value: 'categories'
                   label:  文章分类模块
                 - value: 'tags'
@@ -770,6 +772,11 @@ spec:
           label:  侧边栏最近文章-展示文章数量
           placeholder: 请输入数量数值
           value: 5
+        - $formkit: number
+          name: recent_comments_num
+          label:  侧边栏最近评论-展示评论数量
+          placeholder: 请输入数量数值
+          value: 5
         - $formkit: radio
           name: categories_more
           label:  侧边栏分类-显示”更多”按钮
@@ -868,7 +875,7 @@ spec:
           name: link_comment_id
           label:  友链页面-评论区ID
           placeholder: '请输入 ID'
-          help: '友链页面没有 ID，需要指定一个自定义页面的 ID 用于评论，被指定的文章评论区将作为友链的评论区， 放空则不显示评论区。'
+          help: '友链页面没有 ID，需要指定一个自定义页面的 ID 用于评论，被指定的文章评论区将作为友链的评论区，放空则友链的评论标签将被显示为“未知-未知”。'
         - $formkit: radio
           name: enable_tags_tag_color
           label:  标签页面-开启标签颜色
