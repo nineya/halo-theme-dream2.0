@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="reply"
-                     th:with="url = ${comment.spec.subjectRef.kind == 'SinglePage'?(comment.spec.subjectRef.name == 'links'?'/links':singlePageFinder.getByName(comment.spec.subjectRef.name).status.permalink):(comment.spec.subjectRef.kind == 'Post'?postFinder.getByName(comment.spec.subjectRef.name).status.permalink:comment.spec.subjectRef.kind == 'Moment'?'/moments':'')}">
+                     th:with="url = ${comment.spec.subjectRef.kind == 'SinglePage'?(comment.spec.subjectRef.name == theme.config.page_config.link_comment_id?'/links':singlePageFinder.getByName(comment.spec.subjectRef.name).status.permalink):(comment.spec.subjectRef.kind == 'Post'?postFinder.getByName(comment.spec.subjectRef.name).status.permalink:comment.spec.subjectRef.kind == 'Moment'?'/moments':'')}">
                     <a th:href="@{${url}}+'#comment-wrapper'" class="link">[[${comment.spec.content}]]</a>
                 </div>
             </li>

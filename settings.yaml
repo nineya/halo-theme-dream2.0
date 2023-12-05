@@ -875,7 +875,7 @@ spec:
           name: link_comment_id
           label:  友链页面-评论区ID
           placeholder: '请输入 ID'
-          help: '友链页面没有 ID，需要指定一个自定义页面的 ID 用于评论，被指定的文章评论区将作为友链的评论区，放空则友链的评论标签将被显示为“未知-未知”。'
+          help: '友链页面没有 ID，需要指定一个自定义页面的 ID 用于评论，被指定的文章评论区将作为友链的评论区，放空则友链界面不显示评论区。'
         - $formkit: radio
           name: enable_tags_tag_color
           label:  标签页面-开启标签颜色
