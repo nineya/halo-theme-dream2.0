@@ -15,9 +15,9 @@
         <div class="tags-field">
           <a th:each="tag : ${tags}" class="tags" th:href="${tag.status.permalink}">
           <span class="tag" th:text="${tag.spec.displayName}"
-                th:style="${enableTagsColor? 'color: ' + tag.spec.color +'; background: ' + tag.spec.color +'20' : ''}"></span>
+                th:style="${(enableTagsColor && tag.spec.color != '#ffffff')? 'color: ' + tag.spec.color +'; background: ' + tag.spec.color +'20' : ''}"></span>
             <span class="tag is-grey" th:text="${tag.postCount}"
-                  th:style="${enableTagsColor? 'background: ' + tag.spec.color +'CC' : ''}"></span>
+                  th:style="${(enableTagsColor && tag.spec.color != '#ffffff')? 'background: ' + tag.spec.color +'CC' : ''}"></span>
           </a>
         </div>
       </div>
