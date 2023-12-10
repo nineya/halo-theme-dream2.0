@@ -985,7 +985,9 @@ spec:
             - value: granule
               label:  粒子爆炸
             - value: prosperous
-              label: 富强民主
+              label:  富强民主
+            - value: heart
+              label:  爱心特效
         - $formkit: radio
           name: enable_sw
           label:  "启用 Service Worker 优化"
