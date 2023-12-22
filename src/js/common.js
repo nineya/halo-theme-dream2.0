@@ -408,11 +408,11 @@ const commonContext = {
     if (!window.CommentWidget) {
       return
     }
-    $('.widget-comment').each(function (index, item) {
+    $('.comment-section').each(function (index, item) {
       let target = $(this).attr('data-target')
       let id = $(this).attr('data-id')
       CommentWidget.init(
-        `.widget-comment[data-id='${id}'][data-target='${target}']`,
+        `.comment-section[data-id='${id}'][data-target='${target}']`,
         '/plugins/PluginCommentWidget/assets/static/style.css',
         {
           group: target === 'Moment' ? 'moment.halo.run' : 'content.halo.run',

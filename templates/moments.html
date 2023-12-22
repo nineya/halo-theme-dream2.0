@@ -38,7 +38,7 @@
         </span>
       </div>
       <div class="journal-comment" th:if="${enableComment}">
-        <div class="widget-comment" data-target="Moment" th:data-id="${moment.metadata.name}"></div>
+        <div class="comment-section" data-target="Moment" th:data-id="${moment.metadata.name}"></div>
       </div>
     </div>
     <th:block th:replace="~{main/pagination :: pagination (${moments}, '/moments')}"/>

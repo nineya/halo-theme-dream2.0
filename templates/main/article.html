@@ -91,6 +91,6 @@
 
     <div class="card card-content" id="comment-wrapper" th:if="${enableComment}">
         <h3 class="comment-title">评论</h3>
-        <div class="widget-comment" th:data-id="${post.metadata.name}" th:data-target="${type}"></div>
+        <div class="comment-section" th:data-id="${post.metadata.name}" th:data-target="${type}"></div>
     </div>
 </th:block>
