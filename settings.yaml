@@ -720,10 +720,11 @@ spec:
           name: music_config
           label:  侧边栏音乐-参数进阶配置
           placeholder: '请输入音乐参数配置'
-          value: 'list-folded="true"
-                server="netease"
-                type="playlist"
-                id="7355014621"'
+          value: |-
+             list-folded="true"
+             server="netease"
+             type="playlist"
+             id="7355014621"
           help: '输入音乐参数配置(id / server / type必填)，详细配置方式见官方文档：https://github.com/metowolf/MetingJS/'
         - $formkit: radio
           name: show_ad_tag
@@ -995,13 +996,24 @@ spec:
           help: "需要在 Nginx 中添加代理配置方可启用，配置方法见：https://blog.nineya.com/archives/104.html"
           options:
             - value: "false"
-              label:  关闭
-            - value: "&install=true"
-              label:  开启CDN并发请求
-            - value: "&install=true&offLine=true"
-              label:  开启全站离线
+              label: 关闭
+            - value: "&concurrent=true"
+              label: 开启并发CDN请求
+            - value: "&cache=true"
+              label: 开启全站离线
+            - value: "&concurrent=true&cache=true"
+              label: 开启并发CDN与全站离线
             - value: "uninstall"
-              label:  卸载
+              label: 卸载
+        - $formkit: code
+          name: sw_cdn_source
+          label: "Service Worker 并发 CDN 源"
+          placeholder: 请输入 CDN 地址（一行一个）
+          help: '填入可用的 NPM 公共开源 CDN 地址（一行一个），通过 “{CDN 地址}/{项目名}@{版本号}/${文件路径}” 可访问到文件，如：https://unpkg.com/halo-theme-dream@3.2.1/source/js/utils.min.js'
+          value: |-
+            https://unpkg.com
+            https://cdn.jsdelivr.net/npm
+            https://npm.elemecdn.com
         - $formkit: radio
           name: enable_pjax
           label:  Pjax 加载
