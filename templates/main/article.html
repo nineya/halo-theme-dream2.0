@@ -1,9 +1,10 @@
 <th:block xmlns:th="https://www.thymeleaf.org"
      th:fragment="article (post, type)"
-     th:with="updateInterval = ${T(java.lang.Math).floor((#dates.createNow().getTime()/1000.0 - post.status.lastModifyTime.getEpochSecond())/86400.0).intValue()}">
+     th:with="updateInterval = ${T(java.lang.Math).floor((#dates.createNow().getTime()/1000.0 - post.status.lastModifyTime.getEpochSecond())/86400.0).intValue()},
+     thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail : post.spec.cover}">
 
-    <div th:if="${!#strings.isEmpty(post.spec.cover)}" class="card widget">
-        <div class="cover-image" th:style="'background-image: url(' + ${post.spec.cover} + ')'">
+    <div th:if="${!#strings.isEmpty(thumbnail)}" class="card widget">
+        <div class="cover-image" th:style="'background-image: url(' + ${thumbnail} + ')'">
             <div th:if="${type == 'Post' && !#lists.isEmpty(post.categories)}" class="category">
                 <a th:each="cy : ${post.categories}" th:href="${cy.status.permalink}"
                    th:text="${cy.spec.displayName}"></a>&nbsp;
@@ -34,7 +35,7 @@
 
     <div class="card">
         <div class="card-content main">
-            <th:block th:if="${#strings.isEmpty(post.spec.cover)}">
+            <th:block th:if="${#strings.isEmpty(thumbnail)}">
                 <h1 class="title" th:text="${post.spec.title}"></h1>
                 <div class="meta">
                     <ul class="breadcrumb">

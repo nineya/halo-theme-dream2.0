@@ -267,14 +267,14 @@ spec:
       formSchema:
         - $formkit: attachment
           name: default_thumbnail
-          label: 默认文章缩略图
+          label: 默认文章封面图
           placeholder: '请输入/选择图片路径'
-          help: "如果文章没有指定缩略图，则默认显示当前缩略图。"
+          help: "如果文章没有指定封面图，则默认显示当前封面图。"
         - $formkit: select
           name: top_thumbnail_mode
-          label:  置顶文章列表缩略图模式
+          label:  置顶文章列表封面图模式
           value: back
-          help: '置顶的文章在列表的缩略图模式，除网格布局外，如果文章元数据配置了thumbnail_mode项，则当前配置将被覆盖。注：设置网格布局后，非置顶文章也会变成网格布局。'
+          help: '置顶的文章在列表的封面图模式，除网格布局外，如果文章元数据配置了thumbnail_mode项，则当前配置将被覆盖。注：设置网格布局后，非置顶文章也会变成网格布局。'
           options:
             - value: default
               label:  默认模式
@@ -292,9 +292,9 @@ spec:
               label:  网格模式（强优先）
         - $formkit: select
           name: thumbnail_mode
-          label:  文章列表缩略图模式
+          label:  文章列表封面图模式
           value: default
-          help: '文章列表缩略图模式，除网格布局外，如果文章元数据配置了thumbnail_mode项，则当前配置将被覆盖。'
+          help: '文章列表封面图模式，除网格布局外，如果文章元数据配置了thumbnail_mode项，则当前配置将被覆盖。'
           options:
             - value: default
               label:  默认模式
@@ -846,7 +846,7 @@ spec:
       formSchema:
         - $formkit: attachment
           name: links_thumbnail
-          label: 友链页面-缩略图
+          label: 友链页面-封面图
           placeholder: '请输入/选择图片路径'
         - $formkit: attachment
           name: links_default_avatar
