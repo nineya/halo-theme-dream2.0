@@ -270,6 +270,11 @@ spec:
           label: 默认文章缩略图
           placeholder: '请输入/选择图片路径'
           help: "如果文章没有指定缩略图，则默认显示当前缩略图。"
+        - $formkit: attachment
+          name: default_cover
+          label: 默认文章封面图
+          placeholder: '请输入/选择图片路径'
+          help: "如果文章没有指定封面图，则默认显示当前封面图。"
         - $formkit: select
           name: top_thumbnail_mode
           label:  置顶文章列表缩略图模式
