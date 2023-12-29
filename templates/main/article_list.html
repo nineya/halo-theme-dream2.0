@@ -1,7 +1,7 @@
 <th:block xmlns:th="https://www.thymeleaf.org"
           th:fragment="articleList (posts)">
   <th:block th:each="post : ${posts}"
-            th:with="thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail + '?id=' + postStat.index : post.spec.cover},
+            th:with="thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail + (#strings.contains(theme.config.post.default_thumbnail, '?') ? '&' : '?') + 'id=' + post.metadata.name : post.spec.cover},
             thumbnail_mode = ${(theme.config.post.top_thumbnail_mode == 'grid' || (!post.spec.pinned && theme.config.post.thumbnail_mode == 'grid'))? 'grid' : !#strings.isEmpty(post.metadata.annotations.get('thumbnail_mode'))? post.metadata.annotations.get('thumbnail_mode') : post.spec.pinned ? theme.config.post.top_thumbnail_mode : theme.config.post.thumbnail_mode}">
     <div th:if="${!#strings.isEmpty(thumbnail) && thumbnail_mode == 'back'}" class="card widget card-cover">
       <a th:href="${post.status.permalink}">
@@ -133,7 +133,7 @@
   <div th:if="${theme.config.post.top_thumbnail_mode == 'grid' || theme.config.post.thumbnail_mode == 'grid'}"
        class="column-main-grid">
     <th:block th:each="post : ${posts}"
-              th:with="thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail + '?id=' + postStat.index : post.spec.cover}">
+              th:with="thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail + (#strings.contains(theme.config.post.default_thumbnail, '?') ? '&' : '?') + 'id=' + post.metadata.name : post.spec.cover}">
       <div
         th:if="${(theme.config.post.top_thumbnail_mode == 'grid' || (!post.spec.pinned && theme.config.post.thumbnail_mode == 'grid'))}"
         class="card widget">

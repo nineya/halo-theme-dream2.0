@@ -12,9 +12,10 @@
         <div class="timeline-title" th:text="${archive.year}"></div>
         <div class="timeline">
           <th:block th:each="months : ${archive.months}">
-            <article th:each="post : ${months.posts}" class="media">
-              <a th:if="${!#strings.isEmpty(post.spec.cover)}" th:href="${post.status.permalink}" class="media-left">
-                <img class="not-gallery" th:src="${post.spec.cover}" th:alt="${post.spec.title}">
+            <article th:each="post : ${months.posts}" class="media"
+                     th:with="thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail + (#strings.contains(theme.config.post.default_thumbnail, '?') ? '&' : '?') + 'id=' + post.metadata.name : post.spec.cover}">
+              <a th:if="${!#strings.isEmpty(thumbnail)}" th:href="${post.status.permalink}" class="media-left">
+                <img class="not-gallery" th:src="${thumbnail}" th:alt="${post.spec.title}">
               </a>
               <div class="media-content">
                 <time th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>

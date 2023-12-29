@@ -1,7 +1,7 @@
 <th:block xmlns:th="https://www.thymeleaf.org"
      th:fragment="article (post, type)"
      th:with="updateInterval = ${T(java.lang.Math).floor((#dates.createNow().getTime()/1000.0 - post.status.lastModifyTime.getEpochSecond())/86400.0).intValue()},
-     thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail : post.spec.cover}">
+     thumbnail = ${#strings.isEmpty(post.spec.cover) ? #strings.isEmpty(theme.config.post.default_thumbnail) ? '' : theme.config.post.default_thumbnail + (#strings.contains(theme.config.post.default_thumbnail, '?') ? '&' : '?') + 'id=' + post.metadata.name : post.spec.cover}">
 
     <div th:if="${!#strings.isEmpty(thumbnail)}" class="card widget">
         <div class="cover-image" th:style="'background-image: url(' + ${thumbnail} + ')'">
