@@ -18,28 +18,28 @@
     <nav class="level" th:if="${!#lists.isEmpty(theme.config.sidebar.custom_stats)}">
       <div th:each="item,sindex :${theme.config.sidebar.custom_stats}" class="level-item" th:switch="${item.type}">
         <div th:case="visit">
-          <p class="heading">访问</p>
-          <p class="value" th:text="${stats.visit}"></p>
+          <p class="heading">访问[[${stats.visit / 1000000 > 0} ? '(百万)' : (${stats.visit / 10000 > 0} ? '(万)')]]</p>
+          <p class="value" th:text="${stats.visit / 1000000 > 0} ? ${#numbers.formatDecimal(stats.visit / 1000000.0,1,2)} : (${stats.visit / 10000 > 0} ? ${#numbers.formatDecimal(stats.visit / 10000.0,1,2)} : ${stats.visit})"></p>
         </div>
         <div th:case="upvote">
-          <p class="heading">点赞</p>
-          <p class="value" th:text="${stats.upvote}"></p>
+          <p class="heading">点赞[[${stats.upvote / 1000000 > 0} ? '(百万)' : (${stats.upvote / 10000 > 0} ? '(万)')]]</p>
+          <p class="value" th:text="${stats.upvote / 1000000 > 0} ? ${#numbers.formatDecimal(stats.upvote / 1000000.0,1,2)} : (${stats.upvote / 10000 > 0} ? ${#numbers.formatDecimal(stats.upvote / 10000.0,1,2)} : ${stats.upvote})"></p>
         </div>
         <div th:case="comment">
-          <p class="heading">评论</p>
-          <p class="value" th:text="${stats.comment}"></p>
+          <p class="heading">评论[[${stats.comment / 1000000 > 0} ? '(百万)' : (${stats.comment / 10000 > 0} ? '(万)')]]</p>
+          <p class="value" th:text="${stats.comment / 1000000 > 0} ? ${#numbers.formatDecimal(stats.comment / 1000000.0,1,2)} : (${stats.comment / 10000 > 0} ? ${#numbers.formatDecimal(stats.comment / 10000.0,1,2)} : ${stats.comment})"></p>
         </div>
         <div th:case="category">
-          <p class="heading">分类</p>
-          <p class="value" th:text="${stats.category}"></p>
+          <p class="heading">分类[[${stats.category / 1000000 > 0} ? '(百万)' : (${stats.category / 10000 > 0} ? '(万)')]]</p>
+          <p class="value" th:text="${stats.category / 1000000 > 0} ? ${#numbers.formatDecimal(stats.category / 1000000.0,1,2)} : (${stats.category / 10000 > 0} ? ${#numbers.formatDecimal(stats.category / 10000.0,1,2)} : ${stats.category})"></p>
         </div>
-        <div th:case="tag">
-          <p class="heading">标签</p>
-          <p class="value" th:with="tags = ${tagFinder.listAll()}" th:text="${#lists.size(tags)}"></p>
+        <div th:case="tag" th:with="tags = ${#lists.size(tagFinder.listAll())}">
+          <p class="heading">标签[[${tags / 1000000 > 0} ? '(百万)' : (${tags / 10000 > 0} ? '(万)')]]</p>
+          <p class="value" th:text="${tags / 1000000 > 0} ? ${#numbers.formatDecimal(tags / 1000000.0,1,2)} : (${tags / 10000 > 0} ? ${#numbers.formatDecimal(tags / 10000.0,1,2)} : ${tags})"></p>
         </div>
         <div th:case="*">
-          <p class="heading">文章</p>
-          <p class="value" th:text="${stats.post}"></p>
+          <p class="heading">文章[[${stats.post / 1000000 > 0} ? '(百万)' : (${stats.post / 10000 > 0} ? '(万)')]]</p>
+          <p class="value" th:text="${stats.post / 1000000 > 0} ? ${#numbers.formatDecimal(stats.post / 1000000.0,1,2)} : (${stats.post / 10000 > 0} ? ${#numbers.formatDecimal(stats.post / 10000.0,1,2)} : ${stats.post})"></p>
         </div>
       </div>
     </nav>
