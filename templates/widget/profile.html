@@ -33,7 +33,7 @@
           <p class="heading">分类[[${stats.category / 1000000 > 0} ? '(百万)' : (${stats.category / 10000 > 0} ? '(万)')]]</p>
           <p class="value" th:text="${stats.category / 1000000 > 0} ? ${#numbers.formatDecimal(stats.category / 1000000.0,1,2)} : (${stats.category / 10000 > 0} ? ${#numbers.formatDecimal(stats.category / 10000.0,1,2)} : ${stats.category})"></p>
         </div>
-        <div th:case="tag" th:with="tags = ${#lists.size(tagFinder.listAll())}">
+        <div th:case="tag" th:with="tagsList = ${tagFinder.listAll()}, tags = ${#lists.size(tagsList)}">
           <p class="heading">标签[[${tags / 1000000 > 0} ? '(百万)' : (${tags / 10000 > 0} ? '(万)')]]</p>
           <p class="value" th:text="${tags / 1000000 > 0} ? ${#numbers.formatDecimal(tags / 1000000.0,1,2)} : (${tags / 10000 > 0} ? ${#numbers.formatDecimal(tags / 10000.0,1,2)} : ${tags})"></p>
         </div>
