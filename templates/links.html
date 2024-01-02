@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <th:block xmlns:th="https://www.thymeleaf.org"
           th:insert="~{common/layout :: layout (title = '友链 - ' + ${site.title}, canonical = @{/links}, content = ~{::content}, isPost = false)}"
-          th:with="baseEnableComment = ${!#strings.isEmpty(theme.config.page_config.link_comment_id)}">
+          th:with="baseEnableComment = ${!#strings.isEmpty(theme.config.page_config.link_comment_id) && theme.config.page_config.link_enable_comment}">
     <th:block th:fragment="content"
               th:with="defaultAvatar = ${#strings.defaultString(theme.config.page_config.links_default_avatar, #theme.assets('/img/avatar.svg'))}">
         <div class="card">
