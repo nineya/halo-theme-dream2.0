@@ -27,7 +27,7 @@
 
     <script th:if="${isPost == true || isPhotos == true}" data-pjax async th:src="@{/assets/lib/fancybox@5.3.7/jquery.fancybox.min.js}"></script>
 
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script th:if="${theme.config.enhance.enable_busuanzi != false}" async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
     [(${theme.config.custom.external_js_body})]
     <script th:if="${!#strings.isEmpty(theme.config.custom.inline_js_body)}" type="text/javascript" th:utext="${theme.config.custom.inline_js_body}">

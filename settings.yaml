@@ -1077,9 +1077,12 @@ spec:
           name: enable_busuanzi
           label:  开启 busuanzi 访客统计
           value: true
+          help: '隐藏时不显示统计信息，但依旧会请求 busuanzi 统计访客信息。'
           options:
             - value: true
               label:  开启
+            - value: hide
+              label: 隐藏
             - value: false
               label:  关闭
         - $formkit: radio
