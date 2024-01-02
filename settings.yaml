@@ -872,11 +872,20 @@ spec:
           label: "友链页面-补充信息"
           placeholder: '请输入补充信息'
           help: '友链页面最低部的补充说明信息，支持 HTML 格式。'
-        - $formkit: text
+        - $formkit: radio
+          name: link_enable_comment
+          label:  友链页面-开启评论区
+          value: false
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
+        - $formkit: singlePageSelect
           name: link_comment_id
           label:  友链页面-评论区ID
-          placeholder: '请输入 ID'
-          help: '友链页面没有 ID，需要指定一个自定义页面的 ID 用于评论，被指定的文章评论区将作为友链的评论区，放空则友链界面不显示评论区。'
+          placeholder: '请选择一个页面作为友链页面的评论区ID'
+          help: '友链页面没有 ID，需要指定一个自定义页面的 ID 用于评论，被指定的页面评论区将作为友链的评论区，未选择时则友链界面不显示评论区。'
         - $formkit: radio
           name: enable_tags_tag_color
           label:  标签页面-开启标签颜色
