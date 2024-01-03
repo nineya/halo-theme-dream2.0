@@ -75,6 +75,11 @@ const commonContext = {
       } else {
         document.documentElement.classList.remove('night')
       }
+      $('.comment-section>div').each(function () {
+        const shadowDom = this.shadowRoot.querySelectorAll('.halo-comment-widget')[0]
+        $(shadowDom)[`${isNightValue ? 'add' : 'remove'}Class`]('dark')
+        $(shadowDom)[`${isNightValue ? 'remove' : 'add'}Class`]('light')
+      })
       localStorage.setItem('night', isNightValue)
       isNight = isNightValue
     }
@@ -418,7 +423,7 @@ const commonContext = {
           group: target === 'Moment' ? 'moment.halo.run' : 'content.halo.run',
           kind: target,
           name: id,
-          colorScheme: window.dataTheme
+          colorScheme: (localStorage.getItem('night') !== 'true' ? 'light' : 'dark')
         }
       )
     })
