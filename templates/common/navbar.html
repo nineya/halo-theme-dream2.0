@@ -75,18 +75,32 @@
                     <p class="motto" th:text="${contributor.bio}"></p>
                 </div>
             </div>
-            <ul class="navbar-slideout-menu">
-                <li class="item">
-                    <i class="ri-edit-circle-line"></i>
-                    <span>累计撰写 <strong th:text="${stats.post}"></strong> 篇文章</span>
-                </li>
-                <li class="item">
-                    <i class="ri-apps-line"></i>
-                    <span>累计创建 <strong th:text="${stats.category}"></strong> 个分类</span>
-                </li>
-                <li class="item">
-                    <i class="ri-message-2-line"></i>
-                    <span>累计收到 <strong th:text="${stats.comment}"></strong> 条评论</span>
+            <ul class="navbar-slideout-menu" th:if="${!#lists.isEmpty(theme.config.sidebar.custom_stats)}">
+                <li class="item" th:each="itemData,sindex :${theme.config.sidebar.custom_stats}" th:switch="${itemData.type}">
+                    <div th:case="visit">
+                        <i class="ri-pie-chart-line"></i>
+                        <span>累计收获 <strong th:text="${stats.visit}"></strong> 次访问</span>
+                    </div>
+                    <div th:case="upvote">
+                        <i class="ri-thumb-up-line"></i>
+                        <span>累计收获 <strong th:text="${stats.upvote}"></strong> 个点赞</span>
+                    </div>
+                    <div th:case="comment">
+                        <i class="ri-message-2-line"></i>
+                        <span>累计收到 <strong th:text="${stats.comment}"></strong> 条评论</span>
+                    </div>
+                    <div th:case="category">
+                        <i class="ri-apps-line"></i>
+                        <span>累计创建 <strong th:text="${stats.category}"></strong> 个分类</span>
+                    </div>
+                    <div th:case="tag" th:with="tagsList = ${tagFinder.listAll()}, tags = ${#lists.size(tagsList)}">
+                        <i class="ri-price-tag-2-line"></i>
+                        <span>累计创建 <strong th:text="${tags}"></strong> 个标签</span>
+                    </div>
+                    <div th:case="*">
+                        <i class="ri-edit-circle-line"></i>
+                        <span>累计撰写 <strong th:text="${stats.post}"></strong> 篇文章</span>
+                    </div>
                 </li>
             </ul>
             <ul class="navbar-slideout-menu not-toc">
