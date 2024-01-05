@@ -875,7 +875,7 @@ spec:
         - $formkit: radio
           name: link_enable_comment
           label:  友链页面-开启评论区
-          value: false
+          value: true
           options:
             - value: true
               label:  开启
