@@ -1,7 +1,7 @@
 <div xmlns:th="https://www.thymeleaf.org"
      th:fragment="widget (hide)"
      th:class="'card widget recent-comments ' + ${hide}"
-     th:with="num = ${#strings.isEmpty(theme.config.sidebar.recent_comments_num)? 5 : T(java.lang.Integer).parseInt(theme.config.sidebar.recent_comments_num)}, comments = ${commentFinder.list(NULL,1,num)}, isEmpty = ${#lists.isEmpty(comments)}">
+     th:with="num = ${#strings.isEmpty(theme.config.sidebar.recent_comments_num)? 5 : T(java.lang.Integer).parseInt(theme.config.sidebar.recent_comments_num)}, comments = ${commentFinder.list(null,1,num)}, isEmpty = ${#lists.isEmpty(comments)}">
     <div class="card-title">
         <i class="ri-history-line card-title-label"></i><span>最新评论</span>
     </div>
