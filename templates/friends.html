@@ -16,8 +16,8 @@
         </div>
       </div>
       <div class="friends-date">
-        <img th:src="${spec.logo}" alt="avatar">
         <a th:href="${spec.url}" target="_blank">
+          <img th:src="${spec.logo}" alt="avatar">
           <span th:text="${spec.author}"></span>
         </a>
         <em th:text="'发表于 ' + ${#dates.format(spec.pubDate,'yyyy年MM月dd日 HH:mm:ss')}"></em>
