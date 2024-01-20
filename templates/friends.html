@@ -6,7 +6,7 @@
   <th:block th:fragment="content">
     <div class="card card-content friends" th:each="friend : ${friends.items}" th:with="spec = ${friend.spec}">
       <p class="friends-title">
-        <a th:href="${spec.url}" target="_blank">
+        <a th:href="${spec.link}" target="_blank">
           <span th:text="${spec.title}"></span>
         </a>
       </p>
@@ -17,7 +17,9 @@
       </div>
       <div class="friends-date">
         <img th:src="${spec.logo}" alt="avatar">
-        <span th:text="${spec.author}"></span>
+        <a th:href="${spec.url}" target="_blank">
+          <span th:text="${spec.author}"></span>
+        </a>
         <em th:text="'发表于 ' + ${#dates.format(spec.pubDate,'yyyy年MM月dd日 HH:mm:ss')}"></em>
       </div>
     </div>
