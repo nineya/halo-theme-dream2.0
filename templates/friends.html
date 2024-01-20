@@ -4,6 +4,31 @@
   th:with="isJournals = true, enableShare = false, baseEnableComment = false"
   xmlns:th="https://www.thymeleaf.org">
   <th:block th:fragment="content">
+    <div th:class="${theme.config.page_config.enable_friends_stats} ? 'card card-content friends' : 'card card-content friends-hide-stats'">
+      <div class="card-tab">
+        <div>[[${#strings.replace(title, ' - ' + site.title, '')}]]</div>
+      </div>
+      <nav class="level" th:if="${theme.config.page_config.enable_friends_stats}" th:with="stats = ${friendFinder.statistical()}">
+        <div class="level-item">
+          <div>
+            <p class="heading">订阅数</p>
+            <p class="value" th:title="${stats.friendsNum}" th:text="${stats.friendsNum}"></p>
+          </div>
+        </div>
+        <div class="level-item">
+          <div>
+            <p class="heading">订阅成功数</p>
+            <p class="value" th:title="${stats.activeNum}" th:text="${stats.activeNum}"></p>
+          </div>
+        </div>
+        <div class="level-item">
+          <div>
+            <p class="heading">订阅文章数</p>
+            <p class="value" th:title="${stats.articleNum}" th:text="${stats.articleNum}"></p>
+          </div>
+        </div>
+      </nav>
+    </div>
     <div class="card card-content friends" th:each="friend : ${friends.items}" th:with="spec = ${friend.spec}">
       <p class="friends-title">
         <a th:href="${spec.link}" target="_blank">
