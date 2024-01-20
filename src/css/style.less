@@ -4946,6 +4946,39 @@ button.swiper-pagination-bullet {
 /* 朋友圈界面 */
 .friends {
 
+  .level {
+    display: flex;
+
+    &-item {
+      flex: 1;
+      margin: 0 !important;
+      text-align: center !important;
+
+      .heading {
+        display: block;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
+
+      .value {
+        color: var(--dark-c);
+        font-size: 2rem;
+        line-height: 1.125;
+        margin-bottom: 0;
+        font-weight: 400 !important;
+      }
+    }
+
+    &:not(:first-child):not(:empty) {
+      margin-top: 1.5rem;
+    }
+
+    .button i {
+      font-size: 16px;
+    }
+  }
+
   &-title {
     font-size: 1.6rem;
   }
@@ -4981,4 +5014,13 @@ button.swiper-pagination-bullet {
     }
   }
 
+}
+
+/* 朋友圈界面 - 隐藏统计*/
+.friends-hide-stats {
+  padding: .6rem 1rem 0rem !important;
+
+  & > div {
+    border-bottom: 0px !important;
+  }
 }
