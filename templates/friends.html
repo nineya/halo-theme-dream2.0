@@ -4,11 +4,11 @@
   th:with="isJournals = true, enableShare = false, baseEnableComment = false"
   xmlns:th="https://www.thymeleaf.org">
   <th:block th:fragment="content">
-    <div th:class="${theme.config.page_config.enable_friends_stats} ? 'card card-content friends' : 'card card-content friends-hide-stats'">
+    <div th:if="${theme.config.page_config.enable_friends_stats}" class="card card-content friends">
       <div class="card-tab">
         <div>[[${#strings.replace(title, ' - ' + site.title, '')}]]</div>
       </div>
-      <nav class="level" th:if="${theme.config.page_config.enable_friends_stats}" th:with="stats = ${friendFinder.statistical()}">
+      <nav class="level" th:with="stats = ${friendFinder.statistical()}">
         <div class="level-item">
           <div>
             <p class="heading">订阅数</p>
@@ -29,23 +29,18 @@
         </div>
       </nav>
     </div>
-    <div class="card card-content friends" th:each="friend : ${friends.items}" th:with="spec = ${friend.spec}">
-      <p class="friends-title">
-        <a th:href="${spec.link}" target="_blank">
-          <span th:text="${spec.title}"></span>
-        </a>
-      </p>
-      <div class="friends-content fold">
-        <div class="main-content not-toc description">
-          <span th:text="${spec.description}"></span>
+    <div class="widget card friends" th:each="friend : ${friends.items}" th:with="spec = ${friend.spec}">
+      <div class="card-content main">
+        <h2 class="title"><a th:href="${spec.link}" target="_blank" th:text="${spec.title}"></a></h2>
+        <div class="main-content not-toc" th:text="${spec.description}"></div>
+        <hr/>
+        <div class="meta">
+          <a class="has-link-grey" th:href="${spec.url}" target="_blank">
+            <img th:if="${!#strings.isEmpty(spec.logo)}" th:src="${spec.logo}" alt="avatar">
+            <span th:text="${spec.author}"></span>
+          </a>
+          <em th:text="'发表于 ' + ${#dates.format(spec.pubDate,'yyyy年MM月dd日 HH:mm:ss')}"></em>
         </div>
-      </div>
-      <div class="friends-date">
-        <a th:href="${spec.url}" target="_blank">
-          <img th:src="${spec.logo}" alt="avatar">
-          <span th:text="${spec.author}"></span>
-        </a>
-        <em th:text="'发表于 ' + ${#dates.format(spec.pubDate,'yyyy年MM月dd日 HH:mm:ss')}"></em>
       </div>
     </div>
     <th:block th:replace="~{main/pagination :: pagination (${friends}, '/friends')}"/>
