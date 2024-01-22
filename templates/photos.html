@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <th:block xmlns:th="https://www.thymeleaf.org"
-          th:insert="~{common/layout :: layout (title = '我的相册 - ' + ${site.title}, canonical = @{/links}, content = ~{::content}, isPost = false)}"
+          th:insert="~{common/layout :: layout (title = ${title} + ' - ' + ${site.title}, canonical = @{/links}, content = ~{::content}, isPost = false)}"
           th:with="isPhotos = true">
     <th:block th:fragment="content">
         <div class="card card-content photos">
-            <div class="card-tab"><div>我的相册</div></div>
+            <div class="card-tab"><div>[[${#strings.replace(title, ' - ' + site.title, '')}]]</div></div>
             <div class="photos-teams">
                 <a th:class="${#strings.isEmpty(param.group)? 'item active' : 'item'}" th:href="@{/photos}">全部</a>
                 <a th:each="group : ${groups}" th:class="${#strings.equals(param.group, group.metadata.name)? 'item active' : 'item'}" th:href="@{/photos(group=${group.metadata.name})}" th:text="${group.spec.displayName}"></a>
