@@ -37,7 +37,7 @@
       </p>
       <div class="friends-content fold">
         <div class="main-content not-toc description">
-          <span th:text="${spec.description}"></span>
+          <span th:text="${#strings.length(spec.description) > 150 ? #strings.substring(spec.description, 0 ,150) : spec.description}"></span>
         </div>
       </div>
       <div class="friends-date">
