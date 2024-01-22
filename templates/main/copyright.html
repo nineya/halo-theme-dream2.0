@@ -1,7 +1,7 @@
 <div xmlns:th="https://www.thymeleaf.org" class="copyright">
     <div class="copyright-title">
         <p th:text="${post.spec.title}"></p>
-        <a th:href="${post.status.permalink}" th:text="${(#strings.startsWith(post.status.permalink, '/')? (#strings.endsWith(site.url, '/') ? #strings.substring(site.url, 0, #strings.length(site.url) - 1) : '') : '') + post.status.permalink}"></a>
+        <a th:href="${post.status.permalink}" th:text="${(#strings.startsWith(post.status.permalink, '/')? (#strings.endsWith(site.url, '/') ? #strings.substring(site.url, 0, #strings.length(site.url) - 1) : site.url) : '') + post.status.permalink}"></a>
     </div>
     <div class="copyright-meta level">
         <div class="level-item">
