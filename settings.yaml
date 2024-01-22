@@ -922,6 +922,15 @@ spec:
           name: journals_share_image
           label: 瞬间页面-瞬间分享背景图
           placeholder: '请输入/选择图片路径'
+        - $formkit: radio
+          name: enable_friends_stats
+          label:  朋友圈页面-开启朋友圈统计信息显示
+          value: true
+          options:
+            - value: true
+              label:  开启
+            - value: false
+              label:  关闭
     - group: enhance
       label: '增强功能'
       formSchema:
