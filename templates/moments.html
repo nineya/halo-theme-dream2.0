@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <th:block
-  th:insert="~{common/layout :: layout (title = '瞬间 - ' + ${site.title}, canonical = @{/moments}, content = ~{::content}, isPost = true)}"
+  th:insert="~{common/layout :: layout (title = ${title} + ' - ' + ${site.title}, canonical = @{/moments}, content = ~{::content}, isPost = true)}"
   th:with="isJournals = true, enableShare = ${theme.config.page_config.enable_journals_share}, baseEnableComment = ${theme.config.page_config.enable_journals_comment}"
   xmlns:th="https://www.thymeleaf.org">
   <th:block th:fragment="content">
+    <div class="card card-content friends-hide-stats">
+      <div class="card-tab">
+        <div>[[${#strings.replace(title, ' - ' + site.title, '')}]]</div>
+      </div>
+    </div>
     <div class="card card-content journal" th:each="moment : ${moments.items}">
       <p class="journal-date">
         <i class="ri-send-plane-line"></i>
