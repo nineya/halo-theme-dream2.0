@@ -180,7 +180,7 @@ const Utils = {
         returnRaw: true,
         resultType: 'text',
         data: JSON.stringify({
-          group: 'content.halo.run',
+          group: type === 'moments' ? 'moment.halo.run' : 'content.halo.run',
           plural: type,
           name: id
         })
