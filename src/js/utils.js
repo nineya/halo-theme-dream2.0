@@ -169,6 +169,12 @@ const Utils = {
      */
   initLikeEvent(buttonSelect, type, likeNumFunc) {
     let name = encrypt('agree-' + type)
+    let group = 'content.halo.run'
+    let plural = 'posts'
+    if(type === 'Moment'){
+      group = 'moment.halo.run'
+      plural = 'moments'
+    }
     $('body').on('click', buttonSelect, function (e) {
       e.stopPropagation()
       let $this = $(this)
@@ -180,8 +186,8 @@ const Utils = {
         returnRaw: true,
         resultType: 'text',
         data: JSON.stringify({
-          group: 'content.halo.run',
-          plural: type,
+          group: group,
+          plural: plural,
           name: id
         })
       })
