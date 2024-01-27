@@ -844,6 +844,11 @@ spec:
     - group: page_config
       label: '页面设置'
       formSchema:
+        - $formkit: text
+          name: links_title
+          label: 友链页面-标题
+          placeholder: '请输入友链页面的标题名称'
+          help: '填写友链页面的标题名称，留空时显示“友链”。'
         - $formkit: attachment
           name: links_thumbnail
           label: 友链页面-封面图
@@ -867,6 +872,11 @@ spec:
           label: '友链页面-交换信息自定义 Logo 链接'
           placeholder: '请输入/选择 Logo 路径'
           help: '用于交换友链的 Logo 链接。'
+        - $formkit: text
+          name: links_rss_address
+          label: 友链页面-RSS订阅地址
+          placeholder: '请输入RSS订阅地址'
+          help: '用于交换友链时添加朋友圈的RSS订阅地址。'
         - $formkit: code
           name: links_info
           label: "友链页面-补充信息"
