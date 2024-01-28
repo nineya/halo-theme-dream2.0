@@ -40,7 +40,7 @@
                             <li>地址：<a th:href="${site.url}" target="_blank" th:text="${site.url}"></a></li>
                             <li>图标：<a th:href="${bloggerAvatar}" target="_blank" th:text="${bloggerAvatar}"></a></li>
                             <li>描述：[[${contributor.bio}]]</li>
-                            <li>订阅：<a th:href="${theme.config.page_config.links_rss_address}" target="_blank" th:text="${theme.config.page_config.links_rss_address}"></a></li>
+                            <li th:if="${!#strings.isEmpty(theme.config.page_config.links_rss_address)}">订阅：<a th:href="${theme.config.page_config.links_rss_address}" target="_blank" th:text="${theme.config.page_config.links_rss_address}"></a></li>
                         </ul>
                     </th:block>
                     <div th:if="${!#strings.isEmpty(theme.config.page_config.links_info)}" th:utext="${theme.config.page_config.links_info}"></div>
