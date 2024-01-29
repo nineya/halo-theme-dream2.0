@@ -2,22 +2,27 @@
      th:fragment="widget (hide)"
      th:class="'card widget ' + ${hide}"
      th:with="num = ${#strings.isEmpty(theme.config.sidebar.categories_num)? 10 : T(java.lang.Integer).parseInt(theme.config.sidebar.categories_num)},
-     categories = ${categoryFinder.list(1,num)},
+     categories = ${categoryFinder.listAsTree()},
      isEmpty = ${#lists.isEmpty(categories)}">
     <div class="card-title">
         <i class="ri-apps-line card-title-label"></i><span>分类</span>
-        <a th:if="${categories.hasNext}" class="card-more" th:href="@{/categories}">更多<i
+        <a th:if="${#lists.size(categories) > num && theme.config.sidebar.categories_more}" class="card-more" th:href="@{/categories}">更多<i
                 class="ri-arrow-right-double-line"></i></a>
     </div>
     <div th:if="${isEmpty}" class="card-empty">暂无分类</div>
     <div th:unless="${isEmpty}" class="card-content">
         <ul class="menu-list">
-            <li th:each="category : ${categories}">
-                <a class="level is-marginless" th:href="${category.status.permalink}">
-                    <span class="level-item" th:text="${category.spec.displayName}"></span>
-                    <span class="level-item tag" th:text="${category.status.postCount}"></span>
-                </a>
-            </li>
+            <th:block th:fragment="categories (categories, noLimit)">
+                <li th:each="category,itemIndex : ${categories}" th:unless="${itemIndex.index >= num && noLimit == null}">
+                    <a class="level is-marginless" th:href="${category.status.permalink}">
+                        <span class="level-item" th:text="${category.spec.displayName}"></span>
+                        <span class="level-item tag" th:text="${category.status.postCount}"></span>
+                    </a>
+                    <ul th:if="${!#lists.isEmpty(category.children)}">
+                        <th:block th:replace="~{:: categories (${category.children}, true)}"/>
+                    </ul>
+                </li>
+            </th:block>
         </ul>
     </div>
 </div>
