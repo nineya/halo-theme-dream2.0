@@ -782,7 +782,7 @@ spec:
           name: categories_more
           label:  侧边栏分类-显示”更多”按钮
           value: true
-          help: '超出展示的分类数量后是否显示更多按钮。'
+          help: '侧边栏分类是否显示更多按钮。'
           options:
             - value: true
               label:  显示
@@ -790,14 +790,14 @@ spec:
               label:  不显示
         - $formkit: number
           name: categories_num
-          label:  侧边栏分类-展示分类数量
+          label:  侧边栏分类-各级别展示分类的最大数量
           placeholder: 请输入数量数值
           value: 10
         - $formkit: radio
           name: tags_more
           label:  侧边栏标签-显示”更多”按钮
           value: true
-          help: '超出展示的标签数量后是否显示更多按钮。'
+          help: '侧边栏标签是否显示更多按钮。'
           options:
             - value: true
               label:  显示
@@ -821,7 +821,7 @@ spec:
           name: tagcloud_more
           label:  侧边栏标签云-显示”更多”按钮
           value: true
-          help: '超出展示的标签数量后是否显示更多按钮。'
+          help: '侧边栏标签云是否显示更多按钮。'
           options:
             - value: true
               label:  显示

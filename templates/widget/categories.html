@@ -6,20 +6,20 @@
      isEmpty = ${#lists.isEmpty(categories)}">
     <div class="card-title">
         <i class="ri-apps-line card-title-label"></i><span>分类</span>
-        <a th:if="${#lists.size(categories) > num && theme.config.sidebar.categories_more}" class="card-more" th:href="@{/categories}">更多<i
+        <a th:if="${theme.config.sidebar.categories_more}" class="card-more" th:href="@{/categories}">更多<i
                 class="ri-arrow-right-double-line"></i></a>
     </div>
     <div th:if="${isEmpty}" class="card-empty">暂无分类</div>
     <div th:unless="${isEmpty}" class="card-content">
         <ul class="menu-list">
-            <th:block th:fragment="categories (categories, noLimit)">
-                <li th:each="category,itemIndex : ${categories}" th:unless="${itemIndex.index >= num && noLimit == null}">
+            <th:block th:fragment="categories (categories)">
+                <li th:each="category,itemIndex : ${categories}" th:unless="${itemIndex.index >= num}">
                     <a class="level is-marginless" th:href="${category.status.permalink}">
                         <span class="level-item" th:text="${category.spec.displayName}"></span>
                         <span class="level-item tag" th:text="${category.status.postCount}"></span>
                     </a>
                     <ul th:if="${!#lists.isEmpty(category.children)}">
-                        <th:block th:replace="~{:: categories (${category.children}, true)}"/>
+                        <th:block th:replace="~{:: categories (${category.children})}"/>
                     </ul>
                 </li>
             </th:block>

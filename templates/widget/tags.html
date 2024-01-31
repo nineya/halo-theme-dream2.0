@@ -7,7 +7,7 @@
      enableTagsColor = ${theme.config.sidebar.enable_tag_color}">
     <div class="card-title">
         <i class="ri-price-tag-3-line card-title-label"></i><span>标签</span>
-        <a th:if="${tags.hasNext && theme.config.sidebar.tags_more}" class="card-more" th:href="@{/tags}">更多<i class="ri-arrow-right-double-line"></i></a>
+        <a th:if="${theme.config.sidebar.tags_more}" class="card-more" th:href="@{/tags}">更多<i class="ri-arrow-right-double-line"></i></a>
     </div>
     <div th:if="${isEmpty}" class="card-empty">暂无标签</div>
     <div th:unless="${isEmpty}" class="card-content">
