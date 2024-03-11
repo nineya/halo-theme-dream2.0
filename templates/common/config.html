@@ -97,7 +97,18 @@
     /** 配置主题模式 */
     DreamConfig["default_theme"] = '[(${theme.config.basic_style.default_theme})]';
     (function(){
-      let isNight = DreamConfig.default_theme === 'system'? matchMedia('(prefers-color-scheme: dark)').matches : localStorage.getItem('night') || DreamConfig.default_theme === 'night';
+      const hasNightInLocal = () => localStorage.getItem('night') !== null;
+      const getNightInConfig = () => {
+        if (DreamConfig.default_theme === 'night') {
+          return true;
+        }
+        if (DreamConfig.default_theme === 'system') {
+          return  matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+        return false;
+      }
+      
+      let isNight = hasNightInLocal() ? localStorage.getItem('night') : getNightInConfig();
       if (isNight.toString() === 'true') {
         localStorage.setItem('night', 'true');
         document.documentElement.classList.add('night');
