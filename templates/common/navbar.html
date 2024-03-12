@@ -15,7 +15,8 @@
                        class="item"
                        th:href="${menuItem.status.href}"
                        th:target="${menuItem.spec.target?.value}"
-                       th:title="${#annotations.getOrDefault(menuItem, 'desc',  menuItem.status.displayName)}">
+                       th:with="desc = ${#annotations.getOrDefault(menuItem, 'desc', menuItem.status.displayName)}"
+                       th:title="${#strings.isEmpty(desc) ? menuItem.status.displayName : desc}">
                         <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
                            th:class="${'m-icon ' + #annotations.getOrDefault(menuItem, 'icon', '')}"></i>
                         [[${menuItem.status.displayName}]]
@@ -25,7 +26,8 @@
                             <a class="item"
                                th:href="${#strings.defaultString(menuItem.status.href, 'javascript:')}"
                                th:target="${menuItem.spec.target?.value}"
-                               th:title="${#annotations.getOrDefault(menuItem, 'desc', menuItem.status.displayName)}">
+                               th:with="desc = ${#annotations.getOrDefault(menuItem, 'desc', menuItem.status.displayName)}"
+                               th:title="${#strings.isEmpty(desc) ? menuItem.status.displayName : desc}">
                                 <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(menuItem, 'icon', ''))}"
                                    th:class="${'m-icon ' + #annotations.getOrDefault(menuItem, 'icon', '')}"></i>
                                 [[${menuItem.status.displayName}]]
@@ -37,7 +39,8 @@
                                 <a class="item"
                                    th:href="${#strings.defaultString(dropdown.status.href, 'javascript:')}"
                                    th:target="${dropdown.spec.target?.value}"
-                                   th:title="${#annotations.getOrDefault(dropdown, 'desc', dropdown.status.displayName)}">
+                                   th:with="desc = ${#annotations.getOrDefault(dropdown, 'desc', dropdown.status.displayName)}"
+                                   th:title="${#strings.isEmpty(desc) ? dropdown.status.displayName : desc}">
                                     <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdown, 'icon', ''))}"
                                        th:class="${'m-icon ' + #annotations.getOrDefault(dropdown, 'icon', '')}"></i>
                                     [[${dropdown.status.displayName}]]
@@ -47,7 +50,8 @@
                                         <a class="item"
                                            th:href="${dropdownChild.status.href}"
                                            th:target="${dropdownChild.spec.target?.value}"
-                                           th:title="${#annotations.getOrDefault(dropdownChild, 'desc', dropdownChild.status.displayName)}">
+                                           th:with="desc = ${#annotations.getOrDefault(dropdownChild, 'desc', dropdownChild.status.displayName)}"
+                                           th:title="${#strings.isEmpty(desc) ? dropdownChild.status.displayName : desc}">
                                             <i th:if="${!#strings.isEmpty(#annotations.getOrDefault(dropdownChild, 'icon', ''))}"
                                                th:class="${'m-icon ' + #annotations.getOrDefault(dropdownChild, 'icon', '')}"></i>
                                             [[${dropdownChild.status.displayName}]]

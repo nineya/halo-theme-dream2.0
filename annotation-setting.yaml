@@ -147,3 +147,23 @@ spec:
           label:  关闭
         - value: ""
           label:  跟随默认配置
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: ""
+    kind: MenuItem
+  formSchema:
+    - $formkit: "text"
+      name: "icon"
+      label: "图标"
+      placeholder: '请输入菜单图标，支持RemixIcon V3.5.0'
+    - $formkit: "text"
+      name: "desc"
+      label: "描述"
+      placeholder: '请输入鼠标悬停时描述内容，默认为菜单名'
