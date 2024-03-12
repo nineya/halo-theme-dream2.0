@@ -282,16 +282,22 @@ const commonContext = {
   /* 离屏提示 */
   offscreenTip() {
     if (Utils.isMobile() || (!DreamConfig.document_hidden_title && !DreamConfig.document_visible_title)) return
-    const originTitle = document.title
+    // const originTitle = document.title
+    let originTitle = document.title
     let timer = null
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) {
+        if(!DreamConfig.document_visible_title || document.title !== DreamConfig.document_visible_title) {
+          originTitle = document.title
+        }
         DreamConfig.document_hidden_title && (document.title = DreamConfig.document_hidden_title)
         clearTimeout(timer)
       } else {
         document.title = DreamConfig.document_visible_title || originTitle
         DreamConfig.document_visible_title && (timer = setTimeout(function () {
-          document.title = originTitle
+          if(document.title === DreamConfig.document_visible_title){
+            document.title = originTitle
+          }
         }, 2000))
       }
     })
