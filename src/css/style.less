@@ -3879,6 +3879,16 @@ button.swiper-pagination-bullet {
   }
 }
 
+@media (min-width: (@mobile-max-width - 1)) {
+  .footer-center {
+    text-align: center;
+
+    & > li {
+      text-align: left;
+    }
+  }
+}
+
 @media (max-width: (@desktop-min-width - 1)) {
   .navbar {
     .navbar-search .input {

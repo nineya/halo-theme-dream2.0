@@ -59,6 +59,16 @@ spec:
           name: cloud_by_url
           label: '云服务提供商 URL'
           placeholder: '请输入链接地址'
+        - $formkit: radio
+          name: footer_center
+          label: 页脚对齐方式
+          value: false
+          help: 在非移动设备下改变页脚的对齐方式。
+          options:
+            - label: 左侧
+              value: false
+            - label: 居中
+              value: true
     - group: basic_style
       label: '基础样式'
       formSchema:

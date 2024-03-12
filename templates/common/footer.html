@@ -1,6 +1,6 @@
 <footer class="footer" xmlns:th="https://www.thymeleaf.org">
     <div class="container">
-        <ul class="footer-container">
+        <ul th:class="${theme.config.basic_info.footer_center} ? 'footer-container footer-center' : 'footer-container'">
             <li>
               <a class="logo-title" th:href="${site.url}">
                 <th:block th:if="${#strings.isEmpty(site.logo)}" th:text="${site.title}"/>
