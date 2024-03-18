@@ -171,8 +171,6 @@ $(document).on('pjax:success', async function (event, data, status, xhr, options
   window.journalPjax && window.journalPjax(serialNumber)
   /* 初始化文章界面 */
   window.postPjax && window.postPjax(serialNumber)
-  /* 初始化评论 */
-  commonContext.initComment()
   /* 初始化轮播 */
   commonContext.initCarousel()
   /* 加载主动推送或统计脚本 */
