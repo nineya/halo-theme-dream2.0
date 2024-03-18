@@ -289,6 +289,9 @@ const commonContext = {
       } else {
         document.title = DreamConfig.document_visible_title || originTitle
         DreamConfig.document_visible_title && (timer = setTimeout(function () {
+          if(document.title === DreamConfig.document_visible_title){
+            document.title = originTitle
+          }
           document.title = originTitle
         }, 2000))
       }
