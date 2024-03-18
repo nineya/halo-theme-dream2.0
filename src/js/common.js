@@ -75,11 +75,6 @@ const commonContext = {
       } else {
         document.documentElement.classList.remove('night')
       }
-      $('.comment-section>div').each(function () {
-        const shadowDom = this.shadowRoot.querySelectorAll('.halo-comment-widget')[0]
-        $(shadowDom)[`${isNightValue ? 'add' : 'remove'}Class`]('dark')
-        $(shadowDom)[`${isNightValue ? 'remove' : 'add'}Class`]('light')
-      })
       localStorage.setItem('night', isNightValue)
       isNight = isNightValue
     }
@@ -411,26 +406,6 @@ const commonContext = {
       websiteDate.innerHTML = `建站<span class="stand">${days}</span>天<span class="stand">${hours}</span>时<span class="stand">${minutes}</span>分<span class="stand">${seconds}</span>秒`
     }, 1000)
   },
-  /* 初始化评论区 */
-  initComment() {
-    if (!window.CommentWidget) {
-      return
-    }
-    $('.comment-section').each(function (index, item) {
-      let target = $(this).attr('data-target')
-      let id = $(this).attr('data-id')
-      CommentWidget.init(
-        `.comment-section[data-id='${id}'][data-target='${target}']`,
-        '/plugins/PluginCommentWidget/assets/static/style.css',
-        {
-          group: target === 'Moment' ? 'moment.halo.run' : 'content.halo.run',
-          kind: target,
-          name: id,
-          colorScheme: (localStorage.getItem('night') !== 'true' ? 'light' : 'dark')
-        }
-      )
-    })
-  },
   /* 初始化特效，只需要初始化一次，移动端设备不初始化 */
   initEffects() {
     if (Utils.isMobile()) return
@@ -458,7 +433,7 @@ const commonContext = {
 window.commonContext = commonContext
 
 !(function () {
-  const loads = ['initCarousel', 'sparkInput', 'websiteTime', 'initComment']
+  const loads = ['initCarousel', 'sparkInput', 'websiteTime']
   const omits = ['initEffects', 'loadMaintain', 'showThemeVersion']
 
   Object.keys(commonContext).forEach(

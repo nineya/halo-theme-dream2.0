@@ -48,7 +48,9 @@
         </div>
         <div class="card card-content" id="comment-wrapper" th:if="${enableComment}">
             <h3 class="comment-title">评论</h3>
-            <div class="comment-section" th:data-id="${theme.config.page_config.link_comment_id}" data-target="SinglePage"></div>
+            <div th:if="${haloCommentEnabled}">
+                <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name=${theme.config.page_config.link_comment_id}"/>
+            </div>
         </div>
     </th:block>
 </th:block>
