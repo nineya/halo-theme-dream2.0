@@ -71,9 +71,9 @@ const commonContext = {
     let isNight = localStorage.getItem('night') || false
     const applyNight = (isNightValue) => {
       if (isNightValue) {
-        document.documentElement.classList.add('night')
+        $('html').addClass('color-scheme-dark').removeClass('color-scheme-light').addClass('night')
       } else {
-        document.documentElement.classList.remove('night')
+        $('html').addClass('color-scheme-light').removeClass('color-scheme-dark').removeClass('night')
       }
       localStorage.setItem('night', isNightValue)
       isNight = isNightValue
