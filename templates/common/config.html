@@ -101,8 +101,10 @@
       if (isNight.toString() === 'true') {
         localStorage.setItem('night', 'true');
         document.documentElement.classList.add('night');
+        document.documentElement.classList.add('color-scheme-dark');
       } else {
         localStorage.setItem('night', 'false');
+        document.documentElement.classList.add('color-scheme-light');
       }
     })();
   </script>
