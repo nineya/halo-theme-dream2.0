@@ -98,7 +98,7 @@
     </a>
 
     <div
-      th:if="${(#strings.isEmpty(thumbnail) && !(post.spec.pinned && thumbnail_mode == 'fold')) || #strings.isEmpty(thumbnail_mode) ||  thumbnail_mode == 'default'}"
+      th:if="${#strings.isEmpty(thumbnail_mode) ||  thumbnail_mode == 'default'}"
       class="card widget">
       <a th:if="${!#strings.isEmpty(thumbnail)}" class="thumbnail" th:href="${post.status.permalink}">
         <div class="thumbnail-image" th:style="'background-image: url(' + ${thumbnail} + ')'">
