@@ -1,0 +1,8 @@
+<div xmlns:th="https://www.thymeleaf.org"
+     th:fragment="widget (sidebar)"
+     th:class="'card widget ' + ${sidebar.hide}">
+<div class="card-title" th:if="${!#strings.isEmpty(sidebar.title) && !#strings.isEmpty(sidebar.icon)}">
+  <i th:class="${sidebar.icon + ' card-title-label'}"></i><span th:text="${sidebar.title}"></span>
+</div>
+[(${sidebar.content})]
+</div>

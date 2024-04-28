@@ -559,6 +559,8 @@ spec:
                   label:  文章标签模块
                 - value: 'tagcloud'
                   label:  文章标签云模块
+                - value: 'custom'
+                  label: 自定义模块
             - $formkit: select
               name: position
               label: 模块位置
@@ -583,6 +585,21 @@ spec:
                   label:  桌面设备隐藏
                 - value: 'is-not-hidden'
                   label:  不隐藏
+            - $formkit: text
+              name: title
+              label: 侧边栏标题
+              placeholder: '请输入标题内容'
+              help: '非必填，可覆盖默认侧边栏标题。'
+            - $formkit: text
+              name: icon
+              label: 侧边栏图标
+              placeholder: '请输入图标 class 内容'
+              help: '非必填，可覆盖默认侧边栏图标。'
+            - $formkit: code
+              name: content
+              label: 侧边栏内容
+              placeholder: 请输入 HTML 内容
+              help: '非必填，仅在侧边栏类型为自定义时生效。'
         - $formkit: radio
           name: enable_color_character
           label:  侧边栏信息-开启彩字切换
