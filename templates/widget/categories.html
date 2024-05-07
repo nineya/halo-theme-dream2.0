@@ -1,6 +1,6 @@
 <div xmlns:th="https://www.thymeleaf.org"
      th:fragment="widget (sidebar)"
-     th:class="'card widget ' + ${sidebar.hide}">
+     th:class="'card widget ' + ${sidebar.hide}"
      th:with="num = ${#strings.isEmpty(theme.config.sidebar.categories_num)? 10 : T(java.lang.Integer).parseInt(theme.config.sidebar.categories_num)},
      categories = ${categoryFinder.list(1,num)},
      isEmpty = ${#lists.isEmpty(categories)}">
@@ -11,13 +11,37 @@
     </div>
     <div th:if="${isEmpty}" class="card-empty">暂无分类</div>
     <div th:unless="${isEmpty}" class="card-content">
-        <ul class="menu-list">
-            <li th:each="category : ${categories}">
-                <a class="level is-marginless" th:href="${category.status.permalink}">
-                    <span class="level-item" th:text="${category.spec.displayName}"></span>
-                    <span class="level-item tag" th:text="${category.status.postCount}"></span>
-                </a>
-            </li>
+        <ul class="menu-list" id="categories-menu-list">
         </ul>
     </div>
+
+    <script th:inline="javascript">
+      let categories = [[${categoryFinder.listAsTree()}]]
+      let limitCount = [[${#strings.isEmpty(theme.config.sidebar.categories_num)? 10 : T(java.lang.Integer).parseInt(theme.config.sidebar.categories_num)}]]
+      let count = 0
+
+      function showCategories(categories) {
+        let con = ''
+        for (let category of categories) {
+          count++
+          if (count > limitCount) {
+            return con
+          }
+          con += '          <li>\n' +
+            '            <a class="level is-marginless" href="' + category.status.permalink + '">\n' +
+            '              <span class="level-item">'+category.spec.displayName+'</span>\n' +
+            '              <span class="level-item tag">'+(category.status.postCount === null ? 0 : category.status.postCount)+'</span>\n' +
+            '            </a>\n'
+
+          if (category.children.length > 0) {
+            con += '          <ul>\n'
+            con += showCategories(category.children)
+            con += '          </ul>\n'
+          }
+          con += '          </li> \n'
+        }
+        return con
+      }
+      $('#categories-menu-list').html(showCategories(categories));
+    </script>
 </div>
