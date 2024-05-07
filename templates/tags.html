@@ -16,7 +16,7 @@
           <a th:each="tag : ${tags}" class="tags" th:href="${tag.status.permalink}">
           <span class="tag" th:text="${tag.spec.displayName}"
                 th:style="${(enableTagsColor && tag.spec.color != '#ffffff')? 'color: ' + tag.spec.color +'; background: ' + tag.spec.color +'20' : ''}"></span>
-            <span class="tag is-grey" th:text="${tag.postCount}"
+            <span class="tag is-grey" th:text="${tag.postCount != null ? tag.postCount : 0}"
                   th:style="${(enableTagsColor && tag.spec.color != '#ffffff')? 'background: ' + tag.spec.color +'CC' : ''}"></span>
           </a>
         </div>
