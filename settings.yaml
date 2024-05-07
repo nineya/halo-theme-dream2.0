@@ -59,6 +59,12 @@ spec:
           name: cloud_by_url
           label: '云服务提供商 URL'
           placeholder: '请输入链接地址'
+        - $formkit: text
+          label: 头像服务镜像地址
+          help: '用于替换头像服务镜像地址，无须输入结尾的"/"。'
+          name: providerMirror
+          value: "https://cravatar.cn"
+          validation: required
     - group: basic_style
       label: '基础样式'
       formSchema:
