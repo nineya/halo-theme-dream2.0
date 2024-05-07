@@ -1,6 +1,6 @@
 <div xmlns:th="https://www.thymeleaf.org"
      th:fragment="widget (sidebar)"
-     th:class="'card widget ' + ${sidebar.hide}">
+     th:class="'card widget ' + ${sidebar.hide}"
      th:with="num = ${#strings.isEmpty(theme.config.sidebar.categories_num)? 10 : T(java.lang.Integer).parseInt(theme.config.sidebar.categories_num)},
      categories = ${categoryFinder.list(1,num)},
      isEmpty = ${#lists.isEmpty(categories)}">
