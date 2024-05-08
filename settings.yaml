@@ -59,12 +59,6 @@ spec:
           name: cloud_by_url
           label: '云服务提供商 URL'
           placeholder: '请输入链接地址'
-        - $formkit: text
-          label: 头像服务镜像地址
-          help: '用于替换头像服务镜像地址，无须输入结尾的"/"。'
-          name: providerMirror
-          value: "https://cravatar.cn"
-          validation: required
     - group: basic_style
       label: '基础样式'
       formSchema:
@@ -801,6 +795,12 @@ spec:
           label:  侧边栏最近评论-展示评论数量
           placeholder: 请输入数量数值
           value: 5
+        - $formkit: text
+          label: 侧边栏最近评论-邮箱头像服务地址
+          help: '邮箱头像服务地址，支持参考文档自定义部分参数，其中“{hash}”表示邮箱Hash值。'
+          name: providerMirror
+          value: "https://cravatar.cn/avatar/{hash}"
+          validation: required
         - $formkit: radio
           name: categories_more
           label:  侧边栏分类-显示”更多”按钮
