@@ -13,7 +13,7 @@
                      th:with="
                      emailHash = ${comment.spec.owner.annotations != null ? comment.spec.owner.annotations['email-hash'] : ''},
                      userA = ${comment.owner.avatar},
-                     img = ${#strings.isEmpty(userA) && !#strings.isEmpty(emailHash) ? theme.config.basic_info.providerMirror+'/avatar/'+emailHash : userA}">
+                     img = ${#strings.isEmpty(userA) && !#strings.isEmpty(emailHash) ? #strings.replace(theme.config.sidebar.providerMirror, '{hash}', emailHash) : userA}">
                     <img width="35" height="35" th:unless="${#strings.isEmpty(img)}" class="avatar" th:src="${img}"
                          th:alt="${comment.owner.displayName}">
                     <div th:if="${#strings.isEmpty(img)}" class="no-avatar">
