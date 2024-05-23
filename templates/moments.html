@@ -18,6 +18,13 @@
           <th:block th:if="${!#lists.isEmpty(moment.spec.content.medium)}" th:each="momentItem : ${moment.spec.content.medium}">
             <mew-video th:if="${momentItem.type.name == 'VIDEO'}" th:src="${momentItem.url}"></mew-video>
           </th:block>
+          <th:block th:if="${!#lists.isEmpty(moment.spec.content.medium)}" th:each="momentItem : ${moment.spec.content.medium}">
+            <mew-music th:if="${momentItem.type.name == 'AUDIO'}" th:url="${momentItem.url}"
+                       th:with="list = ${#strings.listSplit(momentItem.url,'/')}, size = ${#lists.size(list)}"
+                       th:name="${size >= 0 ? list[size - 1] : momentItem.url}"
+                       th:cover="${#theme.assets('/img/music.webp')}"
+            ></mew-music>
+          </th:block>
         </div>
       </div>
       <div class="journal-operation">
