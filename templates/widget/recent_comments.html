@@ -19,8 +19,6 @@
                     <div th:if="${#strings.isEmpty(img)}" class="no-avatar">
                         <span class="avatar-info">[[${#strings.substring(comment.owner.displayName, 0, 1)}]]</span>
                     </div>
-                        <span class="avatar-info">[[${#strings.substring(comment.owner.displayName, 0, 1)}]]</span>
-                    </div>
                     <div class="info">
                         <div class="author">[[${comment.owner.displayName}]]</div>
                         <span class="date">[[${#temporals.format(comment.spec.creationTime, 'yyyy-MM-dd')}]]</span>
