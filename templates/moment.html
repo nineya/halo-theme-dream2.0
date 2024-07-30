@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<th:block
+  th:insert="~{common/layout :: layout (title = ${title} + ' - ' + ${site.title}, canonical = @{/moments}, content = ~{::content}, isPost = true)}"
+  th:with="isJournals = true, enableShare = ${theme.config.page_config.enable_journals_share}, baseEnableComment = ${theme.config.page_config.enable_journals_comment}"
+  xmlns:th="https://www.thymeleaf.org">
+  <th:block th:fragment="content">
+    <div class="card card-content journal">
+      <p class="journal-date">
+        <i class="ri-send-plane-line"></i>
+        <em th:text="${#dates.format(moment.spec.releaseTime,'yyyy年MM月dd日 HH:mm:ss')}"></em>
+      </p>
+      <div class="journal-content fold">
+        <div class="main-content not-toc" data-target="Moment" th:data-id="${moment.metadata.name}">
+          [(${moment.spec.content.html})]
+          <mew-photos th:if="${!#lists.isEmpty(moment.spec.content.medium)}">
+            <img th:each="momentItem : ${moment.spec.content.medium}" th:if="${momentItem.type.name == 'PHOTO'}" th:src="${momentItem.url}" />
+          </mew-photos>
+          <th:block th:if="${!#lists.isEmpty(moment.spec.content.medium)}" th:each="momentItem : ${moment.spec.content.medium}">
+            <mew-video th:if="${momentItem.type.name == 'VIDEO'}" th:src="${momentItem.url}"></mew-video>
+          </th:block>
+          <th:block th:if="${!#lists.isEmpty(moment.spec.content.medium)}" th:each="momentItem : ${moment.spec.content.medium}">
+            <mew-music th:if="${momentItem.type.name == 'AUDIO'}" th:url="${momentItem.url}"
+                       th:with="list = ${#strings.listSplit(momentItem.url,'/')}, size = ${#lists.size(list)}"
+                       th:name="${size >= 0 ? list[size - 1] : momentItem.url}"
+                       th:cover="${#theme.assets('/img/music.webp')}"
+            ></mew-music>
+          </th:block>
+        </div>
+      </div>
+      <div class="journal-operation">
+        <span class="journal-operation-item">
+          <a class="like" th:data-id="${moment.metadata.name}" th:data-likes="${moment.stats.upvote}">
+            <i class="ri-heart-3-line"></i>
+            <em th:text="${(moment.stats.upvote != 0)? moment.stats.upvote : '喜欢'}"></em>
+          </a>
+        </span>
+        <span class="journal-operation-item" th:if="${enableComment}">
+          <a class="comment">
+            <i class="ri-message-3-line"></i>
+            <em th:text="${(moment.stats.totalComment != 0)? moment.stats.totalComment : '评论'}"></em>
+          </a>
+        </span>
+        <span class="journal-operation-item" th:if="${enableShare}">
+          <a class="share"><i class="ri-share-forward-line"></i><em>分享</em></a>
+        </span>
+          <img th:unless="${#strings.isEmpty(moment.owner.avatar)}" class="avatar" th:src="${moment.owner.avatar}"
+               alt="avatar">
+          <div th:if="${#strings.isEmpty(moment.owner.avatar)}" class="no-avatar">
+            <span class="avatar-info">[[${#strings.substring(moment.owner.displayName, 0, 1)}]]</span>
+          </div>
+          <span class="name">[[${moment.owner.displayName}]]</span>
+        </div>
+      </div>
+      <div class="journal-comment" th:if="${enableComment}">
+        <div th:if="${haloCommentEnabled}">
+          <halo:comment group="moment.halo.run" kind="Moment" th:attr="name=${moment.metadata.name}"/>
+        </div>
+      </div>
+    </div>
+
+  </th:block>
+</th:block>
