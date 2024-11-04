@@ -27,7 +27,7 @@
           </th:block>
         </div>
       </div>
-      <div th:if="${moduleSize > 2}" class="'model model-attach model-attach-' + ${moduleSize - 2}">
+      <div th:if="${moduleSize > 2}" th:class="'model model-attach model-attach-' + ${moduleSize - 2}">
         <th:block th:each="index : ${#numbers.sequence(2, 5)}">
           <th:block th:if="${index < moduleSize}">
             <th:block th:replace="~{::buildModule (${theme.config.basic_style.module_options.get(index)})}"/>
