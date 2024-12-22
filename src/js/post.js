@@ -49,6 +49,10 @@ const postContext = {
       for (var i = 0; i < nums; i++) {
         lis += `<li ${(lines && /^\s*\|\+\s+/.test(codes[i]))? 'class="code-select"' : ''}>${String(i + 1).padStart(lineDigit, 0)}</li>`
       }
+      // 检查最后一行是否为空，如果不为空则再增加一个行号
+      if (codes[nums].trim() !== '') {
+        lis += `<li ${(lines && /^\s*\|\+\s+/.test(codes[i]))? 'class="code-select"' : ''}>${String(nums + 1).padStart(lineDigit, 0)}</li>`
+      }
       if (lines) {
         $(this).text($(this).text().replace(/(^\s*)\|\+\s/gm,'$1'))
       }
