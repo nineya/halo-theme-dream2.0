@@ -1,7 +1,7 @@
 <head xmlns:th="https://www.thymeleaf.org" th:fragment="head"
 th:with="description=${isPost ? post != null ? post.status.excerpt : singlePage != null ? singlePage.status.excerpt : site.seo.description : site.seo.description}">
   <title th:text="${title + (#strings.isEmpty(site.subtitle) ? '' : '|' + site.subtitle)}"></title>
-  <script th:if="${theme.config.enhance.enable_sw}" th:src="${(theme.config.enhance.enable_sw == 'uninstall')? #theme.assets('/assets/js/sw.min.js?uninstall=true') + '&mew=1.2.1' : '/sw.min.js?mew=1.2.1' + theme.config.enhance.enable_sw + '&cdn=' + theme.config.enhance.sw_cdn_source.replaceAll('\n', ',')}"></script>
+  <script th:if="${theme.config.enhance.enable_sw}" th:src="${(theme.config.enhance.enable_sw == 'uninstall')? #theme.assets('/js/sw.min.js?uninstall=true') + '&mew=1.2.2' : '/sw.min.js?mew=1.2.2' + theme.config.enhance.enable_sw + '&cdn=' + theme.config.enhance.sw_cdn_source.replaceAll('\n', ',')}"></script>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
   <meta http-equiv="x-dns-prefetch-control" content="on">
