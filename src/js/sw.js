@@ -167,6 +167,10 @@
         || isExitInUrlList(notHandleList, event.request.url)) {
         return false
       }
+      // 检查请求协议是否为 http 或 https
+      if (!event.request.url.startsWith('http://') && !event.request.url.startsWith('https://')) {
+        return false
+      }
       const isCdnAndCache = isExitInUrlList(cdnAndCacheList, event.request.url)
       const isOnlyCacheList = isExitInUrlList(onlyCacheList, event.request.url)
       // cdn并发请求未开启 或 请求没有被任何路由命中
