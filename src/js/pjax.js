@@ -189,6 +189,19 @@ $(document).on('pjax:error', function (event, xhr, textStatus, error, options) {
 // pjax结束
 $(document).on('pjax:complete', function (event, xhr, textStatus, options) {
   console.log(`pjax:complete sn = ${options.serialNumber}`)
+  // 获取当前页面的标题、路径和 URL
+  const currentTitle = document.title
+  const currentPath = window.location.pathname
+  const currentUrl = window.location.href
+
+  if (window.history && window.history.replaceState) {
+    // 更新历史记录状态
+    window.history.replaceState(
+      { url: currentUrl, title: currentTitle, path: currentPath },
+      currentTitle,
+      currentUrl
+    )
+  }
 })
 
 /**
@@ -213,4 +226,20 @@ $(document).on('pjax:end', function (event, xhr, options) {
 
 $(document).on('pjax:popstate', function () {
   console.log('pjax:popstate')
+})
+
+// 监听 popstate 事件
+window.addEventListener('popstate', function (event) {
+  console.log('popstate event triggered')
+  if (event.state) {
+    const currentUrl = window.location.href
+    $.pjax.reload('.column-main', {
+      container: '.column-main', // 指定要重新加载的内容容器，默认为 document.body
+      push: false,
+      url: currentUrl,
+      fragment: '.column-main', // 加载的文本中被选中的目标内容
+      serialNumber: createSerialNumber(), // 创建序列号
+      timeout: 8000, // 设置超时时间（毫秒）
+    })
+  }
 })
