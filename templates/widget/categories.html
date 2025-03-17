@@ -1,11 +1,11 @@
 <div xmlns:th="https://www.thymeleaf.org"
-     th:fragment="widget (hide)"
-     th:class="'card widget ' + ${hide}"
+     th:fragment="widget (sidebar)"
+     th:class="'card widget ' + ${sidebar.hide}"
      th:with="num = ${#strings.isEmpty(theme.config.sidebar.categories_num)? 10 : T(java.lang.Integer).parseInt(theme.config.sidebar.categories_num)},
      categories = ${categoryFinder.list(1,num)},
      isEmpty = ${#lists.isEmpty(categories)}">
     <div class="card-title">
-        <i class="ri-apps-line card-title-label"></i><span>分类</span>
+        <i th:class="${#strings.defaultString(sidebar.icon, 'ri-apps-line') + ' card-title-label'}"></i><span th:text="${#strings.defaultString(sidebar.title, '分类')}"></span>
         <a th:if="${categories.hasNext}" class="card-more" th:href="@{/categories}">更多<i
                 class="ri-arrow-right-double-line"></i></a>
     </div>

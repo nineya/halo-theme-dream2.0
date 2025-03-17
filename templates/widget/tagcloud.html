@@ -1,13 +1,13 @@
 <div xmlns:th="https://www.thymeleaf.org"
-     th:fragment="widget (hide)"
-     th:class="'card widget tagcloud ' + ${hide}"
+     th:fragment="widget (sidebar)"
+     th:class="'card widget tagcloud ' + ${sidebar.hide}"
      th:with="num = ${#strings.isEmpty(theme.config.sidebar.tags_num)? 32 : T(java.lang.Integer).parseInt(theme.config.sidebar.tags_num)},
       tags = ${tagFinder.list(1,num)},
       isEmpty = ${#lists.isEmpty(tags)},
      enableTagsColor = ${theme.config.sidebar.enable_tag_color}">
 
     <div class="card-title">
-        <i class="ri-cloud-line card-title-label"></i><span>标签云</span>
+        <i th:class="${#strings.defaultString(sidebar.icon, 'ri-cloud-line') + ' card-title-label'}"></i><span th:text="${#strings.defaultString(sidebar.title, '标签云')}"></span>
         <a th:if="${tags.hasNext}" class="card-more" th:href="@{/tags}">更多<i class="ri-arrow-right-double-line"></i></a>
     </div>
     <div th:if="${isEmpty}" class="card-empty">暂无标签</div>
@@ -16,7 +16,7 @@
           th:each="tag : ${tags}"
           th:href="@{${tag.status.permalink}}"
           th:text="${tag.spec.displayName}"
-          th:with="size = ${#strings.length(tag.spec.displayName) + #strings.length(tag.spec.slug) + tag.postCount}"
+          th:with="size = ${#strings.length(tag.spec.displayName) + #strings.length(tag.spec.slug) + (tag.postCount != null ? tag.postCount : 0)}"
           th:style="'font-size: ' + ${size < 14 ? 14 : size > 32 ? 32 : size} + 'px;' + ${(enableTagsColor && tag.spec.color != '#ffffff')? 'color: ' + tag.spec.color +';' : ''}"></a>
     </div>
 </div>

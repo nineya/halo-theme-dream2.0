@@ -21,7 +21,7 @@
     <li th:each="category : ${categories}">
       <a class="level is-marginless" th:href="${category.status.permalink}">
         <span class="level-item" th:text="${category.spec.displayName}"></span>
-        <span class="level-item tag" th:text="${category.status.postCount}"></span>
+        <span class="level-item tag" th:text="${category.status.postCount == null ? 0 : category.status.postCount}"></span>
       </a>
       <ul th:if="${!#lists.isEmpty(category.children)}">
         <th:block th:replace="~{:: categories (${category.children})}"/>

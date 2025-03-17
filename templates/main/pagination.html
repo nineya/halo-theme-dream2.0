@@ -1,7 +1,9 @@
 <div xmlns:th="https://www.thymeleaf.org" xmlns:tj="http://www.w3.org/1999/html"
      th:fragment="pagination (data, path)"
      th:if="${data.totalPages > 1}"
-     class="card card-transparent">
+     class="card card-transparent"
+     th:with="urlParamStr = ${#strings.substringAfter(data.prevUrl,'?')},
+              urlParams = ${urlParamStr == null ? '' : ('?' + urlParamStr)}">
   <nav class="pagination" role="navigation" aria-label="pagination">
     <a th:href="${data.prevUrl}"
        th:class="'pagination-previous' + ${data.hasPrevious()?'':' is-invisible is-hidden-mobile'}">上一页</a>
@@ -9,28 +11,28 @@
        th:class="'pagination-next' + ${data.hasNext()?'':' is-invisible is-hidden-mobile'}">下一页</a>
     <ul class="pagination-list is-hidden-mobile"
         th:with="p=${T(java.lang.Math).ceil(T(java.lang.Double).parseDouble(data.page) / 5.0) },start = ${(p * 5) - 5  +1 }, end=${p * 5}">
-      <th:block th:if="${posts.totalPages <= 9}">
+      <th:block th:if="${data.totalPages <= 9}">
         <li th:each="index : ${#numbers.sequence(1, data.totalPages)}">
           <a
             th:class="'pagination-link' + ${data.page == index ? ' is-current': ''}"
-            th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a>
+            th:href="@{${path+'/page/'} + ${index} + ${urlParams}}" th:text="${index}"></a>
         </li>
       </th:block>
-      <th:block th:unless="${posts.totalPages <= 9}"
+      <th:block th:unless="${data.totalPages <= 9}"
       th:with="start = ${(data.page > 5) ? data.page - 2 : 1},
-               end = ${start + ((data.page > 5) ? ((posts.page < posts.totalPages - 4) ? 4 : 6) :  ((posts.page < posts.totalPages - 4) ? 6 : 8))}">
-        <th:block th:if="${posts.page > 5}">
-          <li><a class="pagination-link" th:href="@{${path+'/page/1'}}" th:text="1"></a></li>
+               end = ${start + ((data.page > 5) ? ((data.page < data.totalPages - 4) ? 4 : 6) :  ((data.page < data.totalPages - 4) ? 6 : 8))}">
+        <th:block th:if="${data.page > 5}">
+          <li><a class="pagination-link" th:href="@{${path+'/page/1' + urlParams}}" th:text="1"></a></li>
           <li><span class="pagination-ellipsis">…</span></li>
         </th:block>
 
-        <li th:each="index : ${#numbers.sequence((end > posts.totalPages) ? start - end + posts.totalPages : start, (end > posts.totalPages) ? posts.totalPages : end)}"><a
+        <li th:each="index : ${#numbers.sequence((end > data.totalPages) ? start - end + data.totalPages : start, (end > data.totalPages) ? data.totalPages : end)}"><a
           th:class="'pagination-link' + ${data.page == index ? ' is-current': ''}"
-          th:href="@{${path+'/page/'}  + ${index}}" th:text="${index}"></a></li>
+          th:href="@{${path+'/page/'}  + ${index} + ${urlParams}}" th:text="${index}"></a></li>
 
-        <th:block th:if="${posts.page < posts.totalPages - 4}">
+        <th:block th:if="${data.page < data.totalPages - 4}">
           <li><span class="pagination-ellipsis">…</span></li>
-          <li><a class="pagination-link" th:href="@{${path+'/page/'} + ${posts.totalPages}}" th:text="${posts.totalPages}"></a></li>
+          <li><a class="pagination-link" th:href="@{${path+'/page/'} + ${data.totalPages} + ${urlParams}}" th:text="${data.totalPages}"></a></li>
         </th:block>
       </th:block>
     </ul>

@@ -16,7 +16,7 @@
                   th:if="${!#strings.isEmpty(theme.config.basic_info.record_number)}"
                   href="http://beian.miit.gov.cn/publish/query/indexFirst.action" target="_blank" rel="noopener noreferrer nofollow"
                   th:text="${theme.config.basic_info.record_number}"></a><span class="footer-truncation">Powered by <a class="powered" href="https://halo.run/" target="_blank">Halo</a> & <a class="powered" href="https://github.com/nineya/halo-theme-dream2.0" target="_blank">Dream</a></span></p>
-              <p class="icon-spot" th:if="${!#strings.isEmpty(theme.config.basic_info.website_time) || theme.config.enhance.enable_busuanzi}">
+              <p class="icon-spot" th:if="${!#strings.isEmpty(theme.config.basic_info.website_time) || theme.config.enhance.enable_busuanzi == true}">
                 <span th:if="${!#strings.isEmpty(theme.config.basic_info.website_time)}" id="websiteDate">建站<span class="stand">00</span>天<span class="stand">0</span>时<span class="stand">0</span>分<span class="stand">0</span>秒</span>
                 <span th:if="${theme.config.enhance.enable_busuanzi == true}" class="icon-spot footer-truncation">
                             <span id="busuanzi_container_site_uv" style="display: none">
@@ -28,7 +28,7 @@
                         </span>
               </p>
               <p th:if="${!#strings.isEmpty(theme.config.basic_info.record_number_ps)}"><a th:href="'https://beian.mps.gov.cn/#/query/webSearch?code=' + ${theme.config.basic_info.record_number_ps.replaceAll('[^\d]', '')}" target="_blank" rel="noopener noreferrer nofollow"><img
-                src="https://beian.mps.gov.cn/img/logo01.dd7ff50e.png" alt="公网安备" style="vertical-align: text-top; width: 1.2em; margin-right: 4px;"/>[[${theme.config.basic_info.record_number_ps}]]</a></p>
+                      th:src="${#theme.assets('/img/ga.png')}" alt="公网安备" style="vertical-align: text-top; width: 1.2em; margin-right: 4px;"/>[[${theme.config.basic_info.record_number_ps}]]</a></p>
               <p th:if="${!#strings.isEmpty(theme.config.basic_info.cloud_by_logo)}">本站由<a
                 class="cloud-driven" target="_blank" rel="noopener noreferrer nofollow" th:href="${theme.config.basic_info.cloud_by_url}"><img
                 alt="云服务商" th:src="${theme.config.basic_info.cloud_by_logo}"/></a>提供云服务</p>

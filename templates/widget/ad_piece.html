@@ -1,6 +1,6 @@
 <div xmlns:th="https://www.thymeleaf.org"
-     th:fragment="widget (hide)"
-     th:class="'card widget ' + ${hide}">
+     th:fragment="widget (sidebar)"
+     th:class="'card widget ' + ${sidebar.hide}">
   <a th:if="${theme.config.sidebar.ad_mode}" target="_blank" th:href="${theme.config.sidebar.ad_target_url}">
     <img width="100%" th:src="${theme.config.sidebar.ad_image}" alt="广告"/>
   </a>

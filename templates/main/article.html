@@ -92,6 +92,8 @@
 
     <div class="card card-content" id="comment-wrapper" th:if="${enableComment}">
         <h3 class="comment-title">评论</h3>
-        <div class="comment-section" th:data-id="${post.metadata.name}" th:data-target="${type}"></div>
+        <div th:if="${haloCommentEnabled}">
+            <halo:comment group="content.halo.run" th:kind="${type}" th:attr="name=${post.metadata.name}"/>
+        </div>
     </div>
 </th:block>

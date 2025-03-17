@@ -22,12 +22,12 @@ const journalContext = {
         description: desc.length > 220 ? desc.substring(0, 220) + '...' :desc
       })
     })
-    Utils.initLikeEvent('.journal .like', 'Moment', ($elem) => $elem.next())
+    Utils.initLikeEvent('.journal .like', 'moments', ($elem) => $elem.find('em'))
     journalContextInitial = true
   },
   /* 点赞 */
   initLike() {
-    Utils.initLikeButton('.journal .like', 'Moment')
+    Utils.initLikeButton('.journal .like', 'moments')
   },
   /* 折叠日志区域 */
   foldJournals() {
